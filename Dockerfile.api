@@ -1,0 +1,61 @@
+FROM node:24-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+WORKDIR /app
+
+FROM base AS builder
+WORKDIR /app
+ENV NODE_OPTIONS="--max-old-space-size=1024"
+
+# 1. Copy package manifests first for optimal layer caching
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+COPY packages/contracts/package.json ./packages/contracts/
+COPY packages/themes/package.json ./packages/themes/
+COPY packages/db/package.json ./packages/db/
+COPY apps/api/package.json ./apps/api/
+COPY apps/dashboard/package.json ./apps/dashboard/
+COPY apps/storefront/package.json ./apps/storefront/
+
+# 2. Install dependencies with BuildKit cache mount
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+# 3. Core libraries (contracts, themes, db) - cached unless packages/ changes
+COPY packages ./packages
+COPY tsconfig.json* turbo.json* ./
+RUN pnpm --filter @gocom/contracts build && \
+    pnpm --filter @gocom/themes build && \
+    pnpm --filter @gocom/db build
+
+# 4. Dashboard SPA (Vite) - cached unless apps/dashboard/ changes
+COPY apps/dashboard ./apps/dashboard
+RUN pnpm --filter @gocom/dashboard build
+
+# 5. API Server (Hono) - only rebuilds when apps/api/ changes
+COPY apps/api ./apps/api
+RUN pnpm --filter @gocom/api build
+RUN mkdir -p /app/apps/api/public && cp -r /app/apps/dashboard/dist/* /app/apps/api/public/
+
+FROM base AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NODE_OPTIONS="--max-old-space-size=384"
+
+COPY --chown=node:node --from=builder /app/package.json ./package.json
+COPY --chown=node:node --from=builder /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
+COPY --chown=node:node --from=builder /app/node_modules ./node_modules
+COPY --chown=node:node --from=builder /app/packages ./packages
+COPY --chown=node:node --from=builder /app/apps/api ./apps/api
+# Gallery templates are served from their original markup (see packages/themes/src/html).
+COPY --chown=node:node templets ./templets
+ENV TEMPLATES_DIR=/app/templets
+# Mirror of template assets fetched from their source sites; mount a volume here to keep it across deploys.
+ENV TEMPLATE_CACHE_DIR=/app/template-cache
+RUN mkdir -p /app/template-cache && chown node:node /app/template-cache
+
+USER node
+WORKDIR /app/apps/api
+EXPOSE 3000
+
+CMD ["node", "dist/index.js"]

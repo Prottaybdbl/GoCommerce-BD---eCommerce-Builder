@@ -1,0 +1,9 @@
+/* =========================================================
+   GLOBAL SITE LAYOUT
+========================================================= */
+
+@media (max-width: 991px) {
+    #content {
+        padding-top: var(--rk-mobile-total-header-height);
+    }
+}

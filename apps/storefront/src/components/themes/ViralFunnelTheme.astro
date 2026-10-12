@@ -1,0 +1,179 @@
+---
+import { formatBdt } from "@gocom/contracts";
+import { InlineCheckoutForm } from "../InlineCheckoutForm.tsx";
+import { Check, Star, ShieldCheck, Truck, RefreshCw, PhoneCall } from "../icons.tsx";
+
+interface Props {
+  store: any;
+  product: any;
+}
+
+const { store, product } = Astro.props;
+const themeConfig = store.themeConfig || {};
+const settings = store.settings || {};
+const primaryVariant = product.variants?.[0] || { price: 0 };
+const primaryImage = product.images?.[0]?.url || "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=800";
+const features = product.features?.length > 0 ? product.features : [
+  "১০০% অরিজিনাল ও প্রিমিয়াম কোয়ালিটি",
+  "পণ্য হাতে পেয়ে চেক করে সম্পূর্ণ মূল্য পরিশোধ করার সুবিধা",
+  "৭ দিনের সহজ রিটার্ন ও রিপ্লেসমেন্ট পলিসি"
+];
+---
+
+<div class="min-h-screen bg-slate-50 text-slate-900 pb-20">
+  <!-- 1. Sticky Emergency Announcement Bar -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-rose-700 via-rose-600 to-rose-700 text-white py-2.5 px-4 text-center text-xs sm:text-sm font-bold shadow-md">
+    <div class="max-w-4xl mx-auto flex items-center justify-center gap-2">
+      <span class="animate-pulse">🔥</span>
+      <span>{themeConfig.announcementBarText || "সারা দেশে ফ্রি হোম ডেলিভারি এবং ক্যাশ অন ডেলিভারি সুবিধা!"}</span>
+      <span class="hidden sm:inline bg-white/20 px-2 py-0.5 rounded text-xs font-semibold">সীমিত সময়ের অফার</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8">
+    <!-- Store Brand Header -->
+    <div class="flex items-center justify-between border-b border-slate-200/80 pb-4">
+      <div class="flex items-center gap-3">
+        {store.logoUrl ? (
+          <img src={store.logoUrl} alt={store.name} class="w-10 h-10 object-contain rounded-lg" />
+        ) : (
+          <div class="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center font-black text-lg shadow-md shadow-rose-600/30">
+            {store.name.charAt(0)}
+          </div>
+        )}
+        <div>
+          <h1 class="text-base sm:text-lg font-black text-slate-900">{store.name}</h1>
+          <p class="text-xs text-slate-500">{settings.tagline || "সারা দেশে বিশ্বস্ততার সাথে অনলাইন শপিং"}</p>
+        </div>
+      </div>
+
+      {settings.supportPhone && (
+        <a
+          href={`tel:${settings.supportPhone}`}
+          class="flex items-center gap-1.5 px-3 py-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-full text-xs font-bold border border-rose-200"
+        >
+          <PhoneCall class="w-3.5 h-3.5" />
+          <span class="hidden sm:inline">কল করুন:</span>
+          <span>{settings.supportPhone}</span>
+        </a>
+      )}
+    </div>
+
+    <!-- 2. Product Headline & Ratings -->
+    <div class="space-y-2 text-center sm:text-left">
+      <div class="flex items-center justify-center sm:justify-start gap-1 text-amber-500">
+        <Star class="w-4 h-4 fill-amber-400" />
+        <Star class="w-4 h-4 fill-amber-400" />
+        <Star class="w-4 h-4 fill-amber-400" />
+        <Star class="w-4 h-4 fill-amber-400" />
+        <Star class="w-4 h-4 fill-amber-400" />
+        <span class="text-xs font-bold text-slate-700 ml-1.5">(৪.৯/৫ স্টার রিভিউ)</span>
+        <span class="text-xs text-emerald-600 font-bold ml-2">✓ ইন-স্টক</span>
+      </div>
+
+      <h2 class="text-xl sm:text-3xl font-black text-slate-900 leading-snug">
+        {product.banglaTitle || product.title}
+      </h2>
+
+      <!-- Price Block -->
+      <div class="flex items-center justify-center sm:justify-start gap-3 pt-1">
+        <span class="text-2xl sm:text-3xl font-black text-rose-600">{formatBdt(primaryVariant.price)}</span>
+        {primaryVariant.compareAtPrice && (
+          <span class="text-base sm:text-lg text-slate-400 line-through">
+            {formatBdt(primaryVariant.compareAtPrice)}
+          </span>
+        )}
+        <span class="bg-rose-100 text-rose-800 text-xs font-extrabold px-2 py-0.5 rounded-full">
+          স্পেশাল ছাড়
+        </span>
+      </div>
+    </div>
+
+    <!-- 3. Primary Media Showcase -->
+    <div class="bg-white rounded-3xl p-3 sm:p-4 shadow-sm border border-slate-200 overflow-hidden">
+      <img
+        src={primaryImage}
+        alt={product.title}
+        class="w-full h-72 sm:h-96 object-cover rounded-2xl"
+        fetchpriority="high"
+        loading="eager"
+      />
+    </div>
+
+    <!-- Quick Action: Mobile Scroll CTA -->
+    <div class="text-center">
+      <a
+        href="#checkout-section"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-rose-600 hover:bg-rose-700 active:scale-[0.99] text-white rounded-2xl text-base font-extrabold shadow-lg shadow-rose-600/30 transition-all"
+      >
+        <span>অর্ডার করতে এখানে ক্লিক করুন</span>
+        <span>👉</span>
+      </a>
+    </div>
+
+    <!-- 4. Problem / Solution Bullet Points -->
+    <div class="bg-white rounded-3xl p-6 sm:p-7 shadow-sm border border-slate-200 space-y-4">
+      <h3 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">
+        কেন এই প্রোডাক্টটি আপনার জন্য সেরা?
+      </h3>
+      <ul class="space-y-3">
+        {features.map((feat: string) => (
+          <li class="flex items-start gap-3 text-sm text-slate-700 leading-relaxed">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+              <Check class="w-3.5 h-3.5" />
+            </div>
+            <span>{feat}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- 5. Product Description Copy -->
+    {product.banglaDescription && (
+      <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-3">
+        <h3 class="text-lg font-bold text-slate-900">বিস্তারিত বিবরণ</h3>
+        <p class="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
+          {product.banglaDescription}
+        </p>
+      </div>
+    )}
+
+    <!-- 6. Trust & Security Badges -->
+    <div class="grid grid-cols-3 gap-3">
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-200 text-center space-y-1">
+        <Truck class="w-6 h-6 text-emerald-600 mx-auto" />
+        <p class="text-xs font-bold text-slate-800">হোম ডেলিভারি</p>
+        <p class="text-[10px] text-slate-500">সারা দেশে দ্রুত</p>
+      </div>
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-200 text-center space-y-1">
+        <ShieldCheck class="w-6 h-6 text-rose-600 mx-auto" />
+        <p class="text-xs font-bold text-slate-800">ক্যাশ অন ডেলিভারি</p>
+        <p class="text-[10px] text-slate-500">দেখে মূল্য পরিশোধ</p>
+      </div>
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-200 text-center space-y-1">
+        <RefreshCw class="w-6 h-6 text-blue-600 mx-auto" />
+        <p class="text-xs font-bold text-slate-800">রিপ্লেসমেন্ট গ্যারান্টি</p>
+        <p class="text-[10px] text-slate-500">৭ দিনের সহজ রিটার্ন</p>
+      </div>
+    </div>
+
+    <!-- 7. Interactive 1-Step Inline Checkout Form (Client Island) -->
+    <InlineCheckoutForm client:visible product={product} settings={settings} />
+  </main>
+
+  <!-- 8. Sticky Mobile Bottom Order Bar -->
+  <aside class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 p-3 sm:hidden shadow-2xl">
+    <div class="flex items-center justify-between gap-3">
+      <div>
+        <p class="text-[11px] text-slate-500 font-semibold">ক্যাশ অন ডেলিভারি</p>
+        <p class="text-base font-black text-rose-600">{formatBdt(primaryVariant.price)}</p>
+      </div>
+      <a
+        href="#checkout-section"
+        class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-center text-sm font-extrabold shadow-md shadow-emerald-600/30"
+      >
+        অর্ডার করতে ক্লিক করুন
+      </a>
+    </div>
+  </aside>
+</div>

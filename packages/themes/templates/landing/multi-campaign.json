@@ -1,0 +1,139 @@
+{
+  "id": "multi-campaign",
+  "version": 1,
+  "tier": "landing",
+  "archetype": "multi-campaign",
+  "status": "published",
+  "name": "Multi-Campaign Funnel",
+  "banglaName": "মাল্টি-ক্যাম্পেইন অফার",
+  "description": "একাধিক কম্বো অফার ও বান্ডেল সেলের জন্য স্পেশাল ডিল পেজ",
+  "banglaDescription": "একাধিক কম্বো অফার ও বান্ডেল সেলের জন্য স্পেশাল ডিল পেজ",
+  "tags": ["campaign", "combo", "bundle", "deals"],
+  "bestFor": ["কম্বো অফার", "বান্ডেল সেল", "গিফট আইটেম"],
+  "gallery": {
+    "thumb": "/t/multi-campaign/v1/thumb-400.webp",
+    "thumb2x": "/t/multi-campaign/v1/thumb-800.webp",
+    "accent": "#D97706",
+    "aspect": "9/16"
+  },
+  "shell": "narrow-funnel",
+  "defaultPreset": "amber-warm",
+  "allowedPresets": ["amber-warm", "rose-bold", "royal-fashion"],
+  "requiresFeature": ["landing"],
+  "pages": {
+    "main": {
+      "kind": "landing",
+      "title": "Multi Campaign Landing",
+      "variants": {
+        "default": {
+          "label": "Combo Deal",
+          "sectionIds": [
+            "sec-announcement",
+            "sec-header",
+            "sec-hero",
+            "sec-features",
+            "sec-faq",
+            "sec-trust",
+            "sec-checkout",
+            "sec-sticky-bottom"
+          ]
+        }
+      },
+      "sections": [
+        {
+          "id": "sec-announcement",
+          "type": "announcement_bar",
+          "enabled": true,
+          "settings": {
+            "text": "আজকের স্পেশাল অফার: ২ বা ততোধিক অর্ডারে বিশেষ ডিসকাউন্ট!",
+            "badge": "মেগা ডিল",
+            "highlightEmoji": "🎁"
+          }
+        },
+        {
+          "id": "sec-header",
+          "type": "header",
+          "enabled": true,
+          "locks": {
+            "removable": false,
+            "movable": false
+          },
+          "settings": {
+            "showLogo": true,
+            "showPhoneCall": true
+          }
+        },
+        {
+          "id": "sec-hero",
+          "type": "hero_product",
+          "enabled": true,
+          "locks": {
+            "removable": false
+          },
+          "settings": {
+            "showRatingBadge": true,
+            "ratingScore": "৪.৯/৫",
+            "showStockBadge": true,
+            "stockText": "স্টক সীমিত",
+            "showDiscountBadge": true,
+            "discountText": "কম্বো অফার",
+            "primaryCtaText": "অফারে অর্ডার করতে এখানে ক্লিক করুন 🛒"
+          }
+        },
+        {
+          "id": "sec-features",
+          "type": "features_list",
+          "enabled": true,
+          "settings": {
+            "title": "প্যাকেজের সাথে যা যা পাচ্ছেন"
+          }
+        },
+        {
+          "id": "sec-faq",
+          "type": "faq_accordion",
+          "enabled": true,
+          "settings": {
+            "title": "সাধারণ কিছু প্রশ্নোত্তর (FAQ)"
+          }
+        },
+        {
+          "id": "sec-trust",
+          "type": "trust_badges",
+          "enabled": true,
+          "settings": {
+            "badges": [
+              { "icon": "truck", "title": "ফ্রি হোম ডেলিভারি", "desc": "কম্বো অর্ডারে" },
+              { "icon": "shield", "title": "ক্যাশ অন ডেলিভারি", "desc": "পণ্য দেখে পেমেন্ট" },
+              { "icon": "refresh", "title": "সহজ রিটার্ন পলিসি", "desc": "নিশ্চিন্ত কেনাকাটা" }
+            ]
+          }
+        },
+        {
+          "id": "sec-checkout",
+          "type": "inline_checkout",
+          "enabled": true,
+          "locks": {
+            "removable": false,
+            "movable": false,
+            "variantLocked": true
+          },
+          "settings": {
+            "title": "আপনার ডেলিভারি তথ্য দিন"
+          }
+        },
+        {
+          "id": "sec-sticky-bottom",
+          "type": "sticky_bottom_bar",
+          "enabled": true,
+          "locks": {
+            "removable": false,
+            "movable": false
+          },
+          "settings": {
+            "buttonText": "অর্ডার করুন"
+          }
+        }
+      ]
+    }
+  }
+}

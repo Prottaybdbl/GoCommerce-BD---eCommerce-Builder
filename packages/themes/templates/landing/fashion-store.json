@@ -1,0 +1,111 @@
+{
+  "id": "fashion-store",
+  "version": 1,
+  "tier": "landing",
+  "archetype": "fashion-store",
+  "status": "published",
+  "name": "Fashion & Boutique",
+  "banglaName": "ফ্যাশন ও বুটিক",
+  "description": "Premium lookbook and apparel landing page designed for sarees, panjabis, and boutique fashion.",
+  "banglaDescription": "শাড়ি, পাঞ্জাবি ও পোশাকের জন্য প্রিমিয়াম ডিজাইন লুকবুক।",
+  "tags": ["fashion", "boutique", "saree", "panjabi"],
+  "bestFor": ["শাড়ি", "থ্রি-পিস", "পাঞ্জাবি", "বুটিক কালেকশন"],
+  "gallery": {
+    "thumb": "/t/fashion-store/v1/thumb-400.webp",
+    "thumb2x": "/t/fashion-store/v1/thumb-800.webp",
+    "accent": "#7C3AED",
+    "aspect": "9/16"
+  },
+  "shell": "wide-editorial",
+  "defaultPreset": "royal-fashion",
+  "allowedPresets": ["royal-fashion", "rose-bold", "ocean-clean", "amber-warm"],
+  "requiresFeature": [],
+  "pages": {
+    "main": {
+      "kind": "landing",
+      "title": "Fashion Showcase",
+      "sections": [
+        {
+          "id": "sec-announcement",
+          "type": "announcement_bar",
+          "variant": "gradient",
+          "enabled": true,
+          "settings": {
+            "text": "নতুন কালেকশন ২০২৬ — সারা দেশে ক্যাশ অন ডেলিভারি!",
+            "badge": "নিউ অ্যারাইভাল",
+            "highlightEmoji": "✨"
+          }
+        },
+        {
+          "id": "sec-header",
+          "type": "header",
+          "variant": "logo-center",
+          "enabled": true,
+          "locks": { "removable": false, "movable": false },
+          "settings": {
+            "showLogo": true,
+            "showPhoneCall": true
+          }
+        },
+        {
+          "id": "sec-hero",
+          "type": "hero_product",
+          "variant": "split-left",
+          "enabled": true,
+          "locks": { "removable": false },
+          "settings": {
+            "showRatingBadge": true,
+            "ratingScore": "৫.০/৫",
+            "showStockBadge": true,
+            "stockText": "রেডি স্টক",
+            "showDiscountBadge": true,
+            "discountText": "এক্সক্লুসিভ অফার",
+            "primaryCtaText": "পছন্দের সাইজ ও রঙে অর্ডার করুন 👗"
+          }
+        },
+        {
+          "id": "sec-features",
+          "type": "features_list",
+          "variant": "grid",
+          "enabled": true,
+          "settings": {
+            "title": "কাপড়ের বিবরণ ও বিশেষত্ব"
+          }
+        },
+        {
+          "id": "sec-trust",
+          "type": "trust_badges",
+          "variant": "grid-3",
+          "enabled": true,
+          "settings": {
+            "badges": [
+              { "icon": "shield", "title": "১০০% প্রিমিয়াম ফেব্রিক", "desc": "কালার গ্যারান্টি" },
+              { "icon": "truck", "title": "হোম ডেলিভারি", "desc": "সারা বাংলাদেশে" },
+              { "icon": "refresh", "title": "সহজ সাইজ এক্সচেঞ্জ", "desc": "৭ দিনের মধ্যে" }
+            ]
+          }
+        },
+        {
+          "id": "sec-checkout",
+          "type": "inline_checkout",
+          "variant": "single-step",
+          "enabled": true,
+          "locks": { "removable": false, "movable": false, "variantLocked": true },
+          "settings": {
+            "title": "নিরাপদ চেকআউট — ক্যাশ অন ডেলিভারি"
+          }
+        },
+        {
+          "id": "sec-sticky-bottom",
+          "type": "sticky_bottom_bar",
+          "variant": "price-cta",
+          "enabled": true,
+          "locks": { "removable": false, "movable": false },
+          "settings": {
+            "buttonText": "অর্ডার করুন"
+          }
+        }
+      ]
+    }
+  }
+}

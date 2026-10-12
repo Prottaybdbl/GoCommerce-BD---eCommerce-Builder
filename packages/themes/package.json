@@ -1,0 +1,40 @@
+{
+  "name": "@gocom/themes",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./html": {
+      "types": "./dist/html/index.d.ts",
+      "import": "./dist/html/index.js",
+      "default": "./dist/html/index.js"
+    },
+    "./registry": {
+      "types": "./dist/html/registry.d.ts",
+      "import": "./dist/html/registry.js",
+      "default": "./dist/html/registry.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --import tsx test/theme-engine.test.ts test/html-template.test.ts"
+  },
+  "dependencies": {
+    "@gocom/contracts": "workspace:*",
+    "parse5": "^7.3.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

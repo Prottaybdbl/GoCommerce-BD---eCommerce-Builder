@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="7jaB2uZnn5NKGWHvjBNrD75dHt5zD3dHl5nqFKSj" />
+    <title>Two Piece - P-Mart BD</title>
+    <!-- App favicon -->
+
+    <link rel="shortcut icon" href="https://pmartbd.com/public/uploads/settings/1785207265-pmart_round.webp" alt="Super Ecommerce Favicon" />
+    <meta name="author" content="Super Ecommerce" />
+    <link rel="canonical" href="" />
+
+
+    <meta name="title" content="Go Go Gorgeous | Shop Authentic Makeup &amp; Skincare">
+    <meta name="description" content="Buy 100% authentic international beauty brands in Bangladesh. Shop Chanel, NARS, CeraVe and more at Gorgeous.com.bd.">
+    <meta name="keywords" content="beauty products Bangladesh, authentic makeup Dhaka, skincare shop BD, Go Go Gorgeous, buy CeraVe Bangladesh">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Raincorp">
+
+
+        <meta name="app-url" content="https://pmartbd.com/category/two-piece" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="&lt;p&gt;Two Piece&lt;/p&gt;" />
+    <meta name="keywords" content="two-piece" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="product" />
+    <meta name="twitter:site" content="Two Piece" />
+    <meta name="twitter:title" content="Two Piece" />
+    <meta name="twitter:description" content="&lt;p&gt;Two Piece&lt;/p&gt;" />
+    <meta name="twitter:creator" content="gomobd.com" />
+    <meta property="og:url" content="https://pmartbd.com/category/two-piece" />
+    <meta name="twitter:image" content="https://pmartbd.com/public/uploads/category/1785931606-brown-neutral-minimalist-fashion-instagram-post.webp" />
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Two Piece" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="https://pmartbd.com/category/two-piece" />
+    <meta property="og:image" content="https://pmartbd.com/public/uploads/category/1785931606-brown-neutral-minimalist-fashion-instagram-post.webp" />
+    <meta property="og:description" content="&lt;p&gt;Two Piece&lt;/p&gt;" />
+    <meta property="og:site_name" content="Two Piece" />
+
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/animate.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/all.min.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/mobile-menu.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/select2.min.css">
+
+    <link rel="stylesheet" href="https://pmartbd.com/public/backEnd/assets/css/toastr.min.css">
+
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/wsit-menu.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/style.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/responsive.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/main.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/rikaz-header.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/site-layout.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/rikaz-footer.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/mobile-bottom-nav.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/premium-home-slider.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/premium-shop.css">
+
+        <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/jquery-ui.css" />
+
+    <script>
+    window.dataLayer = window.dataLayer || [];
+</script>
+
+
+
+
+
+
+<script>
+    ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) {
+            return;
+        }
+
+        n = f.fbq = function() {
+            n.callMethod ?
+                n.callMethod.apply(n, arguments) :
+                n.queue.push(arguments);
+        };
+
+        if (!f._fbq) {
+            f._fbq = n;
+        }
+
+        n.push = n;
+        n.loaded = true;
+        n.version = '2.0';
+        n.queue = [];
+
+        t = b.createElement(e);
+        t.async = true;
+        t.src = v;
+
+        s = b.getElementsByTagName(e)[0];
+
+        s.parentNode.insertBefore(t, s);
+    }(
+        window,
+        document,
+        'script',
+        'https://connect.facebook.net/en_US/fbevents.js'
+    );
+
+    fbq(
+        'init',
+        "2895032174185090"    );
+
+        fbq('track', 'PageView');
+    </script>
+
+</head>
+
+<body class="gotop">
+    <noscript>
+            <img
+                height="1"
+                width="1"
+                style="display:none"
+                src="https://www.facebook.com/tr?id=2895032174185090&ev=PageView&noscript=1"
+                alt=""
+            >
+        </noscript>
+    
+    
+    <div class="rk-mobile-drawer" id="rkMobileDrawer">
+    <div class="rk-drawer-overlay" data-rk-close-drawer></div>
+
+    <div class="rk-drawer-panel">
+        <div class="rk-drawer-header">
+            <a href="https://pmartbd.com" class="rk-drawer-logo">
+                <img
+                    src="https://pmartbd.com/public/uploads/settings/1785437515-the-only-reliance-for-your-comfort-(2).webp"
+                    alt="P-Mart BD">
+            </a>
+
+            <button
+                type="button"
+                class="rk-drawer-close"
+                data-rk-close-drawer
+                aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="rk-drawer-search">
+            <form action="https://pmartbd.com/search" method="GET">
+                <input
+                    type="text"
+                    name="keyword"
+                    class="msearch_keyword msearch_click"
+                    placeholder="Search product..."
+                    autocomplete="off">
+
+                <button type="submit" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+            <div class="search_result rk-mobile-search-result"></div>
+        </div>
+
+        <div class="rk-drawer-account">
+                        <a href="https://pmartbd.com/customer/login">
+                <span class="rk-account-icon">
+                    <i class="fa-regular fa-user"></i>
+                </span>
+
+                <span>
+                    <small>Welcome</small>
+                    <strong>Login / Sign Up</strong>
+                </span>
+            </a>
+                    </div>
+
+        <nav class="rk-mobile-navigation">
+            <ul class="rk-mobile-menu-list">
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/gown"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785929784-cream-photo-collage-gown-rental-business-instagram-post.webp"
+                                alt="Gown">
+                            
+                            <span>Gown</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/lehenga"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785930842-red-and-gold-elegant-boutique-fashion-feed-ad.webp"
+                                alt="Lehenga">
+                            
+                            <span>Lehenga</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/sharee"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785931148-red-and-gold-vibrant-wedding-season-sale-instagram-post.webp"
+                                alt="Sharee">
+                            
+                            <span>Sharee</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/three-piece"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785931479-orange-and-beige-traditional-holi-sale-instagram-post.webp"
+                                alt="Three Piece">
+                            
+                            <span>Three Piece</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/two-piece"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785931606-brown-neutral-minimalist-fashion-instagram-post.webp"
+                                alt="Two Piece">
+                            
+                            <span>Two Piece</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/western-dress"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785930200-minimalist-colorful-trendy-women&#039;s-fashion-clothing-sale-instagram-post.webp"
+                                alt="Western Dress">
+                            
+                            <span>Western Dress</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                            </ul>
+        </nav>
+
+        <div class="rk-drawer-footer">
+            <a href="https://pmartbd.com/customer/order-track">
+                <i class="fa-solid fa-truck-fast"></i>
+                Track Order
+            </a>
+
+                        <a href="tel:+88 01685895780">
+                <i class="fa-solid fa-phone"></i>
+                +88 01685895780
+            </a>
+                    </div>
+    </div>
+</div>
+
+
+<header class="rk-site-header" id="rkSiteHeader">
+
+    
+    <div class="rk-desktop-topbar">
+        <div class="rk-header-container">
+            <div class="rk-topbar-inner">
+                <div class="rk-topbar-contact">
+                                        <a href="tel:+88 01685895780">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span>+88 01685895780</span>
+                    </a>
+                                    </div>
+
+                <div class="rk-topbar-social">
+                                        <a
+                        href="https://www.facebook.com/pmartbd780"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Social media">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                                        <a
+                        href="https://www.facebook.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Social media">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                                        <a
+                        href="https://www.youtube.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Social media">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="rk-mobile-announcement">
+        Cash On Delivery All Over Bangladesh
+    </div>
+
+    
+    <div class="rk-desktop-header">
+        <div class="rk-header-container">
+            <div class="rk-desktop-header-inner">
+
+                <div class="rk-desktop-logo">
+                    <a href="https://pmartbd.com">
+                        <img
+                            src="https://pmartbd.com/public/uploads/settings/1785437515-the-only-reliance-for-your-comfort-(2).webp"
+                            alt="P-Mart BD">
+                    </a>
+                </div>
+
+                <nav class="rk-desktop-nav">
+                    <ul>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/gown">
+                                <span>Gown</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/lehenga">
+                                <span>Lehenga</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/sharee">
+                                <span>Sharee</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/three-piece">
+                                <span>Three Piece</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/two-piece">
+                                <span>Two Piece</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/western-dress">
+                                <span>Western Dress</span>
+
+                                                            </a>
+
+                                                    </li>
+                                            </ul>
+                </nav>
+
+                <div class="rk-header-actions">
+                    <div class="rk-account-action">
+                                                <a
+                            href="https://pmartbd.com/customer/login"
+                            aria-label="Login">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                                            </div>
+
+                    <div class="rk-cart-action cart-dialog" id="cart-qty">
+                        <a
+                            href="https://pmartbd.com/shop/cart"
+                            class="rk-cart-button"
+                            aria-label="Shopping cart">
+
+                            <i class="fa-solid fa-bag-shopping"></i>
+
+                            <span class="rk-cart-badge mobilecart-qty">
+                                0
+                            </span>
+                        </a>
+
+                        <div class="rk-mini-cart">
+                            <div class="rk-mini-cart-header">
+                                <strong>Shopping Cart</strong>
+
+                                <span>
+                                    0
+                                    items
+                                </span>
+                            </div>
+
+                            <div class="rk-mini-cart-body">
+                                                                <div class="rk-empty-cart">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                    <p>Your cart is empty.</p>
+                                </div>
+                                                            </div>
+
+                                                    </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="rk-search-toggle"
+                        id="rkSearchToggle"
+                        aria-label="Open search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="rk-mobile-header">
+        <div class="rk-mobile-header-inner">
+
+            <button
+                type="button"
+                class="rk-mobile-menu-button"
+                id="rkMobileMenuButton"
+                aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="rk-mobile-logo">
+                <a href="https://pmartbd.com">
+                    <img
+                        src="https://pmartbd.com/public/uploads/settings/1785437515-the-only-reliance-for-your-comfort-(2).webp"
+                        alt="P-Mart BD">
+                </a>
+            </div>
+
+            <a
+                href="https://pmartbd.com/shop/cart"
+                class="rk-mobile-cart"
+                aria-label="Shopping cart">
+                <span class="rk-mobile-cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <span class="mobilecart-qty">
+                        0
+                    </span>
+                </span>
+
+                <span class="rk-mobile-cart-total">
+                    ৳0.00
+                </span>
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="rk-search-overlay" id="rkSearchOverlay">
+        <button
+            type="button"
+            class="rk-search-close"
+            id="rkSearchClose"
+            aria-label="Close search">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="rk-search-overlay-content">
+            <p>What are you looking for?</p>
+
+            <form action="https://pmartbd.com/search" method="GET">
+                <input
+                    type="text"
+                    name="keyword"
+                    class="search_keyword search_click"
+                    placeholder="Search products..."
+                    autocomplete="off">
+
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+            <div class="search_result rk-desktop-search-result"></div>
+        </div>
+    </div>
+</header>
+
+
+    <div id="content">
+            <section class="product-section">
+        <div class="container">
+            <div class="sorting-section">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="category-breadcrumb d-flex align-items-center">
+                            <a href="https://pmartbd.com">Home</a>
+                            <span>/</span>
+                            <strong>Two Piece</strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="showing-data">
+                                    <span>Showing - of
+                                        0 Results</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="filter_sort">
+                                    <div class="filter_btn">
+                                        <i class="fa fa-list-ul"></i>
+                                    </div>
+                                    <div class="page-sort">
+                                        <form action="" class="sort-form">
+                                            <select name="sort" class="form-control form-select sort">
+                                                <option value="1" >Product: Latest</option>
+                                                <option value="2" >Product: Oldest</option>
+                                                <option value="3" >Price: High To Low</option>
+                                                <option value="4" >Price: Low To High</option>
+                                                <option value="5" >Name: A-Z</option>
+                                                <option value="6" >Name: Z-A</option>
+                                            </select>
+                                            <input type="hidden" name="min_price" value="" />
+                                            <input type="hidden" name="max_price" value="" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-3 filter_sidebar">
+                    <div class="filter_close"><i class="fa fa-long-arrow-left"></i> Filter</div>
+                    <form action="" class="attribute-submit">
+                        <div class="sidebar_item wraper__item">
+                            <div class="accordion" id="category_sidebar">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseCat" aria-expanded="true" aria-controls="collapseOne">
+                                            Two Piece
+                                        </button>
+                                    </h2>
+                                    <div id="collapseCat" class="accordion-collapse collapse show"
+                                        data-bs-parent="#category_sidebar">
+                                        <div class="accordion-body cust_according_body">
+                                            <ul>
+                                                                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--sidebar item end-->
+                        <div class="sidebar_item wraper__item">
+                            <div class="accordion" id="price_sidebar">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapsePrice" aria-expanded="true" aria-controls="collapseOne">
+                                            Price
+                                        </button>
+                                    </h2>
+                                    <div id="collapsePrice" class="accordion-collapse collapse show"
+                                        data-bs-parent="#price_sidebar">
+                                        <div class="accordion-body cust_according_body">
+                                            <div class="category-filter-box category__wraper" id="categoryFilterBox">
+                                                <div class="category-filter-item">
+                                                    <div class="filter-body">
+                                                        <div class="slider-box">
+                                                            <div class="filter-price-inputs">
+                                                                <p class="min-price">৳<input type="text"
+                                                                        name="min_price" id="min_price" readonly="" />
+                                                                </p>
+                                                                <p class="max-price">৳<input type="text"
+                                                                        name="max_price" id="max_price" readonly="" />
+                                                                </p>
+                                                            </div>
+                                                            <div id="price-range" class="slider form-attribute"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--sidebar item end-->
+                        <div class="sidebar_item wraper__item">
+                            <div class="accordion" id="filter_sidebar">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseFilter" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            Filter
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFilter" class="accordion-collapse collapse show"
+                                        data-bs-parent="#filter_sidebar">
+                                        <div class="accordion-body cust_according_body">
+                                            <div class="filter-body">
+                                                <ul class="space-y-3">
+                                                                                                    </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--sidebar item end-->
+                    </form>
+                </div>
+                <div class="col-sm-9">
+                    <div class="category-product main_product_inner">
+                                            </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="custom_paginate">
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="homeproduct">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="meta_des">
+                        <p>Two Piece</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div>
+    <!-- content end -->
+
+
+    <footer class="rf-footer">
+
+    
+    <div class="rf-footer-main">
+        <div class="container">
+            <div class="rf-footer-grid">
+
+                
+                <div class="rf-footer-brand">
+                    <a href="https://pmartbd.com" class="rf-footer-logo">
+                        <img
+                            src="https://pmartbd.com/public/uploads/settings/1785437515-the-only-reliance-for-your-comfort-(2).webp"
+                            alt="P-Mart BD">
+                    </a>
+
+                                        <p class="rf-footer-description">
+                        Dhaka Bangladesh
+                    </p>
+                    
+                    <div class="rf-footer-contact-list">
+
+                                                <a
+                            href="tel:+88 01685895780"
+                            class="rf-footer-contact-item">
+                            <span class="rf-contact-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+
+                            <span>
+                                <small>Call us</small>
+                                <strong>+88 01685895780</strong>
+                            </span>
+                        </a>
+                        
+                                                <a
+                            href="mailto:pmartbd@gmail.com"
+                            class="rf-footer-contact-item">
+                            <span class="rf-contact-icon">
+                                <i class="fa-regular fa-envelope"></i>
+                            </span>
+
+                            <span>
+                                <small>Email us</small>
+                                <strong>pmartbd@gmail.com</strong>
+                            </span>
+                        </a>
+                        
+                    </div>
+
+                                        <div class="rf-social-links">
+                                                <a
+                            href="https://www.facebook.com/pmartbd780"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Social media">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                                                <a
+                            href="https://www.facebook.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Social media">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                                                <a
+                            href="https://www.youtube.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Social media">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                                            </div>
+                                    </div>
+
+                
+                <div class="rf-footer-column">
+                    <h3 class="rf-footer-title">Useful Links</h3>
+
+                    <ul class="rf-footer-links">
+                        <li>
+                            <a href="https://pmartbd.com">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://pmartbd.com/site/contact-us">
+                                Contact Us
+                            </a>
+                        </li>
+
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/order-procedure">
+                                Order procedure
+                            </a>
+                        </li>
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/delivery-rules">
+                                Delivery Rules
+                            </a>
+                        </li>
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/return-policy">
+                                Return Policy
+                            </a>
+                        </li>
+                                            </ul>
+                </div>
+
+                
+                <div class="rf-footer-column">
+                    <h3 class="rf-footer-title">Information</h3>
+
+                    <ul class="rf-footer-links">
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/terms-&amp;-conditions">
+                                Terms &amp; Conditions
+                            </a>
+                        </li>
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/privacy-policy">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://pmartbd.com/customer/order-track">
+                                Track Order
+                            </a>
+                        </li>
+
+                                                <li>
+                            <a href="https://pmartbd.com/customer/login">
+                                Login / Register
+                            </a>
+                        </li>
+                                            </ul>
+                </div>
+
+                
+                <div class="rf-footer-column rf-footer-newsletter">
+                    <h3 class="rf-footer-title">Stay Connected</h3>
+
+                    <p>
+                        Get product updates, special offers and important announcements.
+                    </p>
+
+                    <form
+                        action="#"
+                        method="POST"
+                        class="rf-newsletter-form"
+                        onsubmit="return false;">
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            aria-label="Email address">
+
+                        <button type="submit" aria-label="Subscribe">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+
+                                        <div class="rf-support-card">
+                        <span class="rf-support-icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </span>
+
+                        <div>
+                            <small>Need help?</small>
+
+                            <a href="tel:+88 01685895780">
+                                +88 01685895780
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="rf-footer-features">
+                        <div>
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <span>Fast Delivery</span>
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Secure Shopping</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="rf-footer-lower">
+        <div class="container">
+            <div class="rf-footer-lower-inner">
+
+                <p class="rf-copyright">
+                    Copyright © 2026
+                    <strong>P-Mart BD</strong>.
+                    All rights reserved.
+                </p>
+
+                <p class="rf-developer">
+                    Website Designed by:
+                    <a
+                        href="https://virtualworld.com.bd"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Virtual World
+                    </a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+</footer>
+    <div class="mbn-nav" id="mobileBottomNav">
+    <ul class="mbn-list">
+
+        <li class="mbn-item">
+            <a
+                href="https://pmartbd.com/shop"
+                class="mbn-link"
+                aria-label="Shop products">
+                <span class="mbn-icon">
+                    <i class="fa-solid fa-store"></i>
+                </span>
+
+                <span class="mbn-label">Shop</span>
+            </a>
+        </li>
+
+        <li class="mbn-item">
+            <a
+                href="https://wa.me/8801685895780"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mbn-link"
+                aria-label="WhatsApp message">
+                <span class="mbn-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </span>
+
+                <span class="mbn-label">Message</span>
+            </a>
+        </li>
+
+        <li class="mbn-item mbn-home-item">
+            <a
+                href="https://pmartbd.com"
+                class="mbn-link mbn-home-link"
+                aria-label="Home">
+                <span class="mbn-home-icon">
+                    <i class="fa-solid fa-house"></i>
+                </span>
+
+                <span class="mbn-label">Home</span>
+            </a>
+        </li>
+
+        <li class="mbn-item">
+            <a
+                href="https://pmartbd.com/shop/cart"
+                class="mbn-link"
+                aria-label="Shopping cart">
+                <span class="mbn-icon mbn-cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <b class="mbn-cart-count mobilecart-qty">
+                        0
+                    </b>
+                </span>
+
+                <span class="mbn-label">Cart</span>
+            </a>
+        </li>
+
+        <li class="mbn-item">
+                        <a
+                href="https://pmartbd.com/customer/login"
+                class="mbn-link"
+                aria-label="Customer login">
+                <span class="mbn-icon">
+                    <i class="fa-regular fa-user"></i>
+                </span>
+
+                <span class="mbn-label">Login</span>
+            </a>
+                    </li>
+
+    </ul>
+</div>
+
+    <div class="scrolltop" style="">
+        <div class="scroll">
+            <i class="fa fa-angle-up"></i>
+        </div>
+    </div>
+
+    <!-- /. fixed sidebar -->
+
+    <div id="custom-modal"></div>
+    <div id="page-overlay"></div>
+    <div id="loading">
+        <div class="custom-loader"></div>
+    </div>
+
+    <script src="https://pmartbd.com/public/frontEnd/js/jquery-3.6.3.min.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/bootstrap.min.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/rikaz-header.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/owl.carousel.min.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/mobile-menu.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/wsit-menu.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/mobile-menu-init.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- feather icon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+    <script src="https://pmartbd.com/public/backEnd/assets/js/toastr.min.js"></script>
+    <script type="text/javascript"></script>     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script>
+        $("#price-range").click(function() {
+            $(".price-submit").submit();
+        })
+        $(".form-attribute").on('change click',function(){
+            $(".attribute-submit").submit();
+        })
+        $(".sort").change(function() {
+            $(".sort-form").submit();
+        })
+        $(".form-checkbox").change(function() {
+            $(".subcategory-submit").submit();
+        })
+    </script>
+    <script>
+        $(function() {
+            $("#price-range").slider({
+                step: 5,
+                range: true,
+                min: ,
+                max: ,
+                values: [
+                    ,
+                    
+                ],
+                slide: function(event, ui) {
+                    $("#min_price").val(ui.values[0]);
+                    $("#max_price").val(ui.values[1]);
+                }
+            });
+            $("#min_price").val();
+            $("#max_price").val();
+            $("#priceRange").val($("#price-range").slider("values", 0) + " - " + $("#price-range").slider("values",
+                1));
+
+            $("#mobile-price-range").slider({
+                step: 5,
+                range: true,
+                min: ,
+                max: ,
+                values: [
+                    ,
+                    
+                ],
+                slide: function(event, ui) {
+                    $("#min_price").val(ui.values[0]);
+                    $("#max_price").val(ui.values[1]);
+                }
+            });
+            $("#min_price").val();
+            $("#max_price").val();
+            $("#priceRange").val($("#price-range").slider("values", 0) + " - " + $("#price-range").slider("values",
+                1));
+
+        });
+    </script>
+    <script>
+        $(".quick_view").on("click", function() {
+            var id = $(this).data("id");
+            $("#loading").show();
+            if (id) {
+                $.ajax({
+                    type: "GET",
+                    data: {
+                        id: id
+                    },
+                    url: "https://pmartbd.com/quick-view",
+                    success: function(data) {
+                        if (data) {
+                            $("#custom-modal").html(data);
+                            $("#custom-modal").show();
+                            $("#loading").hide();
+                            $("#page-overlay").show();
+                        }
+                    },
+                });
+            }
+        });
+    </script>
+    <!-- quick view end -->
+    <!-- cart js start -->
+    <script>
+        $(".addcartbutton").on("click", function() {
+            var id = $(this).data("id");
+            var qty = 1;
+            if (id) {
+                $.ajax({
+                    cache: "false",
+                    type: "GET",
+                    url: "https://pmartbd.com/add-to-cart/" + id + "/" + qty,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            toastr.success('Success', 'Product add to cart successfully');
+                            return cart_count() + mobile_cart();
+                        }
+                    },
+                });
+            }
+        });
+        $(".cart_store").on("click", function() {
+            var id = $(this).data("id");
+            var qty = $(this).parent().find("input").val();
+            if (id) {
+                $.ajax({
+                    type: "GET",
+                    data: {
+                        id: id,
+                        qty: qty ? qty : 1
+                    },
+                    url: "https://pmartbd.com/cart/store",
+                    success: function(data) {
+                        if (data) {
+                            toastr.success('Success', 'Product add to cart succfully');
+                            return cart_count() + mobile_cart();
+                        }
+                    },
+                });
+            }
+        });
+
+
+
+
+        function cart_count() {
+            $.ajax({
+                type: "GET",
+                url: "https://pmartbd.com/cart/count",
+                success: function(data) {
+                    if (data) {
+                        $("#cart-qty").html(data);
+                    } else {
+                        $("#cart-qty").empty();
+                    }
+                },
+            });
+        }
+
+        function mobile_cart() {
+            $.ajax({
+                type: "GET",
+                url: "https://pmartbd.com/mobilecart/count",
+                success: function(data) {
+                    if (data) {
+                        $(".mobilecart-qty").html(data);
+                    } else {
+                        $(".mobilecart-qty").empty();
+                    }
+                },
+            });
+        }
+
+        function cart_summary() {
+            $.ajax({
+                type: "GET",
+                url: "https://pmartbd.com/shipping-charge",
+                dataType: "html",
+                success: function(response) {
+                    $(".cart-summary").html(response);
+                },
+            });
+        }
+    </script>
+    <!-- cart js end -->
+    <script>
+        $(".search_click").on("keyup change", function() {
+            var keyword = $(".search_keyword").val();
+            $.ajax({
+                type: "GET",
+                data: {
+                    keyword: keyword
+                },
+                url: "https://pmartbd.com/livesearch",
+                success: function(products) {
+                    if (products) {
+                        $(".search_result").html(products);
+                    } else {
+                        $(".search_result").empty();
+                    }
+                },
+            });
+        });
+        $(".msearch_click").on("keyup change", function() {
+            var keyword = $(".msearch_keyword").val();
+            $.ajax({
+                type: "GET",
+                data: {
+                    keyword: keyword
+                },
+                url: "https://pmartbd.com/livesearch",
+                success: function(products) {
+                    if (products) {
+                        $("#loading").hide();
+                        $(".search_result").html(products);
+                    } else {
+                        $(".search_result").empty();
+                    }
+                },
+            });
+        });
+    </script>
+    <!-- search js start -->
+    <script></script>
+    <script></script>
+    <script>
+        $(".district").on("change", function() {
+            var id = $(this).val();
+            $.ajax({
+                type: "GET",
+                data: {
+                    id: id
+                },
+                url: "https://pmartbd.com/districts",
+                success: function(res) {
+                    if (res) {
+                        $(".area").empty();
+                        $(".area").append('<option value="">Select..</option>');
+                        $.each(res, function(key, value) {
+                            $(".area").append('<option value="' + key + '" >' + value + "</option>");
+                        });
+                    } else {
+                        $(".area").empty();
+                    }
+                },
+            });
+        });
+    </script>
+
+
+
+    <script>
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $(".scrolltop:hidden").stop(true, true).fadeIn();
+            } else {
+                $(".scrolltop").stop(true, true).fadeOut();
+            }
+        });
+        $(function() {
+            $(".scroll").click(function() {
+                $("html,body").animate({
+                    scrollTop: $(".gotop").offset().top
+                }, "1000");
+                return false;
+            });
+        });
+    </script>
+    <script>
+        $(".filter_btn").click(function() {
+            $(".filter_sidebar").addClass('active');
+            $("body").css("overflow-y", "hidden");
+        })
+        $(".filter_close").click(function() {
+            $(".filter_sidebar").removeClass('active');
+            $("body").css("overflow-y", "auto");
+        })
+    </script>
+
+</body>
+
+</html>

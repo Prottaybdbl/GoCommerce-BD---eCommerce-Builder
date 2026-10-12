@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="7jaB2uZnn5NKGWHvjBNrD75dHt5zD3dHl5nqFKSj" />
+    <title>Page - P-Mart BD</title>
+    <!-- App favicon -->
+
+    <link rel="shortcut icon" href="https://pmartbd.com/public/uploads/settings/1785207265-pmart_round.webp" alt="Super Ecommerce Favicon" />
+    <meta name="author" content="Super Ecommerce" />
+    <link rel="canonical" href="" />
+
+
+    <meta name="title" content="Go Go Gorgeous | Shop Authentic Makeup &amp; Skincare">
+    <meta name="description" content="Buy 100% authentic international beauty brands in Bangladesh. Shop Chanel, NARS, CeraVe and more at Gorgeous.com.bd.">
+    <meta name="keywords" content="beauty products Bangladesh, authentic makeup Dhaka, skincare shop BD, Go Go Gorgeous, buy CeraVe Bangladesh">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Raincorp">
+
+
+    
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/animate.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/all.min.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/mobile-menu.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/select2.min.css">
+
+    <link rel="stylesheet" href="https://pmartbd.com/public/backEnd/assets/css/toastr.min.css">
+
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/wsit-menu.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/style.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/responsive.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/main.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/rikaz-header.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/site-layout.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/rikaz-footer.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/mobile-bottom-nav.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/premium-home-slider.css">
+    <link rel="stylesheet" href="https://pmartbd.com/public/frontEnd/css/premium-shop.css">
+
+    
+    <script>
+    window.dataLayer = window.dataLayer || [];
+</script>
+
+
+
+
+
+
+<script>
+    ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) {
+            return;
+        }
+
+        n = f.fbq = function() {
+            n.callMethod ?
+                n.callMethod.apply(n, arguments) :
+                n.queue.push(arguments);
+        };
+
+        if (!f._fbq) {
+            f._fbq = n;
+        }
+
+        n.push = n;
+        n.loaded = true;
+        n.version = '2.0';
+        n.queue = [];
+
+        t = b.createElement(e);
+        t.async = true;
+        t.src = v;
+
+        s = b.getElementsByTagName(e)[0];
+
+        s.parentNode.insertBefore(t, s);
+    }(
+        window,
+        document,
+        'script',
+        'https://connect.facebook.net/en_US/fbevents.js'
+    );
+
+    fbq(
+        'init',
+        "2895032174185090"    );
+
+        fbq('track', 'PageView');
+    </script>
+
+</head>
+
+<body class="gotop">
+    <noscript>
+            <img
+                height="1"
+                width="1"
+                style="display:none"
+                src="https://www.facebook.com/tr?id=2895032174185090&ev=PageView&noscript=1"
+                alt=""
+            >
+        </noscript>
+    
+    
+    <div class="rk-mobile-drawer" id="rkMobileDrawer">
+    <div class="rk-drawer-overlay" data-rk-close-drawer></div>
+
+    <div class="rk-drawer-panel">
+        <div class="rk-drawer-header">
+            <a href="https://pmartbd.com" class="rk-drawer-logo">
+                <img
+                    src="https://pmartbd.com/public/uploads/settings/1785437515-the-only-reliance-for-your-comfort-(2).webp"
+                    alt="P-Mart BD">
+            </a>
+
+            <button
+                type="button"
+                class="rk-drawer-close"
+                data-rk-close-drawer
+                aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="rk-drawer-search">
+            <form action="https://pmartbd.com/search" method="GET">
+                <input
+                    type="text"
+                    name="keyword"
+                    class="msearch_keyword msearch_click"
+                    placeholder="Search product..."
+                    autocomplete="off">
+
+                <button type="submit" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+            <div class="search_result rk-mobile-search-result"></div>
+        </div>
+
+        <div class="rk-drawer-account">
+                        <a href="https://pmartbd.com/customer/login">
+                <span class="rk-account-icon">
+                    <i class="fa-regular fa-user"></i>
+                </span>
+
+                <span>
+                    <small>Welcome</small>
+                    <strong>Login / Sign Up</strong>
+                </span>
+            </a>
+                    </div>
+
+        <nav class="rk-mobile-navigation">
+            <ul class="rk-mobile-menu-list">
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/gown"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785929784-cream-photo-collage-gown-rental-business-instagram-post.webp"
+                                alt="Gown">
+                            
+                            <span>Gown</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/lehenga"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785930842-red-and-gold-elegant-boutique-fashion-feed-ad.webp"
+                                alt="Lehenga">
+                            
+                            <span>Lehenga</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/sharee"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785931148-red-and-gold-vibrant-wedding-season-sale-instagram-post.webp"
+                                alt="Sharee">
+                            
+                            <span>Sharee</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/three-piece"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785931479-orange-and-beige-traditional-holi-sale-instagram-post.webp"
+                                alt="Three Piece">
+                            
+                            <span>Three Piece</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/two-piece"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785931606-brown-neutral-minimalist-fashion-instagram-post.webp"
+                                alt="Two Piece">
+                            
+                            <span>Two Piece</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                                <li class="rk-mobile-menu-item">
+                    <div class="rk-mobile-menu-row">
+                        <a
+                            href="https://pmartbd.com/category/western-dress"
+                            class="rk-mobile-category-link">
+                                                        <img
+                                src="https://pmartbd.com/public/uploads/category/1785930200-minimalist-colorful-trendy-women&#039;s-fashion-clothing-sale-instagram-post.webp"
+                                alt="Western Dress">
+                            
+                            <span>Western Dress</span>
+                        </a>
+
+                                            </div>
+
+                                    </li>
+                            </ul>
+        </nav>
+
+        <div class="rk-drawer-footer">
+            <a href="https://pmartbd.com/customer/order-track">
+                <i class="fa-solid fa-truck-fast"></i>
+                Track Order
+            </a>
+
+                        <a href="tel:+88 01685895780">
+                <i class="fa-solid fa-phone"></i>
+                +88 01685895780
+            </a>
+                    </div>
+    </div>
+</div>
+
+
+<header class="rk-site-header" id="rkSiteHeader">
+
+    
+    <div class="rk-desktop-topbar">
+        <div class="rk-header-container">
+            <div class="rk-topbar-inner">
+                <div class="rk-topbar-contact">
+                                        <a href="tel:+88 01685895780">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span>+88 01685895780</span>
+                    </a>
+                                    </div>
+
+                <div class="rk-topbar-social">
+                                        <a
+                        href="https://www.facebook.com/pmartbd780"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Social media">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                                        <a
+                        href="https://www.facebook.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Social media">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                                        <a
+                        href="https://www.youtube.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Social media">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="rk-mobile-announcement">
+        Cash On Delivery All Over Bangladesh
+    </div>
+
+    
+    <div class="rk-desktop-header">
+        <div class="rk-header-container">
+            <div class="rk-desktop-header-inner">
+
+                <div class="rk-desktop-logo">
+                    <a href="https://pmartbd.com">
+                        <img
+                            src="https://pmartbd.com/public/uploads/settings/1785437515-the-only-reliance-for-your-comfort-(2).webp"
+                            alt="P-Mart BD">
+                    </a>
+                </div>
+
+                <nav class="rk-desktop-nav">
+                    <ul>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/gown">
+                                <span>Gown</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/lehenga">
+                                <span>Lehenga</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/sharee">
+                                <span>Sharee</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/three-piece">
+                                <span>Three Piece</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/two-piece">
+                                <span>Two Piece</span>
+
+                                                            </a>
+
+                                                    </li>
+                                                <li class="rk-nav-item">
+                            <a href="https://pmartbd.com/category/western-dress">
+                                <span>Western Dress</span>
+
+                                                            </a>
+
+                                                    </li>
+                                            </ul>
+                </nav>
+
+                <div class="rk-header-actions">
+                    <div class="rk-account-action">
+                                                <a
+                            href="https://pmartbd.com/customer/login"
+                            aria-label="Login">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                                            </div>
+
+                    <div class="rk-cart-action cart-dialog" id="cart-qty">
+                        <a
+                            href="https://pmartbd.com/shop/cart"
+                            class="rk-cart-button"
+                            aria-label="Shopping cart">
+
+                            <i class="fa-solid fa-bag-shopping"></i>
+
+                            <span class="rk-cart-badge mobilecart-qty">
+                                0
+                            </span>
+                        </a>
+
+                        <div class="rk-mini-cart">
+                            <div class="rk-mini-cart-header">
+                                <strong>Shopping Cart</strong>
+
+                                <span>
+                                    0
+                                    items
+                                </span>
+                            </div>
+
+                            <div class="rk-mini-cart-body">
+                                                                <div class="rk-empty-cart">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                    <p>Your cart is empty.</p>
+                                </div>
+                                                            </div>
+
+                                                    </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="rk-search-toggle"
+                        id="rkSearchToggle"
+                        aria-label="Open search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="rk-mobile-header">
+        <div class="rk-mobile-header-inner">
+
+            <button
+                type="button"
+                class="rk-mobile-menu-button"
+                id="rkMobileMenuButton"
+                aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="rk-mobile-logo">
+                <a href="https://pmartbd.com">
+                    <img
+                        src="https://pmartbd.com/public/uploads/settings/1785437515-the-only-reliance-for-your-comfort-(2).webp"
+                        alt="P-Mart BD">
+                </a>
+            </div>
+
+            <a
+                href="https://pmartbd.com/shop/cart"
+                class="rk-mobile-cart"
+                aria-label="Shopping cart">
+                <span class="rk-mobile-cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <span class="mobilecart-qty">
+                        0
+                    </span>
+                </span>
+
+                <span class="rk-mobile-cart-total">
+                    ৳0.00
+                </span>
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="rk-search-overlay" id="rkSearchOverlay">
+        <button
+            type="button"
+            class="rk-search-close"
+            id="rkSearchClose"
+            aria-label="Close search">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="rk-search-overlay-content">
+            <p>What are you looking for?</p>
+
+            <form action="https://pmartbd.com/search" method="GET">
+                <input
+                    type="text"
+                    name="keyword"
+                    class="search_keyword search_click"
+                    placeholder="Search products..."
+                    autocomplete="off">
+
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+            <div class="search_result rk-desktop-search-result"></div>
+        </div>
+    </div>
+</header>
+
+
+    <div id="content">
+        
+<section class="comn_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="cmn_menu">
+                    <ul>
+                                                <li>
+                            <a href="https://pmartbd.com/page/order-procedure">Order procedure</a>
+                        </li>
+                                                <li>
+                            <a href="https://pmartbd.com/page/delivery-rules">Delivery Rules</a>
+                        </li>
+                                                <li>
+                            <a href="https://pmartbd.com/page/return-policy">Return Policy</a>
+                        </li>
+                                                <li>
+                            <a href="https://pmartbd.com/page/terms-&amp;-conditions">Terms &amp; Conditions</a>
+                        </li>
+                                                <li>
+                            <a href="https://pmartbd.com/page/privacy-policy">Privacy Policy</a>
+                        </li>
+                                                <li>
+                            <a href="https://pmartbd.com/site/contact-us">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="createpage-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-content">
+                    <div class="page-title mb-2">
+                        <h5>Terms &amp; Conditions</h5>
+                    </div>
+                    <div class="page-description">
+                        <p data-path-to-node="4"><b data-path-to-node="4" data-index-in-node="0">Effective Date:</b> 01-03-2026</p><p data-path-to-node="5"><b data-path-to-node="5" data-index-in-node="0">Website:</b> <response-element class="" ng-version="0.0.0-PLACEHOLDER"><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><link-block _nghost-ng-c2835501739="" class="ng-star-inserted"><!----><!----><a _ngcontent-ng-c2835501739="" target="_blank" rel="noopener" externallink="" _nghost-ng-c1538880176="" jslog="197247;track:generic_click,impression,attention;BardVeMetadataKey:[[" r_234146a964247b8e","c_defae521adab2add",null,"rc_2170798f15041c3d",null,null,"en",null,1,null,null,1,0]]"="" href="https://www.google.com/search?q=http://gorgeous.com.bd" class="ng-star-inserted" data-hveid="0" decode-data-ved="1" data-ved="0CAAQ_4QMahcKEwjjvp3Ymv-SAxUAAAAAHQAAAAAQRg">gorgeous.com.bd</a><!----></link-block><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----></response-element></p><p data-path-to-node="6">Welcome to <b data-path-to-node="6" data-index-in-node="11">The Gorgeous</b>. These terms and conditions outline the rules and regulations for the use of our website and the purchase of our products.</p><p data-path-to-node="7">By accessing this website, we assume you accept these terms and conditions. Do not continue to use&nbsp;<span data-path-to-node="6" data-index-in-node="11" style="font-weight: bolder;">The Gorgeous</span>&nbsp;if you do not agree to all of the terms and conditions stated on this page.</p><hr data-path-to-node="8"><h3 data-path-to-node="9">1. Introduction</h3><p data-path-to-node="10">These Terms govern your use of our website; by using our website, you accept these Terms in full. If you disagree with these Terms or any part of these Terms, you must not use our website.</p><h3 data-path-to-node="11">2. Product Authenticity &amp; Description</h3><ul data-path-to-node="12"><li><p data-path-to-node="12,0,0"><b data-path-to-node="12,0,0" data-index-in-node="0">Authenticity:</b> We guarantee that all products sold on our platform are 100% authentic and sourced directly from authorized distributors or the brands themselves (UK/USA).</p></li><li><p data-path-to-node="12,1,0"><b data-path-to-node="12,1,0" data-index-in-node="0">Accuracy:</b> We attempt to be as accurate as possible with product descriptions and images. However, we do not warrant that product descriptions or other content are error-free. Minor packaging changes by manufacturers may occur.</p></li></ul><h3 data-path-to-node="13">3. Pricing and Payments</h3><ul data-path-to-node="14"><li><p data-path-to-node="14,0,0"><b data-path-to-node="14,0,0" data-index-in-node="0">Pricing:</b> All prices are listed in Bangladeshi Taka (BDT). We reserve the right to change prices at any time without notice.</p></li><li><p data-path-to-node="14,1,0"><b data-path-to-node="14,1,0" data-index-in-node="0">Payment Gateways:</b> We use secure third-party payment gateways (including <b data-path-to-node="14,1,0" data-index-in-node="72">shurjopay</b>). By making a purchase, you agree to the terms of these payment providers.</p></li><li><p data-path-to-node="14,2,0"><b data-path-to-node="14,2,0" data-index-in-node="0">Order Confirmation:</b> An order is only considered confirmed once payment is verified (for online payments) or after a confirmation call (for Cash on Delivery).</p></li></ul><h3 data-path-to-node="15">4. Shipping and Delivery</h3><ul data-path-to-node="16"><li><p data-path-to-node="16,0,0"><b data-path-to-node="16,0,0" data-index-in-node="0">Delivery Areas:</b> We deliver across Bangladesh.</p></li><li><p data-path-to-node="16,1,0"><b data-path-to-node="16,1,0" data-index-in-node="0">Timeline:</b> Standard delivery within Dhaka takes [X] days, and outside Dhaka takes [X] days.</p></li><li><p data-path-to-node="16,2,0"><b data-path-to-node="16,2,0" data-index-in-node="0">Delays:</b>&nbsp;<span data-path-to-node="6" data-index-in-node="11" style="font-weight: bolder;">The Gorgeous</span>&nbsp;is not responsible for delays caused by courier services or unforeseen circumstances (e.g., political strikes, natural disasters).</p></li></ul><h3 data-path-to-node="17">5. Returns and Refunds</h3><p data-path-to-node="18">Due to the nature of beauty and skincare products, specific rules apply for hygiene reasons:</p><ul data-path-to-node="19"><li><p data-path-to-node="19,0,0"><b data-path-to-node="19,0,0" data-index-in-node="0">Eligibility:</b> Returns are only accepted if the product is damaged during delivery or if the wrong item was sent.</p></li><li><p data-path-to-node="19,1,0"><b data-path-to-node="19,1,0" data-index-in-node="0">Condition:</b> The product must be <b data-path-to-node="19,1,0" data-index-in-node="31">unopened, unused, and in its original packaging</b> with all tags/seals intact.</p></li><li><p data-path-to-node="19,2,0"><b data-path-to-node="19,2,0" data-index-in-node="0">Reporting:</b> Any issues must be reported within [24/48] hours of delivery with photographic evidence.</p></li></ul><h3 data-path-to-node="20">6. User Accounts</h3><p data-path-to-node="21">If you create an account on our website, you are responsible for maintaining the confidentiality of your account and password. You agree to accept responsibility for all activities that occur under your account.</p><h3 data-path-to-node="22">7. Intellectual Property</h3><p data-path-to-node="23">Unless otherwise stated,&nbsp;<span data-path-to-node="6" data-index-in-node="11" style="font-weight: bolder;">The Gorgeous</span>&nbsp;and/or its licensors own the intellectual property rights for all material on this website. All intellectual property rights are reserved. You may view and/or print pages for your own personal use subject to restrictions set in these terms and conditions.</p><h3 data-path-to-node="24">8. Limitation of Liability</h3><p data-path-to-node="25"><span style="font-weight: bolder;">The Gorgeous</span>&nbsp;will not be liable for any skin reactions or allergies resulting from the use of products sold on our site. We highly recommend customers perform a patch test or consult a dermatologist before using new skincare or makeup products.</p><h3 data-path-to-node="26">9. Governing Law</h3><p data-path-to-node="27">These terms and conditions are governed by and construed in accordance with the laws of <b data-path-to-node="27" data-index-in-node="88">Bangladesh</b>, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p><hr data-path-to-node="28"><h2 data-path-to-node="29">Contact Information</h2><p data-path-to-node="30">If you have any queries regarding any of our terms, please contact us:</p><ul data-path-to-node="31"><li><p data-path-to-node="31,0,0"><b data-path-to-node="31,0,0" data-index-in-node="0">Phone:</b> 01908963776</p></li><li><p data-path-to-node="31,1,0"><b data-path-to-node="31,1,0" data-index-in-node="0">Email:</b> thegorgeous956@gmail.com</p></li><li><p data-path-to-node="31,2,0"><b data-path-to-node="31,2,0" data-index-in-node="0">Office:</b> 68, Ambika Basu Lane, R.N. Road, Kotwali, Jashore</p></li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </div>
+    <!-- content end -->
+
+
+    <footer class="rf-footer">
+
+    
+    <div class="rf-footer-main">
+        <div class="container">
+            <div class="rf-footer-grid">
+
+                
+                <div class="rf-footer-brand">
+                    <a href="https://pmartbd.com" class="rf-footer-logo">
+                        <img
+                            src="https://pmartbd.com/public/uploads/settings/1785437515-the-only-reliance-for-your-comfort-(2).webp"
+                            alt="P-Mart BD">
+                    </a>
+
+                                        <p class="rf-footer-description">
+                        Dhaka Bangladesh
+                    </p>
+                    
+                    <div class="rf-footer-contact-list">
+
+                                                <a
+                            href="tel:+88 01685895780"
+                            class="rf-footer-contact-item">
+                            <span class="rf-contact-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+
+                            <span>
+                                <small>Call us</small>
+                                <strong>+88 01685895780</strong>
+                            </span>
+                        </a>
+                        
+                                                <a
+                            href="mailto:pmartbd@gmail.com"
+                            class="rf-footer-contact-item">
+                            <span class="rf-contact-icon">
+                                <i class="fa-regular fa-envelope"></i>
+                            </span>
+
+                            <span>
+                                <small>Email us</small>
+                                <strong>pmartbd@gmail.com</strong>
+                            </span>
+                        </a>
+                        
+                    </div>
+
+                                        <div class="rf-social-links">
+                                                <a
+                            href="https://www.facebook.com/pmartbd780"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Social media">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                                                <a
+                            href="https://www.facebook.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Social media">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                                                <a
+                            href="https://www.youtube.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Social media">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                                            </div>
+                                    </div>
+
+                
+                <div class="rf-footer-column">
+                    <h3 class="rf-footer-title">Useful Links</h3>
+
+                    <ul class="rf-footer-links">
+                        <li>
+                            <a href="https://pmartbd.com">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://pmartbd.com/site/contact-us">
+                                Contact Us
+                            </a>
+                        </li>
+
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/order-procedure">
+                                Order procedure
+                            </a>
+                        </li>
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/delivery-rules">
+                                Delivery Rules
+                            </a>
+                        </li>
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/return-policy">
+                                Return Policy
+                            </a>
+                        </li>
+                                            </ul>
+                </div>
+
+                
+                <div class="rf-footer-column">
+                    <h3 class="rf-footer-title">Information</h3>
+
+                    <ul class="rf-footer-links">
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/terms-&amp;-conditions">
+                                Terms &amp; Conditions
+                            </a>
+                        </li>
+                                                <li>
+                            <a
+                                href="https://pmartbd.com/page/privacy-policy">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://pmartbd.com/customer/order-track">
+                                Track Order
+                            </a>
+                        </li>
+
+                                                <li>
+                            <a href="https://pmartbd.com/customer/login">
+                                Login / Register
+                            </a>
+                        </li>
+                                            </ul>
+                </div>
+
+                
+                <div class="rf-footer-column rf-footer-newsletter">
+                    <h3 class="rf-footer-title">Stay Connected</h3>
+
+                    <p>
+                        Get product updates, special offers and important announcements.
+                    </p>
+
+                    <form
+                        action="#"
+                        method="POST"
+                        class="rf-newsletter-form"
+                        onsubmit="return false;">
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            aria-label="Email address">
+
+                        <button type="submit" aria-label="Subscribe">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+
+                                        <div class="rf-support-card">
+                        <span class="rf-support-icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </span>
+
+                        <div>
+                            <small>Need help?</small>
+
+                            <a href="tel:+88 01685895780">
+                                +88 01685895780
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="rf-footer-features">
+                        <div>
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <span>Fast Delivery</span>
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Secure Shopping</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="rf-footer-lower">
+        <div class="container">
+            <div class="rf-footer-lower-inner">
+
+                <p class="rf-copyright">
+                    Copyright © 2026
+                    <strong>P-Mart BD</strong>.
+                    All rights reserved.
+                </p>
+
+                <p class="rf-developer">
+                    Website Designed by:
+                    <a
+                        href="https://virtualworld.com.bd"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Virtual World
+                    </a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+</footer>
+    <div class="mbn-nav" id="mobileBottomNav">
+    <ul class="mbn-list">
+
+        <li class="mbn-item">
+            <a
+                href="https://pmartbd.com/shop"
+                class="mbn-link"
+                aria-label="Shop products">
+                <span class="mbn-icon">
+                    <i class="fa-solid fa-store"></i>
+                </span>
+
+                <span class="mbn-label">Shop</span>
+            </a>
+        </li>
+
+        <li class="mbn-item">
+            <a
+                href="https://wa.me/8801685895780"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mbn-link"
+                aria-label="WhatsApp message">
+                <span class="mbn-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </span>
+
+                <span class="mbn-label">Message</span>
+            </a>
+        </li>
+
+        <li class="mbn-item mbn-home-item">
+            <a
+                href="https://pmartbd.com"
+                class="mbn-link mbn-home-link"
+                aria-label="Home">
+                <span class="mbn-home-icon">
+                    <i class="fa-solid fa-house"></i>
+                </span>
+
+                <span class="mbn-label">Home</span>
+            </a>
+        </li>
+
+        <li class="mbn-item">
+            <a
+                href="https://pmartbd.com/shop/cart"
+                class="mbn-link"
+                aria-label="Shopping cart">
+                <span class="mbn-icon mbn-cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <b class="mbn-cart-count mobilecart-qty">
+                        0
+                    </b>
+                </span>
+
+                <span class="mbn-label">Cart</span>
+            </a>
+        </li>
+
+        <li class="mbn-item">
+                        <a
+                href="https://pmartbd.com/customer/login"
+                class="mbn-link"
+                aria-label="Customer login">
+                <span class="mbn-icon">
+                    <i class="fa-regular fa-user"></i>
+                </span>
+
+                <span class="mbn-label">Login</span>
+            </a>
+                    </li>
+
+    </ul>
+</div>
+
+    <div class="scrolltop" style="">
+        <div class="scroll">
+            <i class="fa fa-angle-up"></i>
+        </div>
+    </div>
+
+    <!-- /. fixed sidebar -->
+
+    <div id="custom-modal"></div>
+    <div id="page-overlay"></div>
+    <div id="loading">
+        <div class="custom-loader"></div>
+    </div>
+
+    <script src="https://pmartbd.com/public/frontEnd/js/jquery-3.6.3.min.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/bootstrap.min.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/rikaz-header.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/owl.carousel.min.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/mobile-menu.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/wsit-menu.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/mobile-menu-init.js"></script>
+    <script src="https://pmartbd.com/public/frontEnd/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- feather icon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+    <script src="https://pmartbd.com/public/backEnd/assets/js/toastr.min.js"></script>
+    <script type="text/javascript"></script>     <script>
+        $(".quick_view").on("click", function() {
+            var id = $(this).data("id");
+            $("#loading").show();
+            if (id) {
+                $.ajax({
+                    type: "GET",
+                    data: {
+                        id: id
+                    },
+                    url: "https://pmartbd.com/quick-view",
+                    success: function(data) {
+                        if (data) {
+                            $("#custom-modal").html(data);
+                            $("#custom-modal").show();
+                            $("#loading").hide();
+                            $("#page-overlay").show();
+                        }
+                    },
+                });
+            }
+        });
+    </script>
+    <!-- quick view end -->
+    <!-- cart js start -->
+    <script>
+        $(".addcartbutton").on("click", function() {
+            var id = $(this).data("id");
+            var qty = 1;
+            if (id) {
+                $.ajax({
+                    cache: "false",
+                    type: "GET",
+                    url: "https://pmartbd.com/add-to-cart/" + id + "/" + qty,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            toastr.success('Success', 'Product add to cart successfully');
+                            return cart_count() + mobile_cart();
+                        }
+                    },
+                });
+            }
+        });
+        $(".cart_store").on("click", function() {
+            var id = $(this).data("id");
+            var qty = $(this).parent().find("input").val();
+            if (id) {
+                $.ajax({
+                    type: "GET",
+                    data: {
+                        id: id,
+                        qty: qty ? qty : 1
+                    },
+                    url: "https://pmartbd.com/cart/store",
+                    success: function(data) {
+                        if (data) {
+                            toastr.success('Success', 'Product add to cart succfully');
+                            return cart_count() + mobile_cart();
+                        }
+                    },
+                });
+            }
+        });
+
+
+
+
+        function cart_count() {
+            $.ajax({
+                type: "GET",
+                url: "https://pmartbd.com/cart/count",
+                success: function(data) {
+                    if (data) {
+                        $("#cart-qty").html(data);
+                    } else {
+                        $("#cart-qty").empty();
+                    }
+                },
+            });
+        }
+
+        function mobile_cart() {
+            $.ajax({
+                type: "GET",
+                url: "https://pmartbd.com/mobilecart/count",
+                success: function(data) {
+                    if (data) {
+                        $(".mobilecart-qty").html(data);
+                    } else {
+                        $(".mobilecart-qty").empty();
+                    }
+                },
+            });
+        }
+
+        function cart_summary() {
+            $.ajax({
+                type: "GET",
+                url: "https://pmartbd.com/shipping-charge",
+                dataType: "html",
+                success: function(response) {
+                    $(".cart-summary").html(response);
+                },
+            });
+        }
+    </script>
+    <!-- cart js end -->
+    <script>
+        $(".search_click").on("keyup change", function() {
+            var keyword = $(".search_keyword").val();
+            $.ajax({
+                type: "GET",
+                data: {
+                    keyword: keyword
+                },
+                url: "https://pmartbd.com/livesearch",
+                success: function(products) {
+                    if (products) {
+                        $(".search_result").html(products);
+                    } else {
+                        $(".search_result").empty();
+                    }
+                },
+            });
+        });
+        $(".msearch_click").on("keyup change", function() {
+            var keyword = $(".msearch_keyword").val();
+            $.ajax({
+                type: "GET",
+                data: {
+                    keyword: keyword
+                },
+                url: "https://pmartbd.com/livesearch",
+                success: function(products) {
+                    if (products) {
+                        $("#loading").hide();
+                        $(".search_result").html(products);
+                    } else {
+                        $(".search_result").empty();
+                    }
+                },
+            });
+        });
+    </script>
+    <!-- search js start -->
+    <script></script>
+    <script></script>
+    <script>
+        $(".district").on("change", function() {
+            var id = $(this).val();
+            $.ajax({
+                type: "GET",
+                data: {
+                    id: id
+                },
+                url: "https://pmartbd.com/districts",
+                success: function(res) {
+                    if (res) {
+                        $(".area").empty();
+                        $(".area").append('<option value="">Select..</option>');
+                        $.each(res, function(key, value) {
+                            $(".area").append('<option value="' + key + '" >' + value + "</option>");
+                        });
+                    } else {
+                        $(".area").empty();
+                    }
+                },
+            });
+        });
+    </script>
+
+
+
+    <script>
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $(".scrolltop:hidden").stop(true, true).fadeIn();
+            } else {
+                $(".scrolltop").stop(true, true).fadeOut();
+            }
+        });
+        $(function() {
+            $(".scroll").click(function() {
+                $("html,body").animate({
+                    scrollTop: $(".gotop").offset().top
+                }, "1000");
+                return false;
+            });
+        });
+    </script>
+    <script>
+        $(".filter_btn").click(function() {
+            $(".filter_sidebar").addClass('active');
+            $("body").css("overflow-y", "hidden");
+        })
+        $(".filter_close").click(function() {
+            $(".filter_sidebar").removeClass('active');
+            $("body").css("overflow-y", "auto");
+        })
+    </script>
+
+</body>
+
+</html>

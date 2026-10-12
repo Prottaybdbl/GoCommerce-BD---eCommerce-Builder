@@ -1,0 +1,47 @@
+---
+import { ChevronDown } from "../icons.tsx";
+
+interface Props {
+  settings?: {
+    title?: string;
+    items?: Array<{ question: string; answer: string }>;
+  };
+}
+
+const { settings = {} } = Astro.props;
+const title = settings.title || "সাধারণ জিজ্ঞাসা (FAQ)";
+const defaultItems = [
+  {
+    question: "ডেলিভারি চার্জ কত এবং কত দিনের মধ্যে পাবো?",
+    answer: "ঢাকার ভেতরে সাধারণত ২৪-৪৮ ঘণ্টার মধ্যে এবং ঢাকার বাইরে ২-৩ কার্যদিবসের মধ্যে ডেলিভারি সম্পন্ন হয়। বর্তমানে ডেলিভারি চার্জ সম্পূর্ণ ফ্রি!",
+  },
+  {
+    question: "আমি কি প্রোডাক্ট হাতে পেয়ে চেক করে পেমেন্ট করতে পারবো?",
+    answer: "হ্যাঁ, অবশ্যই! ডেলিভারি ম্যানের সামনে প্যাকেট খুলে পণ্য যাচাই করে সম্পূর্ণ মূল্য পরিশোধ করবেন।",
+  },
+  {
+    question: "প্রোডাক্টে সমস্যা থাকলে রিটার্ন বা রিপ্লেসমেন্ট সুবিধা আছে কি?",
+    answer: "কোনো ডিফেক্ট বা ত্রুটি থাকলে ৭ দিনের মধ্যে কোনো ঝামেলা ছাড়াই ফ্রি রিপ্লেসমেন্ট অথবা রিফান্ড পাবেন।",
+  },
+];
+const items = settings.items || defaultItems;
+---
+
+<div class="bg-[var(--gocom-surface)] rounded-[var(--gocom-radius)] p-6 shadow-sm border border-[var(--gocom-border)] space-y-4">
+  <h3 class="text-lg font-bold text-[var(--gocom-text)] border-b border-[var(--gocom-border)] pb-3">
+    {title}
+  </h3>
+  <div class="space-y-3">
+    {items.map((item) => (
+      <details class="group border border-[var(--gocom-border)] rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between p-3.5 bg-slate-50/50 cursor-pointer font-bold text-sm text-[var(--gocom-text)] hover:bg-slate-100/60 transition-colors select-none">
+          <span>{item.question}</span>
+          <ChevronDown className="w-4 h-4 text-[var(--gocom-muted)] transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+        <div class="p-3.5 text-xs sm:text-sm text-[var(--gocom-muted)] leading-relaxed border-t border-[var(--gocom-border)] bg-white">
+          {item.answer}
+        </div>
+      </details>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,22 @@
+---
+export const prerender = false;
+const cookieHeader = Astro.request.headers.get("cookie") || "";
+const isLoggedIn =
+  cookieHeader.includes("gocom_logged_in=1") ||
+  cookieHeader.includes("better-auth.session_token") ||
+  cookieHeader.includes("__Secure-better-auth.session_token");
+
+if (!isLoggedIn) {
+  return Astro.redirect("/login", 302);
+}
+
+const { slug } = Astro.params;
+const host = (Astro.request.headers.get("host") || "gocommercebd.online").replace(/^www\./, "").split(":")[0];
+const subPath = slug ? `/${slug}` : "/";
+const target = (host === "localhost" || host === "127.0.0.1")
+  ? `http://localhost:5173${subPath}`
+  : `https://app.${host}${subPath}`;
+
+return Astro.redirect(target, 302);
+---
+

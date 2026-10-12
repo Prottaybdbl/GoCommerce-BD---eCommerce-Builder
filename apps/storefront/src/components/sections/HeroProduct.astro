@@ -1,0 +1,90 @@
+---
+import { formatBdt } from "@gocom/contracts/utils";
+import { Star } from "../icons.tsx";
+
+interface Props {
+  product: any;
+  settings?: {
+    showRatingBadge?: boolean;
+    ratingScore?: string;
+    showStockBadge?: boolean;
+    stockText?: string;
+    showDiscountBadge?: boolean;
+    discountText?: string;
+    primaryCtaText?: string;
+  };
+}
+
+const { product, settings = {} } = Astro.props;
+const primaryVariant = product.variants?.[0] || { price: 0 };
+const primaryImage = product.images?.[0]?.url || "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=800";
+const ratingScore = settings.ratingScore || "৪.৯/৫";
+const stockText = settings.stockText || "ইন-স্টক";
+const discountText = settings.discountText || "স্পেশাল ছাড়";
+const primaryCtaText = settings.primaryCtaText || "অর্ডার করতে এখানে ক্লিক করুন 👉";
+---
+
+<div class="space-y-6">
+  <!-- Headline, Rating & Price Header -->
+  <div class="space-y-2 text-center sm:text-left">
+    <div class="flex items-center justify-center sm:justify-start gap-1 text-amber-500">
+      {settings.showRatingBadge !== false && (
+        <div class="flex items-center gap-1">
+          <Star className="w-4 h-4 fill-amber-400" />
+          <Star className="w-4 h-4 fill-amber-400" />
+          <Star className="w-4 h-4 fill-amber-400" />
+          <Star className="w-4 h-4 fill-amber-400" />
+          <Star className="w-4 h-4 fill-amber-400" />
+          <span class="text-xs font-bold text-[var(--gocom-muted)] ml-1.5">({ratingScore} স্টার রিভিউ)</span>
+        </div>
+      )}
+      {settings.showStockBadge !== false && (
+        <span class="text-xs text-emerald-600 font-bold ml-2">✓ {stockText}</span>
+      )}
+    </div>
+
+    <h2 class="text-xl sm:text-3xl font-black text-[var(--gocom-text)] leading-snug">
+      {product.banglaTitle || product.title}
+    </h2>
+
+    <!-- Price Row -->
+    <div class="flex items-center justify-center sm:justify-start gap-3 pt-1">
+      <span class="text-2xl sm:text-3xl font-black text-[var(--gocom-primary)]">
+        {formatBdt(primaryVariant.price)}
+      </span>
+      {primaryVariant.compareAtPrice && (
+        <span class="text-base sm:text-lg text-[var(--gocom-muted)] line-through">
+          {formatBdt(primaryVariant.compareAtPrice)}
+        </span>
+      )}
+      {settings.showDiscountBadge !== false && (
+        <span class="bg-[var(--gocom-primary)]/10 text-[var(--gocom-primary)] text-xs font-extrabold px-2.5 py-0.5 rounded-full border border-[var(--gocom-primary)]/20">
+          {discountText}
+        </span>
+      )}
+    </div>
+  </div>
+
+  <!-- Primary Media Showcase (LCP optimized with eager & fetchpriority="high") -->
+  <div class="bg-[var(--gocom-surface)] rounded-[var(--gocom-radius)] p-3 sm:p-4 shadow-sm border border-[var(--gocom-border)] overflow-hidden">
+    <img
+      src={primaryImage}
+      alt={product.title}
+      class="w-full h-72 sm:h-96 object-cover rounded-[calc(var(--gocom-radius)-0.25rem)]"
+      fetchpriority="high"
+      loading="eager"
+      width="800"
+      height="600"
+    />
+  </div>
+
+  <!-- Mobile/Desktop Quick Action CTA -->
+  <div class="text-center">
+    <a
+      href="#checkout-section"
+      class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[var(--gocom-primary)] hover:opacity-95 active:scale-[0.99] text-white rounded-[var(--gocom-radius)] text-base font-extrabold shadow-lg shadow-[var(--gocom-primary)]/25 transition-all"
+    >
+      <span>{primaryCtaText}</span>
+    </a>
+  </div>
+</div>

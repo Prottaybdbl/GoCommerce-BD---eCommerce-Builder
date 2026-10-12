@@ -1,0 +1,29 @@
+---
+import { Truck, ShieldCheck, RefreshCw } from "../icons.tsx";
+
+interface Props {
+  settings?: {
+    badges?: Array<{ icon: string; title: string; desc: string }>;
+  };
+}
+
+const { settings = {} } = Astro.props;
+const defaultBadges = [
+  { icon: "truck", title: "হোম ডেলিভারি", desc: "সারা দেশে দ্রুত" },
+  { icon: "shield", title: "ক্যাশ অন ডেলিভারি", desc: "দেখে মূল্য পরিশোধ" },
+  { icon: "refresh", title: "রিপ্লেসমেন্ট গ্যারান্টি", desc: "৭ দিনের সহজ পলিসি" },
+];
+const badges = settings.badges || defaultBadges;
+---
+
+<div class="grid grid-cols-3 gap-3">
+  {badges.map((b) => (
+    <div class="bg-[var(--gocom-surface)] p-3.5 rounded-[var(--gocom-radius)] border border-[var(--gocom-border)] text-center space-y-1 shadow-sm">
+      {b.icon === "truck" && <Truck className="w-6 h-6 text-emerald-600 mx-auto" />}
+      {b.icon === "shield" && <ShieldCheck className="w-6 h-6 text-[var(--gocom-primary)] mx-auto" />}
+      {b.icon === "refresh" && <RefreshCw className="w-6 h-6 text-blue-600 mx-auto" />}
+      <p class="text-xs font-bold text-[var(--gocom-text)]">{b.title}</p>
+      <p class="text-[10px] text-[var(--gocom-muted)]">{b.desc}</p>
+    </div>
+  ))}
+</div>

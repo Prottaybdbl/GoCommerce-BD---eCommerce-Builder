@@ -1,0 +1,111 @@
+{
+  "id": "viral-funnel",
+  "version": 1,
+  "tier": "landing",
+  "archetype": "viral-funnel",
+  "status": "published",
+  "name": "Viral Product Funnel",
+  "banglaName": "ভাইরাল প্রোডাক্ট ফানেল",
+  "description": "High-conversion single-product landing page optimized for Facebook and social ads.",
+  "banglaDescription": "ফেসবুক বিজ্ঞাপনের জন্য অপটিমাইজড ১-পেজ হাই-কনভার্সন ল্যান্ডিং পেজ।",
+  "tags": ["viral", "single-product", "cod", "fast"],
+  "bestFor": ["গ্যাজেট", "ট্রেন্ডিং প্রোডাক্ট", "হোম অ্যাপ্লায়েন্স"],
+  "gallery": {
+    "thumb": "/t/viral-funnel/v1/thumb-400.webp",
+    "thumb2x": "/t/viral-funnel/v1/thumb-800.webp",
+    "accent": "#E11D48",
+    "aspect": "9/16"
+  },
+  "shell": "narrow-funnel",
+  "defaultPreset": "rose-bold",
+  "allowedPresets": ["rose-bold", "emerald-organic", "midnight-tech", "royal-fashion", "amber-warm", "ocean-clean"],
+  "requiresFeature": [],
+  "pages": {
+    "main": {
+      "kind": "landing",
+      "title": "Main Landing Page",
+      "sections": [
+        {
+          "id": "sec-announcement",
+          "type": "announcement_bar",
+          "variant": "solid",
+          "enabled": true,
+          "settings": {
+            "text": "সারা দেশে ফ্রি হোম ডেলিভারি এবং ক্যাশ অন ডেলিভারি সুবিধা!",
+            "badge": "সীমিত সময়ের অফার",
+            "highlightEmoji": "🔥"
+          }
+        },
+        {
+          "id": "sec-header",
+          "type": "header",
+          "variant": "logo-center",
+          "enabled": true,
+          "locks": { "removable": false, "movable": false },
+          "settings": {
+            "showLogo": true,
+            "showPhoneCall": true
+          }
+        },
+        {
+          "id": "sec-hero",
+          "type": "hero_product",
+          "variant": "stacked",
+          "enabled": true,
+          "locks": { "removable": false },
+          "settings": {
+            "showRatingBadge": true,
+            "ratingScore": "৪.৯/৫",
+            "showStockBadge": true,
+            "stockText": "ইন-স্টক",
+            "showDiscountBadge": true,
+            "discountText": "স্পেশাল ছাড়",
+            "primaryCtaText": "অর্ডার করতে এখানে ক্লিক করুন 👉"
+          }
+        },
+        {
+          "id": "sec-features",
+          "type": "features_list",
+          "variant": "list",
+          "enabled": true,
+          "settings": {
+            "title": "কেন এই প্রোডাক্টটি আপনার জন্য সেরা?"
+          }
+        },
+        {
+          "id": "sec-trust",
+          "type": "trust_badges",
+          "variant": "grid-3",
+          "enabled": true,
+          "settings": {
+            "badges": [
+              { "icon": "truck", "title": "হোম ডেলিভারি", "desc": "সারা দেশে দ্রুত" },
+              { "icon": "shield", "title": "ক্যাশ অন ডেলিভারি", "desc": "দেখে মূল্য পরিশোধ" },
+              { "icon": "refresh", "title": "রিপ্লেসমেন্ট গ্যারান্টি", "desc": "৭ দিনের সহজ রিটার্ন" }
+            ]
+          }
+        },
+        {
+          "id": "sec-checkout",
+          "type": "inline_checkout",
+          "variant": "single-step",
+          "enabled": true,
+          "locks": { "removable": false, "movable": false, "variantLocked": true },
+          "settings": {
+            "title": "অর্ডার কনফার্ম করতে নিচের ফর্মটি পূরণ করুন"
+          }
+        },
+        {
+          "id": "sec-sticky-bottom",
+          "type": "sticky_bottom_bar",
+          "variant": "price-cta",
+          "enabled": true,
+          "locks": { "removable": false, "movable": false },
+          "settings": {
+            "buttonText": "অর্ডার করতে ক্লিক করুন"
+          }
+        }
+      ]
+    }
+  }
+}

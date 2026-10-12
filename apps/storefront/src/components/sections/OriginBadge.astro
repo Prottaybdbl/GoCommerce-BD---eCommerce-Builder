@@ -1,0 +1,38 @@
+---
+import { Leaf, ShieldCheck } from "../icons.tsx";
+
+interface Props {
+  settings?: {
+    origin?: string;
+    guarantee?: string;
+    harvestDate?: string;
+  };
+}
+
+const { settings = {} } = Astro.props;
+const origin = settings.origin || "সুন্দরবন ও স্থানীয় জৈব খামার";
+const guarantee = settings.guarantee || "শতভাগ খাঁটি, রাসায়নিক ও ভেজালমুক্ত";
+---
+
+<div class="bg-[var(--gocom-surface)] rounded-[var(--gocom-radius)] p-6 shadow-sm border border-[var(--gocom-border)] space-y-4">
+  <div class="flex items-center gap-3">
+    <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+      <Leaf className="w-6 h-6" />
+    </div>
+    <div>
+      <h3 class="text-base sm:text-lg font-bold text-[var(--gocom-text)]">খাঁটি ও প্রাকৃতিক উৎসের নিশ্চয়তা</h3>
+      <p class="text-xs text-[var(--gocom-muted)]">সরাসরি কৃষকের মাঠ ও প্রাকৃতিক উৎস থেকে সংগৃহীত</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+    <div class="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200/80">
+      <p class="text-xs font-bold text-emerald-900">উৎস ও সংগ্রহ এলাকা</p>
+      <p class="text-sm font-semibold text-emerald-700 mt-0.5">{origin}</p>
+    </div>
+    <div class="p-3.5 bg-amber-50/70 rounded-xl border border-amber-200/80">
+      <p class="text-xs font-bold text-amber-900">গুণগত মান পরীক্ষা</p>
+      <p class="text-sm font-semibold text-amber-700 mt-0.5">{guarantee}</p>
+    </div>
+  </div>
+</div>

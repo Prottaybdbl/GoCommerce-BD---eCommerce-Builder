@@ -1,0 +1,333 @@
+:root {
+    --tc-primary: var(--rk-primary, #08182c);
+    --tc-secondary: var(--rk-secondary, #b78b4f);
+
+    --tc-background: #f5f6f8;
+    --tc-surface: #ffffff;
+
+    --tc-text: #17191d;
+    --tc-muted: #777d87;
+    --tc-border: #e4e7eb;
+
+    --tc-radius: 16px;
+    --tc-radius-large: 22px;
+
+    --tc-shadow:
+        0 14px 38px rgba(15, 23, 42, 0.08);
+
+    --tc-shadow-hover:
+        0 20px 48px rgba(15, 23, 42, 0.14);
+
+    --tc-transition: 0.28s ease;
+}
+
+.tc-section,
+.tc-section * {
+    box-sizing: border-box;
+}
+
+.tc-section {
+    padding: 36px 0;
+    background: var(--tc-background);
+}
+
+.tc-section-header {
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.tc-eyebrow {
+    display: block;
+    margin-bottom: 5px;
+
+    color: var(--tc-secondary);
+
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.tc-section-header h2 {
+    margin: 0;
+
+    color: var(--tc-text);
+
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.tc-navigation {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tc-nav-button {
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border: 1px solid var(--tc-border);
+    border-radius: 50%;
+
+    background: var(--tc-surface);
+    color: var(--tc-text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow: var(--tc-shadow);
+
+    transition:
+        border-color var(--tc-transition),
+        background var(--tc-transition),
+        color var(--tc-transition),
+        transform var(--tc-transition);
+}
+
+.tc-nav-button:hover {
+    border-color: var(--tc-secondary);
+    background: var(--tc-secondary);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.tc-carousel {
+    width: 100%;
+}
+
+.tc-carousel .owl-stage {
+    display: flex;
+}
+
+.tc-carousel .owl-item {
+    display: flex;
+    height: auto;
+}
+
+.tc-card {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid var(--tc-border);
+    border-radius: var(--tc-radius-large);
+
+    background: var(--tc-surface);
+
+    box-shadow: var(--tc-shadow);
+
+    transition:
+        transform var(--tc-transition),
+        box-shadow var(--tc-transition),
+        border-color var(--tc-transition);
+}
+
+.tc-card:hover {
+    border-color: rgba(183, 139, 79, 0.4);
+    transform: translateY(-5px);
+    box-shadow: var(--tc-shadow-hover);
+}
+
+.tc-card-link {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+.tc-image-wrap {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    background: #edf0f3;
+
+    display: block;
+}
+
+.tc-image-wrap::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(8, 24, 44, 0.12) 100%
+        );
+
+    pointer-events: none;
+}
+
+.tc-image-wrap img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.45s ease;
+}
+
+.tc-card:hover .tc-image-wrap img {
+    transform: scale(1.06);
+}
+
+.tc-no-image {
+    width: 100%;
+    height: 100%;
+
+    color: var(--tc-muted);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 38px;
+}
+
+.tc-card-content {
+    min-height: 92px;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+}
+
+.tc-card-content strong {
+    display: block;
+
+    color: var(--tc-text);
+
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.tc-card-content small {
+    color: var(--tc-muted);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 10px;
+    font-weight: 650;
+
+    transition:
+        color var(--tc-transition),
+        gap var(--tc-transition);
+}
+
+.tc-card:hover .tc-card-content small {
+    color: var(--tc-secondary);
+    gap: 10px;
+}
+
+.tc-carousel .owl-dots {
+    margin-top: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.tc-carousel .owl-dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 999px;
+
+    background: rgba(8, 24, 44, 0.22) !important;
+
+    transition:
+        width var(--tc-transition),
+        background var(--tc-transition);
+}
+
+.tc-carousel .owl-dot.active {
+    width: 24px;
+    background: var(--tc-secondary) !important;
+}
+
+@media (max-width: 767px) {
+    .tc-section {
+        padding: 26px 0;
+    }
+
+    .tc-section .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .tc-section-header {
+        margin-bottom: 15px;
+    }
+
+    .tc-section-header h2 {
+        font-size: 24px;
+    }
+
+    .tc-navigation {
+        display: none;
+    }
+
+    .tc-carousel .owl-stage-outer {
+        overflow: hidden;
+    }
+
+    .tc-card {
+        border-radius: 13px;
+    }
+
+    .tc-image-wrap {
+        aspect-ratio: 1 / 1;
+    }
+
+    .tc-card-content {
+        min-height: 65px;
+        padding: 9px 7px;
+        text-align: center;
+    }
+
+    .tc-card-content strong {
+        font-size: 11px;
+        line-height: 1.25;
+    }
+
+    .tc-card-content small {
+        display: none;
+    }
+
+    .tc-carousel .owl-dots {
+        margin-top: 13px;
+    }
+}

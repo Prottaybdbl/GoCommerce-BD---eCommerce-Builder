@@ -1,0 +1,197 @@
+---
+interface Slide {
+  id?: string;
+  headline?: string;
+  subtext?: string;
+  ctaLabel?: string;
+  ctaLink?: string;
+  imageUrl?: string;
+}
+
+interface Props {
+  settings?: {
+    slides?: Slide[];
+    autoplay?: boolean;
+    aspectRatio?: string;
+  };
+}
+
+const { settings = {} } = Astro.props;
+
+const defaultSlides: Slide[] = [
+  {
+    id: "s1",
+    headline: "নতুন কালেকশন ২০২৬",
+    subtext: "শতভাগ অরিজিনাল ও প্রিমিয়াম কোয়ালিটি প্রোডাক্ট",
+    ctaLabel: "অর্ডার করুন",
+    ctaLink: "#sec-checkout",
+    imageUrl: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80",
+  },
+  {
+    id: "s2",
+    headline: "সীমিত সময়ের স্পেশাল অফার",
+    subtext: "সারা দেশে ক্যাশ অন ডেলিভারি ও দ্রুত হোম ডেলিভারি",
+    ctaLabel: "এখনই কিনুন",
+    ctaLink: "#sec-checkout",
+    imageUrl: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=80",
+  },
+];
+
+const slides = settings.slides && settings.slides.length > 0 ? settings.slides : defaultSlides;
+const carouselId = "gc-carousel-" + Math.random().toString(36).substring(2, 8);
+---
+
+<div id={carouselId} class="relative w-full overflow-hidden rounded-2xl shadow-lg border border-black/5 bg-[var(--gocom-card-bg,#141522)] group my-2">
+  <!-- Slide Track with Scroll Snap -->
+  <div class="carousel-track flex overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+    {slides.map((slide, idx) => (
+      <div class="carousel-slide flex-shrink-0 w-full snap-center relative aspect-[16/7] sm:aspect-[21/9] min-h-[200px] sm:min-h-[280px] flex items-center bg-gray-900 overflow-hidden">
+        {slide.imageUrl ? (
+          <img
+            src={slide.imageUrl}
+            alt={slide.headline || `Banner ${idx + 1}`}
+            class="absolute inset-0 w-full h-full object-cover opacity-85 transition-transform duration-700 hover:scale-105"
+            loading={idx === 0 ? "eager" : "lazy"}
+          />
+        ) : (
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 opacity-95"></div>
+        )}
+        
+        <!-- Dark gradient overlay for text readability -->
+        <div class="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/85 via-black/50 to-transparent"></div>
+
+        <!-- Banner Content -->
+        <div class="relative z-10 px-6 sm:px-12 py-6 max-w-xl text-white">
+          <span class="inline-block px-2.5 py-1 mb-2 text-[11px] sm:text-xs font-bold tracking-wider uppercase rounded-full bg-[var(--gocom-primary,#e11d48)] text-white shadow-sm">
+            স্পেশাল অফার
+          </span>
+          <h2 class="text-lg sm:text-2xl md:text-3xl font-black leading-tight text-white mb-2 drop-shadow-md">
+            {slide.headline}
+          </h2>
+          {slide.subtext && (
+            <p class="text-xs sm:text-sm text-gray-200 line-clamp-2 mb-4 drop-shadow">
+              {slide.subtext}
+            </p>
+          )}
+          <a
+            href={slide.ctaLink || "#sec-checkout"}
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-[var(--gocom-primary,#e11d48)] hover:brightness-110 active:scale-95 text-white transition-all shadow-md"
+          >
+            <span>{slide.ctaLabel || "অর্ডার করুন"}</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Navigation Arrows -->
+  {slides.length > 1 && (
+    <>
+      <button
+        type="button"
+        class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"
+        aria-label="Previous Slide"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"
+        aria-label="Next Slide"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+
+      <!-- Dot Indicators -->
+      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-20">
+        {slides.map((_, i) => (
+          <button
+            type="button"
+            class={`dot-indicator h-1.5 rounded-full transition-all duration-300 ${i === 0 ? "w-6 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
+            data-index={i}
+            aria-label={`Go to slide ${i + 1}`}
+          ></button>
+        ))}
+      </div>
+    </>
+  )}
+</div>
+
+<script is:inline define:vars={{ carouselId, slideCount: slides.length }}>
+  (function() {
+    if (slideCount <= 1) return;
+    const container = document.getElementById(carouselId);
+    if (!container) return;
+
+    const track = container.querySelector(".carousel-track");
+    const prevBtn = container.querySelector(".prev-btn");
+    const nextBtn = container.querySelector(".next-btn");
+    const dots = container.querySelectorAll(".dot-indicator");
+
+    let currentIndex = 0;
+    let autoTimer = null;
+
+    function updateDots(idx) {
+      dots.forEach((dot, i) => {
+        if (i === idx) {
+          dot.classList.add("w-6", "bg-white");
+          dot.classList.remove("w-2", "bg-white/50");
+        } else {
+          dot.classList.remove("w-6", "bg-white");
+          dot.classList.add("w-2", "bg-white/50");
+        }
+      });
+    }
+
+    function scrollToSlide(idx) {
+      if (!track) return;
+      const target = (idx + slideCount) % slideCount;
+      currentIndex = target;
+      const slideWidth = track.clientWidth;
+      track.scrollTo({ left: target * slideWidth, behavior: "smooth" });
+      updateDots(target);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        resetTimer();
+        scrollToSlide(currentIndex - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        resetTimer();
+        scrollToSlide(currentIndex + 1);
+      });
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const idx = Number(dot.getAttribute("data-index") || "0");
+        resetTimer();
+        scrollToSlide(idx);
+      });
+    });
+
+    function startTimer() {
+      autoTimer = setInterval(() => {
+        scrollToSlide(currentIndex + 1);
+      }, 5000);
+    }
+
+    function resetTimer() {
+      if (autoTimer) clearInterval(autoTimer);
+      startTimer();
+    }
+
+    startTimer();
+  })();
+</script>

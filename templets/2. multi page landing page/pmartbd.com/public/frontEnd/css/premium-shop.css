@@ -1,0 +1,1321 @@
+/* =========================================================
+   PREMIUM SHOP VARIABLES
+========================================================= */
+
+:root {
+    --pshop-primary: var(--rk-primary, #08182c);
+    --pshop-secondary: var(--rk-secondary, #b78b4f);
+    --pshop-accent: var(--rk-accent, #d5ae75);
+
+    --pshop-background: #f4f6f8;
+    --pshop-surface: #ffffff;
+    --pshop-surface-soft: #f8f9fa;
+
+    --pshop-text: #15171b;
+    --pshop-muted: #747982;
+    --pshop-white: #ffffff;
+
+    --pshop-border: #e4e7eb;
+
+    --pshop-success: #138a4b;
+    --pshop-danger: #dc3545;
+
+    --pshop-radius-small: 8px;
+    --pshop-radius: 14px;
+    --pshop-radius-large: 20px;
+    --pshop-radius-round: 999px;
+
+    --pshop-shadow:
+        0 14px 42px rgba(14, 27, 44, 0.08);
+
+    --pshop-shadow-hover:
+        0 20px 52px rgba(14, 27, 44, 0.14);
+
+    --pshop-transition: 0.28s ease;
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+
+.pshop-page,
+.pshop-page * {
+    box-sizing: border-box;
+}
+
+.pshop-page {
+    min-height: 100vh;
+    background: var(--pshop-background);
+    color: var(--pshop-text);
+}
+
+.pshop-page a {
+    text-decoration: none;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.pshop-header {
+    padding: 28px 0 35px;
+    border-bottom: 1px solid var(--pshop-border);
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(183, 139, 79, 0.09),
+            transparent 34%
+        ),
+        var(--pshop-surface);
+}
+
+.pshop-breadcrumb {
+    margin-bottom: 22px;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: var(--pshop-muted);
+    font-size: 13px;
+}
+
+.pshop-breadcrumb a {
+    color: var(--pshop-muted);
+}
+
+.pshop-breadcrumb a:hover {
+    color: var(--pshop-secondary);
+}
+
+.pshop-breadcrumb i {
+    font-size: 9px;
+}
+
+.pshop-breadcrumb span {
+    color: var(--pshop-text);
+}
+
+.pshop-header-content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.pshop-header-badge {
+    min-height: 33px;
+    padding: 0 13px;
+
+    border: 1px solid rgba(183, 139, 79, 0.3);
+    border-radius: var(--pshop-radius-round);
+
+    background: rgba(183, 139, 79, 0.09);
+    color: var(--pshop-secondary);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.pshop-header-content h1 {
+    margin: 13px 0 7px;
+
+    color: var(--pshop-text);
+
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.pshop-header-content p {
+    margin: 0;
+
+    color: var(--pshop-muted);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.pshop-product-count {
+    min-width: 105px;
+    min-height: 86px;
+    padding: 13px;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: var(--pshop-radius);
+
+    background: var(--pshop-surface);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: var(--pshop-shadow);
+}
+
+.pshop-product-count strong {
+    color: var(--pshop-primary);
+
+    font-size: 29px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.pshop-product-count span {
+    margin-top: 6px;
+
+    color: var(--pshop-muted);
+
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.pshop-content {
+    padding: 36px 0 75px;
+}
+
+.pshop-layout {
+    display: grid;
+    grid-template-columns: 285px minmax(0, 1fr);
+    gap: 26px;
+    align-items: start;
+}
+
+.pshop-sidebar {
+    position: sticky;
+    top: 95px;
+}
+
+.pshop-main {
+    min-width: 0;
+}
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.pshop-filter-form {
+    padding: 22px;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: var(--pshop-radius-large);
+
+    background: var(--pshop-surface);
+
+    box-shadow: var(--pshop-shadow);
+}
+
+.pshop-filter-heading {
+    padding-bottom: 18px;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid var(--pshop-border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.pshop-filter-heading span {
+    display: block;
+    margin-bottom: 3px;
+
+    color: var(--pshop-secondary);
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.pshop-filter-heading h2 {
+    margin: 0;
+
+    color: var(--pshop-text);
+
+    font-size: 18px;
+    font-weight: 750;
+}
+
+.pshop-filter-heading > a {
+    color: var(--pshop-danger);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.pshop-filter-block + .pshop-filter-block {
+    margin-top: 23px;
+    padding-top: 21px;
+
+    border-top: 1px solid var(--pshop-border);
+}
+
+.pshop-filter-block > h3 {
+    margin: 0 0 14px;
+
+    color: var(--pshop-text);
+
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.pshop-filter-search {
+    position: relative;
+}
+
+.pshop-filter-search input {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 42px 0 13px;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: var(--pshop-radius-small);
+
+    outline: none;
+    background: var(--pshop-surface-soft);
+
+    color: var(--pshop-text);
+
+    font-size: 12px;
+}
+
+.pshop-filter-search input:focus {
+    border-color: var(--pshop-secondary);
+    background: var(--pshop-surface);
+}
+
+.pshop-filter-search i {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+
+    color: var(--pshop-muted);
+
+    transform: translateY(-50%);
+}
+
+/* Category */
+
+.pshop-category-list {
+    display: grid;
+    gap: 7px;
+}
+
+.pshop-filter-category {
+    overflow: hidden;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: 9px;
+}
+
+.pshop-filter-category-row {
+    min-height: 44px;
+    padding: 7px 8px 7px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px;
+}
+
+.pshop-category-toggle {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+
+    background: var(--pshop-surface-soft);
+    color: var(--pshop-muted);
+
+    cursor: pointer;
+
+    transition:
+        color var(--pshop-transition),
+        background var(--pshop-transition),
+        transform var(--pshop-transition);
+}
+
+.pshop-filter-category.open .pshop-category-toggle {
+    color: var(--pshop-secondary);
+    transform: rotate(180deg);
+}
+
+.pshop-filter-subcategories {
+    padding: 10px 11px 12px 23px;
+
+    border-top: 1px solid var(--pshop-border);
+    background: var(--pshop-surface-soft);
+}
+
+.pshop-filter-childcategories {
+    margin: 5px 0 8px 17px;
+    padding-left: 9px;
+
+    border-left: 1px solid var(--pshop-border);
+
+    display: grid;
+    gap: 7px;
+}
+
+.pshop-subcategory-checkbox {
+    font-weight: 650;
+}
+
+.pshop-filter-checkbox {
+    position: relative;
+
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--pshop-text);
+
+    font-size: 11px;
+    line-height: 1.4;
+
+    cursor: pointer;
+}
+
+.pshop-filter-checkbox + .pshop-filter-checkbox {
+    margin-top: 9px;
+}
+
+.pshop-filter-checkbox input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pshop-checkbox-box {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: 4px;
+
+    background: var(--pshop-surface);
+
+    color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 8px;
+}
+
+.pshop-filter-checkbox input:checked + .pshop-checkbox-box {
+    border-color: var(--pshop-secondary);
+    background: var(--pshop-secondary);
+    color: var(--pshop-white);
+}
+
+.pshop-checkbox-label {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Price */
+
+.pshop-price-inputs {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.pshop-price-inputs label {
+    display: block;
+    margin-bottom: 6px;
+
+    color: var(--pshop-muted);
+
+    font-size: 9px;
+    font-weight: 650;
+}
+
+.pshop-price-inputs input {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 9px;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: 7px;
+
+    outline: none;
+    background: var(--pshop-surface-soft);
+
+    color: var(--pshop-text);
+
+    font-size: 11px;
+}
+
+.pshop-price-inputs input:focus {
+    border-color: var(--pshop-secondary);
+}
+
+.pshop-price-inputs > span {
+    padding-bottom: 12px;
+    color: var(--pshop-muted);
+}
+
+.pshop-filter-submit {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 24px;
+
+    padding: 0 15px;
+    border: 0;
+    border-radius: var(--pshop-radius-small);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pshop-primary),
+            var(--pshop-secondary)
+        );
+
+    color: var(--pshop-white);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.pshop-toolbar {
+    min-height: 72px;
+    padding: 13px 17px;
+    margin-bottom: 18px;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: var(--pshop-radius);
+
+    background: var(--pshop-surface);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    box-shadow: var(--pshop-shadow);
+}
+
+.pshop-result-count {
+    color: var(--pshop-muted);
+    font-size: 12px;
+}
+
+.pshop-result-count strong {
+    color: var(--pshop-text);
+    font-size: 15px;
+}
+
+.pshop-sort-form {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.pshop-sort-form label {
+    color: var(--pshop-muted);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.pshop-sort-form select {
+    height: 42px;
+    min-width: 185px;
+
+    padding: 0 36px 0 12px;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: 7px;
+
+    outline: none;
+    background: var(--pshop-surface-soft);
+
+    color: var(--pshop-text);
+
+    font-size: 11px;
+}
+
+.pshop-active-filter-bar {
+    min-height: 48px;
+    padding: 10px 15px;
+    margin-bottom: 18px;
+
+    border: 1px solid rgba(183, 139, 79, 0.2);
+    border-radius: var(--pshop-radius-small);
+
+    background: rgba(183, 139, 79, 0.07);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    color: var(--pshop-secondary);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.pshop-active-filter-bar a {
+    color: var(--pshop-danger);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+
+.pshop-product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.pshop-product-card {
+    min-width: 0;
+    overflow: hidden;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: var(--pshop-radius);
+
+    background: var(--pshop-surface);
+
+    box-shadow: var(--pshop-shadow);
+
+    transition:
+        transform var(--pshop-transition),
+        box-shadow var(--pshop-transition),
+        border-color var(--pshop-transition);
+}
+
+.pshop-product-card:hover {
+    border-color: rgba(183, 139, 79, 0.35);
+    transform: translateY(-5px);
+    box-shadow: var(--pshop-shadow-hover);
+}
+
+.pshop-product-media {
+    position: relative;
+    overflow: hidden;
+
+    aspect-ratio: 1 / 1;
+
+    border-bottom: 1px solid var(--pshop-border);
+    background: var(--pshop-surface-soft);
+}
+
+.pshop-product-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+}
+
+.pshop-product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.45s ease;
+}
+
+.pshop-product-card:hover .pshop-product-image img {
+    transform: scale(1.06);
+}
+
+.pshop-no-image {
+    width: 100%;
+    height: 100%;
+
+    color: var(--pshop-muted);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 40px;
+}
+
+.pshop-sale-badge,
+.pshop-stock-badge {
+    position: absolute;
+    top: 10px;
+    z-index: 5;
+
+    min-height: 27px;
+    padding: 0 9px;
+
+    border-radius: var(--pshop-radius-round);
+
+    color: var(--pshop-white);
+
+    display: inline-flex;
+    align-items: center;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.pshop-sale-badge {
+    left: 10px;
+    background: var(--pshop-danger);
+}
+
+.pshop-stock-badge {
+    right: 10px;
+    background: var(--pshop-text);
+}
+
+.pshop-view-button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 5;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--pshop-text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+    opacity: 0;
+    transform: translateY(8px);
+
+    transition:
+        opacity var(--pshop-transition),
+        transform var(--pshop-transition),
+        color var(--pshop-transition);
+}
+
+.pshop-product-card:hover .pshop-view-button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pshop-view-button:hover {
+    color: var(--pshop-secondary);
+}
+
+.pshop-product-body {
+    padding: 15px;
+}
+
+.pshop-product-category {
+    display: block;
+    margin-bottom: 6px;
+
+    color: var(--pshop-secondary);
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.pshop-product-name {
+    min-height: 42px;
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.pshop-product-name a {
+    color: var(--pshop-text);
+    font-weight: 700;
+}
+
+.pshop-product-name a:hover {
+    color: var(--pshop-secondary);
+}
+
+.pshop-product-price {
+    min-height: 30px;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.pshop-current-price {
+    color: var(--pshop-primary);
+
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.pshop-product-price del {
+    color: var(--pshop-muted);
+    font-size: 11px;
+}
+
+.pshop-product-action {
+    margin-top: 13px;
+}
+
+.pshop-product-action form {
+    margin: 0;
+}
+
+.pshop-add-cart-button,
+.pshop-select-button,
+.pshop-stock-out-button {
+    width: 100%;
+    min-height: 43px;
+
+    padding: 0 11px;
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-size: 10px;
+    font-weight: 750;
+}
+
+.pshop-add-cart-button {
+    border: 1px solid var(--pshop-primary);
+
+    background: var(--pshop-primary);
+    color: var(--pshop-white);
+
+    cursor: pointer;
+}
+
+.pshop-add-cart-button:hover {
+    border-color: var(--pshop-secondary);
+    background: var(--pshop-secondary);
+}
+
+.pshop-select-button {
+    border: 1px solid var(--pshop-secondary);
+
+    background: rgba(183, 139, 79, 0.08);
+    color: var(--pshop-secondary);
+}
+
+.pshop-stock-out-button {
+    border: 1px solid var(--pshop-border);
+
+    background: var(--pshop-surface-soft);
+    color: var(--pshop-muted);
+
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.pshop-pagination {
+    margin-top: 30px;
+}
+
+.pshop-pagination nav > div:first-child {
+    display: none;
+}
+
+.pshop-pagination nav > div:last-child {
+    display: flex;
+    justify-content: center;
+}
+
+.pshop-pagination .pagination {
+    margin: 0;
+    gap: 6px;
+}
+
+.pshop-pagination .page-link {
+    min-width: 39px;
+    height: 39px;
+
+    padding: 0 10px;
+    border: 1px solid var(--pshop-border);
+    border-radius: 7px !important;
+
+    background: var(--pshop-surface);
+    color: var(--pshop-text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+}
+
+.pshop-pagination .page-item.active .page-link {
+    border-color: var(--pshop-primary);
+    background: var(--pshop-primary);
+    color: var(--pshop-white);
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.pshop-empty-state {
+    padding: 75px 25px;
+
+    border: 1px solid var(--pshop-border);
+    border-radius: var(--pshop-radius-large);
+
+    background: var(--pshop-surface);
+
+    text-align: center;
+
+    box-shadow: var(--pshop-shadow);
+}
+
+.pshop-empty-icon {
+    width: 86px;
+    height: 86px;
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background: rgba(183, 139, 79, 0.09);
+    color: var(--pshop-secondary);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+}
+
+.pshop-empty-state h2 {
+    margin: 0 0 8px;
+
+    color: var(--pshop-text);
+
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.pshop-empty-state p {
+    margin: 0 0 21px;
+
+    color: var(--pshop-muted);
+
+    font-size: 13px;
+}
+
+.pshop-empty-state > a {
+    min-height: 45px;
+    padding: 0 18px;
+
+    border-radius: 7px;
+
+    background: var(--pshop-primary);
+    color: var(--pshop-white);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   MOBILE TOOLBAR / FILTER DRAWER
+========================================================= */
+
+.pshop-mobile-toolbar {
+    display: none;
+}
+
+.pshop-filter-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.pshop-filter-drawer.active {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.pshop-filter-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(4, 10, 20, 0.62);
+
+    opacity: 0;
+
+    transition: opacity var(--pshop-transition);
+}
+
+.pshop-filter-drawer.active .pshop-filter-overlay {
+    opacity: 1;
+}
+
+.pshop-filter-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: min(390px, 90vw);
+
+    background: var(--pshop-background);
+
+    transform: translateX(-100%);
+
+    transition: transform var(--pshop-transition);
+}
+
+.pshop-filter-drawer.active .pshop-filter-panel {
+    transform: translateX(0);
+}
+
+.pshop-filter-panel-header {
+    min-height: 78px;
+    padding: 14px 17px;
+
+    border-bottom: 1px solid var(--pshop-border);
+
+    background: var(--pshop-surface);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pshop-filter-panel-header span {
+    display: block;
+    margin-bottom: 3px;
+
+    color: var(--pshop-secondary);
+
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pshop-filter-panel-header h2 {
+    margin: 0;
+
+    color: var(--pshop-text);
+
+    font-size: 17px;
+}
+
+.pshop-filter-panel-header button {
+    width: 39px;
+    height: 39px;
+
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+
+    background: var(--pshop-surface-soft);
+    color: var(--pshop-text);
+
+    cursor: pointer;
+}
+
+.pshop-filter-panel-body {
+    height: calc(100% - 78px);
+    padding: 15px;
+
+    overflow-y: auto;
+}
+
+.pshop-filter-panel-body .pshop-filter-form {
+    box-shadow: none;
+}
+
+body.pshop-filter-open {
+    overflow: hidden;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1199px) {
+    .pshop-layout {
+        grid-template-columns: 255px minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .pshop-product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 991px) {
+    .pshop-content {
+        padding-top: 22px;
+    }
+
+    .pshop-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pshop-sidebar {
+        display: none;
+    }
+
+    .pshop-mobile-toolbar {
+        min-height: 52px;
+        margin-bottom: 15px;
+
+        border: 1px solid var(--pshop-border);
+        border-radius: 10px;
+
+        background: var(--pshop-surface);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+
+        padding: 8px 11px;
+
+        box-shadow: var(--pshop-shadow);
+    }
+
+    .pshop-mobile-filter-button {
+        min-height: 36px;
+        padding: 0 13px;
+
+        border: 0;
+        border-radius: 7px;
+
+        background: var(--pshop-primary);
+        color: var(--pshop-white);
+
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+
+        font-size: 10px;
+        font-weight: 700;
+    }
+
+    .pshop-mobile-toolbar > span {
+        color: var(--pshop-muted);
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .pshop-header {
+        padding: 20px 0 26px;
+    }
+
+    .pshop-header-content {
+        align-items: flex-start;
+    }
+
+    .pshop-product-count {
+        min-width: 78px;
+        min-height: 70px;
+    }
+
+    .pshop-product-count strong {
+        font-size: 23px;
+    }
+
+    .pshop-toolbar {
+        min-height: auto;
+
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: 13px;
+    }
+
+    .pshop-sort-form {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .pshop-sort-form select {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .pshop-product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
+    }
+
+    .pshop-product-body {
+        padding: 11px;
+    }
+
+    .pshop-product-name {
+        min-height: 39px;
+        font-size: 11px;
+    }
+
+    .pshop-current-price {
+        font-size: 14px;
+    }
+
+    .pshop-product-price del {
+        font-size: 9px;
+    }
+
+    .pshop-add-cart-button,
+    .pshop-select-button,
+    .pshop-stock-out-button {
+        min-height: 39px;
+        padding: 0 6px;
+        font-size: 9px;
+    }
+
+    .pshop-view-button {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .pshop-header-content h1 {
+        font-size: 26px;
+    }
+
+    .pshop-header-content p {
+        font-size: 11px;
+    }
+
+    .pshop-header-badge {
+        min-height: 29px;
+        font-size: 9px;
+    }
+
+    .pshop-content {
+        padding-bottom:
+            calc(110px + env(safe-area-inset-bottom));
+    }
+
+    .pshop-product-media {
+        aspect-ratio: 1 / 1.08;
+    }
+
+    .pshop-sale-badge,
+    .pshop-stock-badge {
+        top: 7px;
+        min-height: 23px;
+        padding: 0 7px;
+        font-size: 8px;
+    }
+
+    .pshop-sale-badge {
+        left: 7px;
+    }
+
+    .pshop-stock-badge {
+        right: 7px;
+    }
+
+    .pshop-view-button {
+        right: 7px;
+        bottom: 7px;
+
+        width: 33px;
+        height: 33px;
+    }
+}
+
+
+
+
+/* Home reusable product grid */
+
+.pshop-home-product-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.pshop-product-slider .pshop-product-card {
+    height: 100%;
+}
+
+.pshop-product-slider .owl-stage {
+    display: flex;
+}
+
+.pshop-product-slider .owl-item {
+    display: flex;
+    height: auto;
+}
+
+.pshop-product-slider .owl-item > .pshop-product-card {
+    width: 100%;
+}
+
+@media (max-width: 1199px) {
+    .pshop-home-product-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .pshop-home-product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
+    }
+}

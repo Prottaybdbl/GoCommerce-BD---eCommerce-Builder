@@ -1,0 +1,76 @@
+---
+import type { SectionInstance } from "@gocom/themes";
+import AnnouncementBar from "./sections/AnnouncementBar.astro";
+import StoreHeader from "./sections/StoreHeader.astro";
+import BannerCarousel from "./sections/BannerCarousel.astro";
+import HeroProduct from "./sections/HeroProduct.astro";
+import FeaturesList from "./sections/FeaturesList.astro";
+import VideoShowcase from "./sections/VideoShowcase.astro";
+import SpecsTable from "./sections/SpecsTable.astro";
+import OriginBadge from "./sections/OriginBadge.astro";
+import TrustBadges from "./sections/TrustBadges.astro";
+import FaqAccordion from "./sections/FaqAccordion.astro";
+import StickyBottomBar from "./sections/StickyBottomBar.astro";
+import { InlineCheckoutForm } from "./InlineCheckoutForm.tsx";
+
+interface Props {
+  section: SectionInstance;
+  store: any;
+  product: any;
+  apiBase?: string;
+}
+
+const { section, store, product, apiBase = "" } = Astro.props;
+
+if (!section || section.enabled === false) {
+  return null;
+}
+---
+
+{section.type === "announcement_bar" && (
+  <AnnouncementBar settings={section.settings} />
+)}
+
+{section.type === "header" && (
+  <StoreHeader store={store} settings={section.settings} />
+)}
+
+{section.type === "banner_carousel" && (
+  <BannerCarousel settings={section.settings} />
+)}
+
+{section.type === "hero_product" && (
+  <HeroProduct product={product} settings={section.settings} />
+)}
+
+{section.type === "features_list" && (
+  <FeaturesList product={product} settings={section.settings} />
+)}
+
+{section.type === "video_showcase" && (
+  <VideoShowcase settings={section.settings} />
+)}
+
+{section.type === "specs_table" && (
+  <SpecsTable product={product} settings={section.settings} />
+)}
+
+{section.type === "origin_badge" && (
+  <OriginBadge settings={section.settings} />
+)}
+
+{section.type === "trust_badges" && (
+  <TrustBadges settings={section.settings} />
+)}
+
+{section.type === "faq_accordion" && (
+  <FaqAccordion settings={section.settings} />
+)}
+
+{section.type === "inline_checkout" && (
+  <InlineCheckoutForm client:visible product={product} settings={store.settings || {}} apiBase={apiBase} />
+)}
+
+{section.type === "sticky_bottom_bar" && (
+  <StickyBottomBar product={product} settings={section.settings} />
+)}

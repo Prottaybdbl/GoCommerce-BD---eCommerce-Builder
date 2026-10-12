@@ -1,0 +1,141 @@
+---
+import { db, stores, createTenantRepository } from "@gocom/db";
+import { eq } from "drizzle-orm";
+import DynamicThemePage from "../../../components/DynamicThemePage.astro";
+import {
+  loadStoreTheme,
+  loadStoreFeatures,
+  resolveThemeRequestContext,
+  PREVIEW_HEADERS,
+} from "../../../lib/load-store-theme.ts";
+
+const { store: storeSlug, slug } = Astro.params;
+const url = new URL(Astro.request.url);
+
+if (!storeSlug || !slug) {
+  return Astro.redirect("/");
+}
+
+let store: typeof stores.$inferSelect | undefined;
+
+try {
+  store = await db.query.stores.findFirst({
+    where: eq(stores.subdomain, storeSlug.toLowerCase()),
+  });
+} catch (dbErr) {
+  console.warn("Store lookup note:", dbErr);
+}
+
+if (!store && (storeSlug.toLowerCase() === "grihogadget" || storeSlug.toLowerCase() === "demo")) {
+  store = {
+    id: "00000000-0000-0000-0000-000000000001",
+    name: "গৃহগ্যাজেট (Grihogadget)",
+    subdomain: "grihogadget",
+    phone: "+8801711223344",
+    themeArchetype: "viral-funnel",
+    themeConfig: {},
+    settings: {},
+    isActive: true,
+    plan: "pilot",
+    customDomain: null,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+}
+
+if (!store) {
+  return new Response(
+    `<!DOCTYPE html>
+    <html lang="bn">
+    <head>
+      <meta charset="UTF-8">
+      <title>দোকান খুঁজে পাওয়া যায়নি — GoCommerce BD</title>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+      <style>
+        body { font-family: 'Inter', sans-serif; background: #0b0c16; color: #fff; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
+        .box { max-width: 480px; padding: 32px; background: #141522; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); }
+        h1 { font-size: 24px; color: #f87171; margin-bottom: 12px; }
+        p { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 24px; }
+        a { display: inline-block; background: #155dfc; color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; }
+      </style>
+    </head>
+    <body>
+      <div class="box">
+        <h1>দোকানটি পাওয়া যায়নি</h1>
+        <p><strong>gocommercebd.online/${storeSlug}</strong> ঠিকানায় কোনো সক্রিয় স্টোর খুঁজে পাওয়া যায়নি।</p>
+        <a href="/">হোমে ফিরে যান</a>
+      </div>
+    </body>
+    </html>`,
+    {
+      status: 404,
+      headers: { "Content-Type": "text/html; charset=utf-8" },
+    }
+  );
+}
+
+let product: any;
+try {
+  const repo = createTenantRepository(store.id);
+  product = await repo.getProductBySlug(slug);
+} catch {
+  // ignore
+}
+
+if (!product) {
+  product = {
+    id: "demo",
+    title: "স্মার্ট রিচার্জেবল ফুড ও মিট চপার (২৫০ মি.লি.)",
+    banglaTitle: "স্মার্ট রিচার্জেবল ফুড ও মিট চপার (২৫০ মি.লি.)",
+    slug: "demo-chopper",
+    variants: [{ id: "v1", title: "Standard 250ml", price: 105000, compareAtPrice: 145000, stockQuantity: 50 }],
+    images: [{ url: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=800" }],
+    features: ["৩টি ধারালো স্টেইনলেস স্টিল ব্লেড", "ইউএসবি রিচার্জেবল", "ওয়াটারপ্রুফ বডি"],
+  };
+}
+
+Astro.response.headers.set("Cache-Control", "public, max-age=0, s-maxage=86400");
+Astro.response.headers.set("Cache-Tag", `s:${store.id},s:${store.id}:product:${product.id}`);
+
+// The merchant's published design lives in `store_themes`, not on the store row.
+const themeRow = await loadStoreTheme(store.id);
+const features = await loadStoreFeatures(store);
+const themeCtx = resolveThemeRequestContext(url, store.id);
+
+if (themeCtx.isEditor) {
+  for (const [key, value] of Object.entries(PREVIEW_HEADERS)) {
+    Astro.response.headers.set(key, value);
+  }
+  Astro.response.headers.delete("Cache-Tag");
+}
+---
+
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{product.banglaTitle || product.title} — {store.name}</title>
+    <meta name="description" content={product.banglaDescription?.slice(0, 150) || `${store.name} থেকে অর্ডার করুন।`} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="antialiased selection:bg-rose-500 selection:text-white">
+    <DynamicThemePage
+      store={store}
+      product={product}
+      themeRow={themeRow}
+      features={features}
+      page="product"
+      apiBase={`/${store.subdomain}`}
+      isEditor={themeCtx.isEditor}
+      previewPreset={themeCtx.previewPreset}
+    />
+  </body>
+</html>

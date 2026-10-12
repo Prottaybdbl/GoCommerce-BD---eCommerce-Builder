@@ -1,0 +1,35 @@
+---
+import { Check } from "../icons.tsx";
+
+interface Props {
+  product: any;
+  settings?: {
+    title?: string;
+    bulletPoints?: string[];
+  };
+}
+
+const { product, settings = {} } = Astro.props;
+const title = settings.title || "কেন এই প্রোডাক্টটি আপনার জন্য সেরা?";
+const features = settings.bulletPoints || (product.features?.length > 0 ? product.features : [
+  "১০০% অরিজিনাল ও প্রিমিয়াম কোয়ালিটি",
+  "পণ্য হাতে পেয়ে চেক করে সম্পূর্ণ মূল্য পরিশোধ করার সুবিধা",
+  "৭ দিনের সহজ রিটার্ন ও রিপ্লেসমেন্ট পলিসি",
+]);
+---
+
+<div class="bg-[var(--gocom-surface)] rounded-[var(--gocom-radius)] p-6 sm:p-7 shadow-sm border border-[var(--gocom-border)] space-y-4">
+  <h3 class="text-lg font-bold text-[var(--gocom-text)] border-b border-[var(--gocom-border)] pb-3">
+    {title}
+  </h3>
+  <ul class="space-y-3">
+    {features.map((feat: string) => (
+      <li class="flex items-start gap-3 text-sm text-[var(--gocom-text)] leading-relaxed">
+        <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+          <Check className="w-3.5 h-3.5" />
+        </div>
+        <span>{feat}</span>
+      </li>
+    ))}
+  </ul>
+</div>

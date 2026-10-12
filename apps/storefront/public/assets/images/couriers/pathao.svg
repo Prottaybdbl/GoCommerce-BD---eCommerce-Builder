@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="36" viewBox="0 0 120 36" fill="none">
+  <path d="M7 18 C7 11.5 12 7 18 7 C24 7 29 11.5 29 18 C29 24.5 24 29 18 29 C12 29 7 24.5 7 18 Z" fill="#ea2840"/>
+  <path d="M14 18 L18 13 L22 18 L18 23 Z" fill="#ffffff"/>
+  <text x="35" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#ea2840" letter-spacing="-0.8">pathao</text>
+</svg>

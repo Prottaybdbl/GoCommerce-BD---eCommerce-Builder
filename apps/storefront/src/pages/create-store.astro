@@ -1,0 +1,21 @@
+---
+export const prerender = false;
+import AuthLayout from "../components/AuthLayout.astro";
+
+const cookieHeader = Astro.request.headers.get("cookie") || "";
+const isLoggedIn =
+  cookieHeader.includes("gocom_logged_in=1") ||
+  cookieHeader.includes("better-auth.session_token") ||
+  cookieHeader.includes("__Secure-better-auth.session_token");
+
+const rawHost = (Astro.request.headers.get("host") || "gocommercebd.online").split(":")[0];
+const platformRoot = (import.meta.env.PLATFORM_ROOT_DOMAIN || process.env.PLATFORM_ROOT_DOMAIN || "gocommercebd.online").toLowerCase();
+const isLocal = rawHost === "localhost" || rawHost === "127.0.0.1";
+const appBase = isLocal ? "http://localhost:5173" : `https://app.${platformRoot}`;
+
+if (isLoggedIn) {
+  return Astro.redirect(`${appBase}/`, 302);
+}
+---
+
+<AuthLayout mode="signup" />

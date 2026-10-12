@@ -1,0 +1,122 @@
+---
+/**
+ * `/<store>/checkout` — the store's own order page.
+ *
+ * Stores built from a gallery template send every order / buy / cart button
+ * here. The template's own forms would post to the site the design came from;
+ * this page creates a real order for this merchant instead.
+ */
+import { createTenantRepository } from "@gocom/db";
+import { formatBdt } from "@gocom/contracts/utils";
+import { getPreset, generateThemeCssVariables } from "@gocom/themes";
+import { InlineCheckoutForm } from "../../components/InlineCheckoutForm.tsx";
+import { loadStoreTheme } from "../../lib/load-store-theme.ts";
+import { findPathStore, storeNotFoundResponse } from "../../lib/path-store.ts";
+
+const { store: storeSlug } = Astro.params;
+const url = new URL(Astro.request.url);
+
+const store = await findPathStore(storeSlug);
+if (!store) return storeNotFoundResponse(storeSlug ?? "");
+
+const base = `/${store.subdomain}`;
+
+let products: any[] = [];
+try {
+  products = await createTenantRepository(store.id).getProducts({ activeOnly: true, limit: 24 });
+} catch {
+  // Database unavailable: handled as "no products" below.
+}
+
+const requested = url.searchParams.get("product");
+const product = products.find((p) => p.slug === requested) ?? products[0];
+const otherProducts = product ? products.filter((p) => p.id !== product.id).slice(0, 8) : [];
+
+const themeRow = await loadStoreTheme(store.id);
+const cssVars = generateThemeCssVariables(getPreset(themeRow?.presetId));
+const variant = product?.variants?.[0];
+const image = product?.images?.[0]?.url;
+
+// The form is personal to each visitor and stock-sensitive; never cache it at the edge.
+Astro.response.headers.set("Cache-Control", "no-store, max-age=0");
+---
+
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>অর্ডার করুন — {store.name}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style is:inline set:html={cssVars}></style>
+  </head>
+  <body class="antialiased bg-[var(--gocom-bg)] text-[var(--gocom-text)] font-sans">
+    <main class="mx-auto w-full max-w-2xl px-4 py-6 space-y-6">
+      <header class="flex items-center justify-between border-b border-[var(--gocom-border)] pb-4">
+        <a href={base} class="text-lg font-black text-[var(--gocom-text)]">{store.name}</a>
+        <a href={base} class="text-xs font-semibold text-[var(--gocom-muted)] hover:text-[var(--gocom-text)]">← স্টোরে ফিরে যান</a>
+      </header>
+
+      {product ? (
+        <>
+          <section class="flex items-center gap-4 rounded-2xl border border-[var(--gocom-border)] p-4">
+            {image && (
+              <img src={image} alt="" width="80" height="80" class="h-20 w-20 flex-shrink-0 rounded-xl object-cover" />
+            )}
+            <div class="min-w-0">
+              <h1 class="text-base font-bold leading-snug">{product.banglaTitle || product.title}</h1>
+              {variant && (
+                <p class="mt-1 text-sm">
+                  <span class="font-black text-[var(--gocom-primary)]">{formatBdt(Number(variant.price))}</span>
+                  {variant.compareAtPrice && Number(variant.compareAtPrice) > Number(variant.price) && (
+                    <span class="ml-2 text-xs text-[var(--gocom-muted)] line-through">{formatBdt(Number(variant.compareAtPrice))}</span>
+                  )}
+                </p>
+              )}
+            </div>
+          </section>
+
+          <InlineCheckoutForm client:load product={product} settings={(store.settings as any) || {}} apiBase={base} />
+
+          {otherProducts.length > 0 && (
+            <section class="space-y-3">
+              <h2 class="text-sm font-bold">অন্য পণ্য অর্ডার করতে চান?</h2>
+              <ul class="grid grid-cols-2 gap-3">
+                {otherProducts.map((p) => (
+                  <li>
+                    <a
+                      href={`${base}/checkout?product=${encodeURIComponent(p.slug)}`}
+                      class="flex items-center gap-3 rounded-xl border border-[var(--gocom-border)] p-3 hover:border-[var(--gocom-primary)]"
+                    >
+                      {p.images?.[0]?.url && (
+                        <img src={p.images[0].url} alt="" width="48" height="48" loading="lazy" class="h-12 w-12 flex-shrink-0 rounded-lg object-cover" />
+                      )}
+                      <span class="min-w-0">
+                        <span class="block truncate text-xs font-semibold">{p.banglaTitle || p.title}</span>
+                        {p.variants?.[0] && (
+                          <span class="text-xs font-bold text-[var(--gocom-primary)]">{formatBdt(Number(p.variants[0].price))}</span>
+                        )}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </>
+      ) : (
+        <section class="rounded-2xl border border-[var(--gocom-border)] p-8 text-center space-y-2">
+          <h1 class="text-base font-bold">এই মুহূর্তে অর্ডার নেওয়া যাচ্ছে না</h1>
+          <p class="text-sm text-[var(--gocom-muted)]">
+            স্টোরে এখনো কোনো পণ্য যুক্ত করা হয়নি।
+            {store.phone && <> অর্ডার করতে কল করুন: <a class="font-bold text-[var(--gocom-primary)]" href={`tel:${store.phone}`}>{store.phone}</a></>}
+          </p>
+        </section>
+      )}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,214 @@
+---
+import { db, stores, createTenantRepository, plans } from "@gocom/db";
+import { eq } from "drizzle-orm";
+import { poishaToBdt } from "@gocom/contracts";
+import DynamicThemePage from "../components/DynamicThemePage.astro";
+import saasHomeHtml from "../templates/home.html?raw";
+
+// 1. Resolve Tenancy Context (Strict Invariant #4)
+const host = Astro.request.headers.get("host") || "";
+const url = new URL(Astro.request.url);
+const previewPreset = url.searchParams.get("previewPreset") || undefined;
+const storeParam = url.searchParams.get("store");
+
+const cleanHost = host.split(":")[0].toLowerCase();
+const platformRoot = (import.meta.env.PLATFORM_ROOT_DOMAIN || process.env.PLATFORM_ROOT_DOMAIN || "gocommercebd.online").toLowerCase();
+const storefrontRoot = (import.meta.env.STOREFRONT_ROOT_DOMAIN || process.env.STOREFRONT_ROOT_DOMAIN || platformRoot).toLowerCase();
+
+const isPlatformHost =
+  !cleanHost ||
+  cleanHost === "localhost" ||
+  cleanHost === "127.0.0.1" ||
+  cleanHost === platformRoot ||
+  cleanHost === `www.${platformRoot}` ||
+  cleanHost === storefrontRoot ||
+  cleanHost === `www.${storefrontRoot}` ||
+  cleanHost === "gocom.bd" ||
+  cleanHost === "www.gocom.bd";
+
+let store: typeof stores.$inferSelect | undefined;
+
+try {
+  // If a merchant subdomain is explicitly accessed (e.g. grihogadget.gocom.bd or ?store=grihogadget)
+  if (storeParam) {
+    store = await db.query.stores.findFirst({
+      where: eq(stores.subdomain, storeParam.toLowerCase()),
+    });
+  } else if (!isPlatformHost) {
+    let subdomain: string | undefined;
+    if (cleanHost.endsWith(`.${platformRoot}`)) {
+      subdomain = cleanHost.slice(0, -(platformRoot.length + 1)).split(".")[0];
+    } else if (cleanHost.endsWith(`.${storefrontRoot}`)) {
+      subdomain = cleanHost.slice(0, -(storefrontRoot.length + 1)).split(".")[0];
+    } else if (cleanHost.endsWith(".gocom.bd")) {
+      subdomain = cleanHost.slice(0, -9).split(".")[0];
+    } else if (cleanHost.includes(".")) {
+      subdomain = cleanHost.split(".")[0];
+    }
+
+    if (subdomain && subdomain !== "www" && subdomain !== "app" && subdomain !== "admin" && subdomain !== "api") {
+      store = await db.query.stores.findFirst({
+        where: eq(stores.subdomain, subdomain),
+      });
+    }
+  }
+} catch (dbErr) {
+  // Graceful fallback to SaaS home page if database is temporarily offline or in dev
+  console.warn("Store lookup note:", dbErr);
+}
+
+// 2. If NO merchant store context -> Render the Platform Home Page (SaaS & eCommerce Builder Template from ppTemp)
+if (!store) {
+  let homeHtml = saasHomeHtml;
+  try {
+    const dbPlans = await db.query.plans.findMany({
+      where: eq(plans.isActive, true),
+    });
+
+    if (dbPlans && dbPlans.length > 0) {
+      const escapeHtml = (str: string) =>
+        String(str || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+
+      const sortedPlans = dbPlans
+        .map((p) => {
+          const entitlements = (p.entitlements as any) || {};
+          const pricePoishaVal = Number(p.pricePoisha || 0);
+          return {
+            name: p.name,
+            priceBdt: poishaToBdt(pricePoishaVal),
+            badge: entitlements.badge || "",
+            isPopular: Boolean(entitlements.isPopular),
+            description: entitlements.description || "",
+            featuresList: entitlements.featuresList || [],
+            fees: entitlements.fees || { physical: "0%", digital: "0%", resell: "0%" },
+            ctaText: entitlements.ctaText || "Get started →",
+            ctaLink: entitlements.ctaLink || "/create-store",
+            sortOrder: entitlements.sortOrder ?? 0,
+          };
+        })
+        .sort((a, b) => a.sortOrder - b.sortOrder);
+
+      const plansHtml =
+        '<div class="plans">' +
+        sortedPlans
+          .map((pkg) => {
+            const isPopular = pkg.isPopular;
+            const priceNum = Number(pkg.priceBdt || 0);
+            const formattedPrice = priceNum.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            });
+
+            const badgeHtml = pkg.badge
+              ? `<span class="plan-badge">${escapeHtml(pkg.badge)}</span>`
+              : isPopular
+              ? `<span class="plan-badge">MOST POPULAR</span>`
+              : "";
+
+            const featuresHtml = (pkg.featuresList || [])
+              .map(
+                (feat: string) =>
+                  `<li><i class="ri-checkbox-circle-fill"></i><span>${escapeHtml(feat)}</span></li>`
+              )
+              .join("");
+
+            const physicalFee = pkg.fees?.physical || "0%";
+            const digitalFee = pkg.fees?.digital || "0%";
+            const resellFee = pkg.fees?.resell || "0%";
+            const btnClass = isPopular ? "btn btn-primary btn-block" : "btn btn-white btn-block";
+
+            return (
+              `<div class="plan ${isPopular ? "popular " : ""}reveal visible">` +
+              badgeHtml +
+              `<h3>${escapeHtml(pkg.name)}</h3>` +
+              `<p class="plan-desc">${escapeHtml(pkg.description)}</p>` +
+              `<div class="price">` +
+              `<span class="cur">৳</span>` +
+              `<span class="amt" data-price="${priceNum}">${formattedPrice}</span>` +
+              `<span class="per">/ month</span>` +
+              `</div>` +
+              `<a href="${escapeHtml(pkg.ctaLink)}" data-open-auth="signup" class="${btnClass}">${escapeHtml(pkg.ctaText)}</a>` +
+              `<ul>${featuresHtml}</ul>` +
+              `<div class="fees">` +
+              `<div class="fees-title">Fees per order</div>` +
+              `<div class="fees-grid">` +
+              `<div><b>${escapeHtml(physicalFee)}</b><small>physical</small></div>` +
+              `<div><b>${escapeHtml(digitalFee)}</b><small>digital</small></div>` +
+              `<div><b>${escapeHtml(resellFee)}</b><small>resell</small></div>` +
+              `</div>` +
+              `</div>` +
+              `</div>`
+            );
+          })
+          .join("") +
+        "</div>";
+
+      const plansRegex = /<div class="plans">[\s\S]*?<\/div>(?=\s*<div class="section-head")/i;
+      homeHtml = homeHtml.replace(plansRegex, plansHtml);
+    }
+  } catch (err) {
+    console.warn("SSR active plans render note:", err);
+  }
+
+  Astro.response.headers.set("Content-Type", "text/html; charset=utf-8");
+  Astro.response.headers.set("Cache-Control", "public, max-age=0, s-maxage=3600");
+  return new Response(homeHtml, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "public, max-age=0, s-maxage=3600",
+    },
+  });
+}
+
+// 3. Otherwise, render Merchant Storefront Theme
+let featuredProduct: any;
+try {
+  const repo = createTenantRepository(store.id);
+  const productList = await repo.getProducts({ activeOnly: true, limit: 1 });
+  featuredProduct = productList[0];
+} catch (dbErr) {
+  console.warn("Product lookup note:", dbErr);
+}
+
+if (!featuredProduct) {
+  featuredProduct = {
+    id: "demo",
+    title: "স্মার্ট রিচার্জেবল ফুড ও মিট চপার (২৫০ মি.লি.)",
+    banglaTitle: "স্মার্ট রিচার্জেবল ফুড ও মিট চপার (২৫০ মি.লি.)",
+    slug: "demo-chopper",
+    variants: [{ id: "v1", title: "Standard 250ml", price: 105000, compareAtPrice: 145000, stockQuantity: 50 }],
+    images: [{ url: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=800" }],
+    features: ["৩টি ধারালো স্টেইনলেস স্টিল ব্লেড", "ইউএসবি রিচার্জেবল", "ওয়াটারপ্রুফ বডি"],
+  };
+}
+
+Astro.response.headers.set("Cache-Control", "public, max-age=0, s-maxage=86400");
+Astro.response.headers.set("Cache-Tag", `s:${store.id},s:${store.id}:home`);
+---
+
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{featuredProduct.banglaTitle || featuredProduct.title} — {store.name}</title>
+    <meta name="description" content={`${store.name} থেকে ক্যাশ অন ডেলিভারিতে অর্ডার করুন। সারা দেশে দ্রুত হোম ডেলিভারি।`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <meta property="og:title" content={featuredProduct.banglaTitle || featuredProduct.title} />
+    <meta property="og:description" content={`${store.name} — ক্যাশ অন ডেলিভারি`} />
+    <meta property="og:image" content={featuredProduct.images?.[0]?.url} />
+    <meta property="og:type" content="product" />
+  </head>
+  <body class="antialiased selection:bg-rose-500 selection:text-white">
+    <DynamicThemePage store={store} product={featuredProduct} previewPreset={previewPreset} />
+  </body>
+</html>

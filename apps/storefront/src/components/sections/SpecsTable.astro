@@ -1,0 +1,47 @@
+---
+import { Cpu, ShieldCheck } from "../icons.tsx";
+
+interface Props {
+  product: any;
+  settings?: {
+    warranty?: string;
+    replacement?: string;
+    specs?: Array<{ label: string; value: string }>;
+  };
+}
+
+const { product, settings = {} } = Astro.props;
+const warranty = settings.warranty || "১ বছরের অফিসিয়াল ব্র্যান্ড ওয়ারেন্টি";
+const replacement = settings.replacement || "৭ দিনের ইনস্ট্যান্ট রিপ্লেসমেন্ট গ্যারান্টি";
+const defaultSpecs = [
+  { label: "ব্র্যান্ড / মডেল", value: product.title },
+  { label: "ওয়ারেন্টি কভারেজ", value: warranty },
+  { label: "রিপ্লেসমেন্ট সুবিধা", value: replacement },
+  { label: "প্যাকেজ উপাদান", value: "মেইন ডিভাইস, চার্জিং কেবল, ইউজার ম্যানুয়াল" },
+  { label: "ডেলিভারি ধরন", value: "সারা দেশে হোম ডেলিভারি ও ক্যাশ অন ডেলিভারি" },
+];
+const specs = settings.specs || defaultSpecs;
+---
+
+<div class="bg-[var(--gocom-surface)] rounded-[var(--gocom-radius)] p-6 shadow-sm border border-[var(--gocom-border)] space-y-4">
+  <div class="flex items-center gap-2 border-b border-[var(--gocom-border)] pb-3">
+    <Cpu className="w-5 h-5 text-[var(--gocom-primary)]" />
+    <h3 class="text-lg font-bold text-[var(--gocom-text)]">টেকনিক্যাল স্পেসিফিকেশন ও ওয়ারেন্টি</h3>
+  </div>
+
+  <div class="divide-y divide-[var(--gocom-border)] text-sm">
+    {specs.map((item) => (
+      <div class="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1">
+        <span class="font-bold text-[var(--gocom-muted)]">{item.label}</span>
+        <span class="text-[var(--gocom-text)] font-medium">{item.value}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 flex items-center gap-3">
+    <ShieldCheck className="w-5 h-5 text-emerald-700 shrink-0" />
+    <p class="text-xs text-emerald-800 font-semibold">
+      আমরা সরাসরি অথেনটিক সোর্স থেকে পণ্য সংগ্রহ করি। শতভাগ অফিসিয়াল গ্যারান্টি।
+    </p>
+  </div>
+</div>

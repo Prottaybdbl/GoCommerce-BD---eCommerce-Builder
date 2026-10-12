@@ -1,0 +1,244 @@
+# ==============================================================================
+# Go Commerce BD — Coolify Production Stack (Ubuntu 24.04 / 4 GB RAM VPS)
+# Architecture: Cloudflare Tunnel + Hono API + Astro Storefront + Worker + DB
+# ==============================================================================
+
+services:
+  # 1. PostgreSQL 18 Multi-Tenant Database
+  postgres:
+    image: postgres:18-alpine
+    container_name: gocom-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-gocom_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-gocom_db}
+    volumes:
+      - postgres_data_v18:/var/lib/postgresql
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-gocom_user} -d ${POSTGRES_DB:-gocom_db} || pg_isready -U ${POSTGRES_USER:-gocom_user}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - gocom_internal
+
+  # 2. Valkey 8 (Redis-compatible In-Memory Cache & Queue)
+  valkey:
+    image: valkey/valkey:8-alpine
+    container_name: gocom-valkey
+    restart: unless-stopped
+    command: valkey-server --maxmemory 128mb --maxmemory-policy noeviction --appendonly yes
+    volumes:
+      - valkey_data:/data
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - gocom_internal
+
+  # 2.5 Database Migration Init Service (Runs committed SQL migrations before API boots)
+  migration:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: gocom-migration
+    restart: "no"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-gocom_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-gocom_db}
+      SUPERADMIN_EMAIL: ${SUPERADMIN_EMAIL:-}
+      SUPERADMIN_PASSWORD: ${SUPERADMIN_PASSWORD:-}
+      SUPERADMIN_NAME: ${SUPERADMIN_NAME:-Super Admin}
+    command: ["node", "/app/packages/db/dist/migrate.js"] # @gocom/db migrate
+    networks:
+      - gocom_internal
+
+  # 3. Hono API Server (Merchant Backend & Checkout)
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: gocom-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+      migration:
+        condition: service_completed_successfully
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-gocom_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-gocom_db}
+      REDIS_URL: redis://valkey:6379
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?set BETTER_AUTH_SECRET (min 32 chars)}
+      BETTER_AUTH_URL: https://app.${PLATFORM_ROOT_DOMAIN}
+      PLATFORM_ROOT_DOMAIN: ${PLATFORM_ROOT_DOMAIN}
+      STOREFRONT_ROOT_DOMAIN: ${STOREFRONT_ROOT_DOMAIN}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      R2_ACCOUNT_ID: ${R2_ACCOUNT_ID:?set R2_ACCOUNT_ID}
+      R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID:?set R2_ACCESS_KEY_ID}
+      R2_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY:?set R2_SECRET_ACCESS_KEY}
+      R2_BUCKET_NAME: ${R2_BUCKET_NAME:?set R2_BUCKET_NAME}
+      R2_PUBLIC_DOMAIN: ${R2_PUBLIC_DOMAIN:?set R2_PUBLIC_DOMAIN}
+      CLOUDFLARE_ZONE_ID: ${CLOUDFLARE_ZONE_ID:-}
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
+      TURNSTILE_SECRET_KEY: ${TURNSTILE_SECRET_KEY:?set TURNSTILE_SECRET_KEY}
+      ENCRYPTION_MASTER_KEY: ${ENCRYPTION_MASTER_KEY:?set ENCRYPTION_MASTER_KEY (64 hex chars)}
+      FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID:-}
+      FIREBASE_CLIENT_EMAIL: ${FIREBASE_CLIENT_EMAIL:-}
+      FIREBASE_PRIVATE_KEY: ${FIREBASE_PRIVATE_KEY:-}
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    volumes:
+      - template_cache:/app/template-cache
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      - "traefik.http.services.api.loadbalancer.server.port=3000"
+      - "traefik.http.services.gocom-api.loadbalancer.server.port=3000"
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/health/live').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - coolify
+      - gocom_internal
+
+  # 4. BullMQ Outbox Background Worker (FCM & Async Tasks)
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: gocom-worker
+    restart: unless-stopped
+    command: ["node", "dist/worker.js"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+      migration:
+        condition: service_completed_successfully
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-gocom_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-gocom_db}
+      REDIS_URL: redis://valkey:6379
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?set BETTER_AUTH_SECRET (min 32 chars)}
+      BETTER_AUTH_URL: https://app.${PLATFORM_ROOT_DOMAIN}
+      PLATFORM_ROOT_DOMAIN: ${PLATFORM_ROOT_DOMAIN}
+      STOREFRONT_ROOT_DOMAIN: ${STOREFRONT_ROOT_DOMAIN}
+      R2_ACCOUNT_ID: ${R2_ACCOUNT_ID:?set R2_ACCOUNT_ID}
+      R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID:?set R2_ACCESS_KEY_ID}
+      R2_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY:?set R2_SECRET_ACCESS_KEY}
+      R2_BUCKET_NAME: ${R2_BUCKET_NAME:?set R2_BUCKET_NAME}
+      R2_PUBLIC_DOMAIN: ${R2_PUBLIC_DOMAIN:?set R2_PUBLIC_DOMAIN}
+      TURNSTILE_SECRET_KEY: ${TURNSTILE_SECRET_KEY:?set TURNSTILE_SECRET_KEY}
+      ENCRYPTION_MASTER_KEY: ${ENCRYPTION_MASTER_KEY:?set ENCRYPTION_MASTER_KEY (64 hex chars)}
+      FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID:-}
+      FIREBASE_CLIENT_EMAIL: ${FIREBASE_CLIENT_EMAIL:-}
+      FIREBASE_PRIVATE_KEY: ${FIREBASE_PRIVATE_KEY:-}
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    networks:
+      - gocom_internal
+
+  # 5. Astro Storefront (Server-Rendered Islands)
+  storefront:
+    build:
+      context: .
+      dockerfile: Dockerfile.storefront
+    container_name: gocom-storefront
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+      migration:
+        condition: service_completed_successfully
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4321
+      API_INTERNAL_URL: http://api:3000
+      PLATFORM_ROOT_DOMAIN: ${PLATFORM_ROOT_DOMAIN}
+      STOREFRONT_ROOT_DOMAIN: ${STOREFRONT_ROOT_DOMAIN}
+      # Verifies the signed theme draft-preview tokens minted by the API; without
+      # it the dashboard's preview pane can only ever show the published design.
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?set BETTER_AUTH_SECRET (min 32 chars)}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-gocom_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-gocom_db}
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      - "traefik.http.services.storefront.loadbalancer.server.port=4321"
+      - "traefik.http.services.gocom-storefront.loadbalancer.server.port=4321"
+    expose:
+      - "4321"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4321/health').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - coolify
+      - gocom_internal
+
+  # 6. Cloudflare Tunnel (Zero Public Ports Inbound - run with --profile tunnel if enabled)
+  cloudflared:
+    profiles: ["tunnel"]
+    image: cloudflare/cloudflared:2025.2.1
+    container_name: gocom-cloudflared
+    restart: unless-stopped
+    command: tunnel run --token ${CLOUDFLARE_TUNNEL_TOKEN:-}
+    depends_on:
+      - api
+      - storefront
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    networks:
+      - gocom_internal
+
+volumes:
+  postgres_data_v18:
+  valkey_data:
+  template_cache:
+
+networks:
+  coolify:
+    external: true
+  gocom_internal:
+    driver: bridge

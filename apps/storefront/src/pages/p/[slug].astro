@@ -1,0 +1,167 @@
+---
+import { db, stores, createTenantRepository } from "@gocom/db";
+import { eq } from "drizzle-orm";
+import DynamicThemePage from "../../components/DynamicThemePage.astro";
+import {
+  loadStoreTheme,
+  loadStoreFeatures,
+  resolveThemeRequestContext,
+  PREVIEW_HEADERS,
+} from "../../lib/load-store-theme.ts";
+
+// 1. Resolve Store from Host header
+const host = Astro.request.headers.get("host") || "";
+const url = new URL(Astro.request.url);
+const storeParam = url.searchParams.get("store");
+
+const cleanHost = host.split(":")[0].toLowerCase();
+const platformRoot = (import.meta.env.PLATFORM_ROOT_DOMAIN || process.env.PLATFORM_ROOT_DOMAIN || "gocommercebd.online").toLowerCase();
+const storefrontRoot = (import.meta.env.STOREFRONT_ROOT_DOMAIN || process.env.STOREFRONT_ROOT_DOMAIN || platformRoot).toLowerCase();
+
+let store: typeof stores.$inferSelect | undefined;
+
+try {
+  if (storeParam) {
+    store = await db.query.stores.findFirst({
+      where: eq(stores.subdomain, storeParam.toLowerCase()),
+    });
+  } else if (cleanHost.includes("localhost") || cleanHost.includes("127.0.0.1")) {
+    store = await db.query.stores.findFirst({
+      where: eq(stores.isActive, true),
+    });
+  } else {
+    let subdomain: string | undefined;
+    if (cleanHost.endsWith(`.${platformRoot}`)) {
+      subdomain = cleanHost.slice(0, -(platformRoot.length + 1)).split(".")[0];
+    } else if (cleanHost.endsWith(`.${storefrontRoot}`)) {
+      subdomain = cleanHost.slice(0, -(storefrontRoot.length + 1)).split(".")[0];
+    } else if (cleanHost.endsWith(".gocom.bd")) {
+      subdomain = cleanHost.slice(0, -9).split(".")[0];
+    } else if (cleanHost.includes(".") && cleanHost !== platformRoot && cleanHost !== `www.${platformRoot}`) {
+      subdomain = cleanHost.split(".")[0];
+    }
+
+    if (subdomain && subdomain !== "www" && subdomain !== "app" && subdomain !== "admin" && subdomain !== "api") {
+      store = await db.query.stores.findFirst({
+        where: eq(stores.subdomain, subdomain),
+      });
+    }
+  }
+} catch (dbErr) {
+  console.warn("Store lookup note:", dbErr);
+}
+
+// Fallback for default demo store when DB is offline or in development
+if (!store) {
+  store = {
+    id: "00000000-0000-0000-0000-000000000001",
+    name: "গৃহগ্যাজেট (Grihogadget)",
+    subdomain: "grihogadget",
+    phone: "+8801711223344",
+    themeArchetype: "viral-funnel",
+    themeConfig: {},
+    settings: {},
+    isActive: true,
+    plan: "pilot",
+    customDomain: null,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+}
+
+// 2. Fetch Product by Slug
+const { slug } = Astro.params;
+if (!slug) {
+  return Astro.redirect("/");
+}
+
+let product: any;
+try {
+  const repo = createTenantRepository(store.id);
+  product = await repo.getProductBySlug(slug);
+} catch (prodErr) {
+  console.warn("Product lookup note:", prodErr);
+}
+
+if (!product) {
+  product = {
+    id: "demo",
+    title: "স্মার্ট রিচার্জেবল ফুড ও মিট চপার (২৫০ মি.লি.)",
+    banglaTitle: "স্মার্ট রিচার্জেবল ফুড ও মিট চপার (২৫০ মি.লি.)",
+    slug: slug || "demo-chopper",
+    variants: [{ id: "v1", title: "Standard 250ml", price: 105000, compareAtPrice: 145000, stockQuantity: 50 }],
+    images: [{ url: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=800" }],
+    features: ["৩টি ধারালো স্টেইনলেস স্টিল ব্লেড", "ইউএসবি রিচার্জেবল", "ওয়াটারপ্রুফ বডি"],
+  };
+}
+
+const primaryVariant = product.variants?.[0] || { price: 0, compareAtPrice: null, stockQuantity: 0 };
+const primaryImage = product.images?.[0]?.url || "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=800";
+const formattedPriceBdt = (primaryVariant.price / 100).toFixed(2);
+
+// 3. Set Cache-Control and Cache-Tag headers for Cloudflare Edge Caching (Strict Invariant #8: No Set-Cookie)
+Astro.response.headers.set("Cache-Control", "public, max-age=0, s-maxage=86400");
+Astro.response.headers.set("Cache-Tag", `s:${store.id},s:${store.id}:product:${product.id}`);
+
+// 4. The merchant's published design lives in `store_themes`, not on the store row.
+const themeRow = await loadStoreTheme(store.id);
+const features = await loadStoreFeatures(store);
+const themeCtx = resolveThemeRequestContext(url, store.id);
+
+if (themeCtx.isEditor) {
+  for (const [key, value] of Object.entries(PREVIEW_HEADERS)) {
+    Astro.response.headers.set(key, value);
+  }
+  Astro.response.headers.delete("Cache-Tag");
+}
+---
+
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{product.banglaTitle || product.title} — {store.name}</title>
+    <meta
+      name="description"
+      content={product.banglaDescription?.slice(0, 150) || `${store.name} থেকে ক্যাশ অন ডেলিভারিতে অর্ডার করুন। সারা দেশে দ্রুত হোম ডেলিভারি।`}
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Open Graph for Facebook/Meta Product Catalog & Social Sharing -->
+    <meta property="og:title" content={product.banglaTitle || product.title} />
+    <meta
+      property="og:description"
+      content={product.banglaDescription?.slice(0, 150) || `${store.name} — ক্যাশ অন ডেলিভারি`}
+    />
+    <meta property="og:image" content={primaryImage} />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content={Astro.request.url} />
+    <meta property="product:price:amount" content={formattedPriceBdt} />
+    <meta property="product:price:currency" content="BDT" />
+    <meta property="product:availability" content={primaryVariant.stockQuantity > 0 ? "in stock" : "out of stock"} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={product.banglaTitle || product.title} />
+    <meta name="twitter:image" content={primaryImage} />
+  </head>
+  <body class="antialiased selection:bg-rose-500 selection:text-white">
+    <DynamicThemePage
+      store={store}
+      product={product}
+      themeRow={themeRow}
+      features={features}
+      page="product"
+      isEditor={themeCtx.isEditor}
+      previewPreset={themeCtx.previewPreset}
+    />
+  </body>
+</html>

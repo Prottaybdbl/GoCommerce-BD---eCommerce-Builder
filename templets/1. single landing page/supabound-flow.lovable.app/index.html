@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="image" href="assets/duftx-bottle-aWnZoDoN.jpg"/><link rel="stylesheet" href="assets/styles-CZhzz4C4.css" data-precedence="default"/><title>DUFT X — Own The Room Before You Say A Word</title><meta name="author" content="Lovable"/><meta property="og:type" content="website"/><meta name="twitter:site" content="@Lovable"/><meta name="twitter:title" content="perfume"/><meta name="twitter:description" content="Supabase Buddy connects your application to a Supabase project, enabling data management and authentication."/><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e6d7f27a-93d4-4f5e-b8b4-fac94cc2ca6d/id-preview-3e6c86da--8af4bb5e-40e8-4d04-acb9-df36ae5960b2.lovable.app-1782544467240.png"/><meta name="description" content="DUFT X is a bold signature fragrance for men who leave a lasting impression. Premium 30ml Eau De Parfum with long-lasting performance."/><meta property="og:title" content="DUFT X — Signature Fragrance For Men"/><meta property="og:description" content="A luxurious blend that stays with you from morning to midnight. Order now — Tk 850 with free delivery."/><meta property="og:image" content="/assets/duftx-bottle-aWnZoDoN.jpg"/><meta name="twitter:card" content="summary_large_image"/><link rel="modulepreload" href="assets/index-BiJsPivZ.js"/><link rel="modulepreload" href="assets/useRouter-3_GqBOsP.js"/><link rel="modulepreload" href="assets/useStore-DYfnNNtJ.js"/><link rel="modulepreload" href="assets/redirect-CaDPrkdo.js"/><link rel="modulepreload" href="assets/routes-D0nzDnQ9.js"/><link rel="modulepreload" href="assets/createLucideIcon-rcG7ZyJl.js"/><link rel="modulepreload" href="assets/phone-ODiNARqv.js"/>
+<style>
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+		transition: opacity var(--badge-transition-duration) var(--badge-transition-easing);
+	}
+
+	#lovable-badge.closing {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	#lovable-badge-cta {
+		display: flex;
+		align-items: baseline;
+		gap: var(--badge-gap);
+		box-sizing: border-box;
+		padding: 4px var(--badge-padding) 0;
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
+
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
+
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
+
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
+
+	#lovable-badge-text {
+		line-height: 1;
+	}
+
+	/* The wordmark baseline sits at y=12 of the 16px logo; an empty 12px box
+	   makes that the flex baseline so the text aligns to it on any system font. */
+	#lovable-badge-logo {
+		position: relative;
+		display: block;
+		width: 52px;
+		height: 12px;
+	}
+
+	#lovable-badge-logo svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
+
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
+
+	#lovable-badge-close:focus {
+		outline: none;
+	}
+
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
+
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
+
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge,
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
+
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+</style>
+<script defer src="~flock.js" data-proxy-url="/~api/analytics"></script></head><body><!--$--><main class="min-h-screen"><header class="fixed inset-x-0 top-0 z-40 transition-all duration-300 bg-transparent"><nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12"><a href="index.html#top" class="font-display text-xl tracking-[0.3em] text-gold-gradient">DUFT X</a><div class="hidden items-center gap-8 md:flex"><button class="text-xs uppercase tracking-[0.25em] text-white/70 transition hover:text-gold">Story</button><button class="text-xs uppercase tracking-[0.25em] text-white/70 transition hover:text-gold">Notes</button><button class="text-xs uppercase tracking-[0.25em] text-white/70 transition hover:text-gold">Collection</button><button class="text-xs uppercase tracking-[0.25em] text-white/70 transition hover:text-gold">Order</button></div><div class="flex items-center gap-3"><button aria-label="Toggle theme" class="rounded-full border border-gold/30 p-2 text-gold transition hover:bg-gold/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun h-4 w-4" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></button><button class="hidden sm:inline-flex items-center rounded-full border border-gold/40 px-5 py-2 text-xs uppercase tracking-[0.25em] text-gold transition hover:bg-gold/10">Order Now</button></div></nav></header><section id="top" class="relative min-h-screen overflow-hidden pt-20" style="background:var(--gradient-hero)"><div class="pointer-events-none absolute inset-0 overflow-hidden"><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:0%;animation:ember-rise 8s linear 0s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:53%;animation:ember-rise 9s linear 0.4s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:6%;animation:ember-rise 10s linear 0.8s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:59%;animation:ember-rise 11s linear 1.2000000000000002s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:12%;animation:ember-rise 12s linear 1.6s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:65%;animation:ember-rise 13s linear 2s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:18%;animation:ember-rise 8s linear 2.4000000000000004s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:71%;animation:ember-rise 9s linear 2.8000000000000003s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:24%;animation:ember-rise 10s linear 3.2s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:77%;animation:ember-rise 11s linear 3.6s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:30%;animation:ember-rise 12s linear 4s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:83%;animation:ember-rise 13s linear 4.4s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:36%;animation:ember-rise 8s linear 4.800000000000001s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:89%;animation:ember-rise 9s linear 5.2s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:42%;animation:ember-rise 10s linear 5.6000000000000005s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:95%;animation:ember-rise 11s linear 6s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:48%;animation:ember-rise 12s linear 6.4s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:1%;animation:ember-rise 13s linear 6.800000000000001s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span></div><div class="relative z-10 mx-auto flex max-w-7xl flex-col-reverse gap-10 px-6 pb-24 pt-4 md:grid md:grid-cols-2 md:gap-8 md:pb-16 md:pt-16 md:px-12"><div class="flex flex-col justify-center" style="opacity:0;transform:translateX(-30px)"><span class="mb-6 text-xs uppercase tracking-[0.4em] text-gold/80">Signature Fragrance</span><h1 class="font-display text-4xl leading-[1.05] sm:text-5xl md:text-7xl">Own The Room<br/><span class="text-gold-gradient">Before You Say</span><br/>A Word.</h1><p class="mt-6 max-w-md text-sm leading-relaxed text-white/70 sm:text-base md:mt-8 md:text-lg">DUFT X is crafted for men who leave a lasting impression. A bold signature fragrance with a luxurious blend that stays with you from morning to midnight.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 md:mt-10"><button class="btn-glow w-full rounded-full bg-gradient-to-r from-crimson to-crimson-glow px-8 py-4 font-display text-xs uppercase tracking-[0.25em] text-white sm:w-auto sm:px-10 sm:text-sm">Order Now — Tk <!-- -->850</button><button class="w-full rounded-full border border-white/20 px-8 py-4 text-xs uppercase tracking-[0.25em] text-white/80 transition hover:border-gold/60 hover:text-gold sm:w-auto sm:text-sm">Fragrance Story</button></div><div class="mt-10 grid grid-cols-2 gap-3 text-[11px] text-white/60 sm:text-xs md:mt-12 md:grid-cols-4"><div class="flex items-center gap-2"><span class="text-gold">✦</span><span class="uppercase tracking-wider leading-tight">Long Lasting</span></div><div class="flex items-center gap-2"><span class="text-gold">✦</span><span class="uppercase tracking-wider leading-tight">Imported Ingredients</span></div><div class="flex items-center gap-2"><span class="text-gold">✦</span><span class="uppercase tracking-wider leading-tight">30ml Eau De Parfum</span></div><div class="flex items-center gap-2"><span class="text-gold">✦</span><span class="uppercase tracking-wider leading-tight">Free Delivery</span></div></div></div><div class="relative flex items-center justify-center" style="transform:none"><div class="pointer-events-none absolute inset-0 m-auto h-[260px] w-[260px] animate-pulse-glow rounded-full bg-crimson/30 blur-3xl md:h-[420px] md:w-[420px]"></div><img src="assets/duftx-bottle-aWnZoDoN.jpg" alt="DUFT X luxury perfume bottle" width="1024" height="1024" class="animate-float relative z-10 w-[62%] max-w-[280px] rounded-3xl object-contain drop-shadow-[0_30px_60px_rgba(200,17,46,0.4)] sm:w-[70%] sm:max-w-sm md:w-[78%] md:max-w-md" style="opacity:0;transform:scale(0.9)"/></div></div></section><section id="notes" class="relative bg-ink px-6 py-24 md:px-12"><div class="mx-auto max-w-6xl"><div class="mb-16 text-center"><span class="text-xs uppercase tracking-[0.4em] text-gold/80">The Composition</span><h2 class="mt-4 font-display text-4xl md:text-5xl">A Symphony In Three Acts</h2></div><div class="grid gap-6 md:grid-cols-3"><div class="glass-card rounded-2xl p-8 text-center" style="opacity:0;transform:translateY(30px)"><div class="mb-4 text-3xl text-gold">✺</div><h3 class="font-display text-2xl text-gold-gradient">Top<!-- --> Notes</h3><p class="mt-3 text-sm leading-relaxed text-white/70">Bergamot, Black Pepper, Cardamom</p></div><div class="glass-card rounded-2xl p-8 text-center" style="opacity:0;transform:translateY(30px)"><div class="mb-4 text-3xl text-gold">✦</div><h3 class="font-display text-2xl text-gold-gradient">Heart<!-- --> Notes</h3><p class="mt-3 text-sm leading-relaxed text-white/70">Oud, Smoked Leather, Saffron</p></div><div class="glass-card rounded-2xl p-8 text-center" style="opacity:0;transform:translateY(30px)"><div class="mb-4 text-3xl text-gold">❖</div><h3 class="font-display text-2xl text-gold-gradient">Base<!-- --> Notes</h3><p class="mt-3 text-sm leading-relaxed text-white/70">Amber, Vanilla, Sandalwood</p></div></div></div></section><section id="story" class="relative overflow-hidden px-6 py-24 md:px-12" style="background:var(--gradient-section)"><div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:items-center"><div style="opacity:0;transform:translateX(-30px)"><span class="text-xs uppercase tracking-[0.4em] text-gold/80">The Story</span><h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">Crafted For The<br/><span class="text-gold-gradient">Unforgettable</span></h2><p class="mt-6 text-white/70 leading-relaxed">Born from rare ingredients sourced across three continents, <!-- -->DUFT X<!-- --> is a 14-hour performance fragrance. Every spray is a declaration — confident, magnetic, and quietly powerful. This is not a scent you wear. It&#x27;s a presence you announce.</p><div class="mt-8 grid grid-cols-3 gap-6"><div><div class="font-display text-3xl text-gold-gradient">14h</div><div class="mt-1 text-xs uppercase tracking-wider text-white/50">Longevity</div></div><div><div class="font-display text-3xl text-gold-gradient">3</div><div class="mt-1 text-xs uppercase tracking-wider text-white/50">Continents</div></div><div><div class="font-display text-3xl text-gold-gradient">30ml</div><div class="mt-1 text-xs uppercase tracking-wider text-white/50">Eau de Parfum</div></div></div></div><div class="relative" style="opacity:0;transform:scale(0.95)"><div class="absolute inset-0 m-auto h-80 w-80 rounded-full bg-crimson/20 blur-3xl"></div><img src="assets/duftx-bottle-aWnZoDoN.jpg" alt="DUFT X bottle" loading="lazy" width="1024" height="1024" class="relative w-full rounded-3xl object-contain"/></div></div></section><section class="bg-ink px-6 py-24 md:px-12"><div class="mx-auto max-w-6xl"><div class="mb-12 text-center"><span class="text-xs uppercase tracking-[0.4em] text-gold/80">Worn By</span><h2 class="mt-4 font-display text-4xl md:text-5xl">Men Who Lead The Room</h2></div><div class="grid gap-6 md:grid-cols-3"><div class="glass-card rounded-2xl p-8" style="opacity:0;transform:translateY(20px)"><div class="mb-3 text-gold text-lg">★★★★★</div><p class="font-display text-lg leading-snug text-white/90">&quot;<!-- -->I get asked what I&#x27;m wearing every single time.<!-- -->&quot;</p><p class="mt-4 text-xs uppercase tracking-[0.2em] text-white/50">— Rafiq H.</p></div><div class="glass-card rounded-2xl p-8" style="opacity:0;transform:translateY(20px)"><div class="mb-3 text-gold text-lg">★★★★★</div><p class="font-display text-lg leading-snug text-white/90">&quot;<!-- -->Wore it to a wedding. People still remember.<!-- -->&quot;</p><p class="mt-4 text-xs uppercase tracking-[0.2em] text-white/50">— Tanvir A.</p></div><div class="glass-card rounded-2xl p-8" style="opacity:0;transform:translateY(20px)"><div class="mb-3 text-gold text-lg">★★★★★</div><p class="font-display text-lg leading-snug text-white/90">&quot;<!-- -->Smells like luxury bottled. Worth every taka.<!-- -->&quot;</p><p class="mt-4 text-xs uppercase tracking-[0.2em] text-white/50">— Sakib R.</p></div></div></div></section><section id="order" class="relative px-6 py-24 md:px-12" style="background:var(--gradient-hero)"><div class="pointer-events-none absolute inset-0 overflow-hidden"><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:0%;animation:ember-rise 8s linear 0s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:53%;animation:ember-rise 9s linear 0.4s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:6%;animation:ember-rise 10s linear 0.8s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:59%;animation:ember-rise 11s linear 1.2000000000000002s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:12%;animation:ember-rise 12s linear 1.6s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:65%;animation:ember-rise 13s linear 2s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:18%;animation:ember-rise 8s linear 2.4000000000000004s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:71%;animation:ember-rise 9s linear 2.8000000000000003s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:24%;animation:ember-rise 10s linear 3.2s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:77%;animation:ember-rise 11s linear 3.6s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:30%;animation:ember-rise 12s linear 4s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:83%;animation:ember-rise 13s linear 4.4s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:36%;animation:ember-rise 8s linear 4.800000000000001s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:89%;animation:ember-rise 9s linear 5.2s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:42%;animation:ember-rise 10s linear 5.6000000000000005s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:95%;animation:ember-rise 11s linear 6s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:48%;animation:ember-rise 12s linear 6.4s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span><span class="absolute bottom-0 h-1 w-1 rounded-full bg-crimson-glow" style="left:1%;animation:ember-rise 13s linear 6.800000000000001s infinite;box-shadow:0 0 8px #c8112e, 0 0 16px #8B001E"></span></div><div class="relative mx-auto max-w-3xl"><div class="mb-10 text-center"><span class="text-xs uppercase tracking-[0.4em] text-gold/80">Reserve Yours</span><h2 class="mt-4 font-display text-4xl md:text-5xl">Place Your Order</h2><p class="mt-3 text-white/60">Cash on Delivery · Free shipping across Bangladesh</p></div><form class="glass-card rounded-3xl p-8 md:p-10"><div class="grid gap-5 md:grid-cols-2"><label class="block"><span class="mb-2 block text-xs uppercase tracking-[0.25em] text-white/50">Full Name</span><input placeholder="Your name" required="" class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-gold/50 focus:outline-none" maxLength="120" name="name"/></label><label class="block"><span class="mb-2 block text-xs uppercase tracking-[0.25em] text-white/50">Phone</span><input placeholder="01XXXXXXXXX" required="" class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-gold/50 focus:outline-none" maxLength="120" name="phone"/></label></div><div class="mt-5"><label class="block"><span class="mb-2 block text-xs uppercase tracking-[0.25em] text-white/50">Delivery Address</span><textarea name="address" placeholder="House, Road, Area, City" required="" rows="3" class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-gold/50 focus:outline-none" maxLength="500"></textarea></label></div><div class="mt-5"><label class="block"><span class="mb-2 block text-xs uppercase tracking-[0.25em] text-white/50">Notes (optional)</span><input placeholder="Anything we should know" class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-gold/50 focus:outline-none" maxLength="120" name="notes"/></label></div><div class="mt-6 flex items-center justify-between rounded-2xl border border-gold/20 bg-black/40 p-5"><div><div class="text-xs uppercase tracking-[0.25em] text-white/50">Quantity</div><div class="mt-2 flex items-center gap-3"><button type="button" class="h-9 w-9 rounded-full border border-gold/30 text-gold hover:bg-gold/10">−</button><span class="w-8 text-center font-display text-xl">1</span><button type="button" class="h-9 w-9 rounded-full border border-gold/30 text-gold hover:bg-gold/10">+</button></div></div><div class="text-right"><div class="text-xs uppercase tracking-[0.25em] text-white/50">Total</div><div class="font-display text-3xl text-gold-gradient">Tk <!-- -->850</div></div></div><button type="submit" class="btn-glow mt-6 w-full rounded-full bg-gradient-to-r from-crimson to-crimson-glow py-4 font-display text-sm uppercase tracking-[0.3em] text-white disabled:opacity-60">Confirm Order — Tk 850</button><p class="mt-3 text-center text-xs text-white/40">Cash on Delivery · 7-day return</p></form></div></section><footer class="bg-ink border-t border-white/5 px-6 py-16 md:px-12"><div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-4"><div class="md:col-span-2"><div class="font-display text-2xl tracking-[0.3em] text-gold-gradient">DUFT X</div><p class="mt-4 max-w-sm text-sm leading-relaxed text-white/60">A signature fragrance crafted for men who leave a lasting impression. Premium ingredients. Long-lasting performance.</p><div class="mt-5 flex items-center gap-3"></div></div><div><h4 class="font-display text-sm uppercase tracking-[0.25em] text-gold">Explore</h4><ul class="mt-4 space-y-2 text-sm text-white/60"><li><button class="transition hover:text-gold">Our Story</button></li><li><button class="transition hover:text-gold">Fragrance Notes</button></li><li><button class="transition hover:text-gold">Collection</button></li><li><button class="transition hover:text-gold">Place Order</button></li></ul></div><div><h4 class="font-display text-sm uppercase tracking-[0.25em] text-gold">Contact</h4><ul class="mt-4 space-y-3 text-sm text-white/60"></ul></div></div><div class="mx-auto mt-12 max-w-6xl border-t border-white/5 pt-6 text-center text-xs text-white/40">© 2026 DUFT X. Crafted in Bangladesh. All rights reserved.</div></footer><div class="fixed inset-x-0 bottom-0 z-50 md:hidden transition-transform translate-y-full"><a href="index.html#order" class="block bg-gradient-to-r from-crimson to-crimson-glow px-6 py-4 text-center font-display text-sm uppercase tracking-[0.25em] text-white" style="box-shadow:0 -10px 40px rgba(200, 17, 46, 0.4)">Order Now — Tk <!-- -->850<!-- --> · Free Delivery</a></div></main><script>(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||"{}")}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&&Number.isFinite(s)){if(t==="window")scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&&(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&&e.scrollIntoView(t)}return}scrollTo(0,0)})("tsr-scroll-restoration-v1_3");document.currentScript.remove()</script><!--/$--><section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"></section><script class="$tsr" id="$tsr-stream-barrier">(self.$R=self.$R||{})["tsr"]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&&this.streamEnded&&(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=>$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=["/assets/index-BiJsPivZ.js","/assets/useRouter-3_GqBOsP.js","/assets/useStore-DYfnNNtJ.js","/assets/redirect-CaDPrkdo.js"],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:"module",async:!0,src:"/assets/index-BiJsPivZ.js"}}]},"/":$R[8]={preloads:$R[9]=["/assets/routes-D0nzDnQ9.js","/assets/createLucideIcon-rcG7ZyJl.js","/assets/phone-ODiNARqv.js"]}}},matches:$R[10]=[$R[11]={i:"__root__ ",u:1791232817376,s:"success",ssr:!0},$R[12]={i:"  ",u:1791232817376,s:"success",ssr:!0}],lastMatchId:"  "})($R["tsr"]);$_TSR.e();document.currentScript.remove()</script><script type="module" async="" src="assets/index-BiJsPivZ.js"></script>
+<aside
+	id="lovable-badge"
+	role="complementary"
+	dir="ltr"
+	lang="en"
+	aria-label="Edit with Lovable">
+	<a
+		id="lovable-badge-cta" 
+		target="_blank" 
+		href="https://lovable.dev/projects/lovp_6jbaeeaqb995svw562ys12gp8g?utm_source=lovable-badge"
+		rel="noopener nofollow"
+		aria-label="Edit with Lovable">
+		<span id="lovable-badge-text">Edit with</span>
+		<span id="lovable-badge-logo"><svg xmlns="http://www.w3.org/2000/svg" width="52" height="16" fill="none" viewBox="0 0 52 16">
+  <path fill="#FCFBF8" fill-rule="evenodd" d="M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z" clip-rule="evenodd"/>
+  <path fill="#FCFBF8" d="m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z"/>
+  <path fill="url(#a)" fill-rule="evenodd" d="M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z" clip-rule="evenodd"/>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)" gradientUnits="userSpaceOnUse">
+      <stop offset=".106" stop-color="#FE7B02"/>
+      <stop offset=".394" stop-color="#FE3F21"/>
+      <stop offset=".608" stop-color="#F858BC"/>
+      <stop offset=".929" stop-color="#575ECF"/>
+    </radialGradient>
+  </defs>
+</svg>
+
+</span>
+	</a>
+	
+	<span id="lovable-badge-divider" aria-hidden="true"></span>
+	
+	<button 
+		id="lovable-badge-close"
+		aria-label="Dismiss"
+		title="Dismiss"
+		type="button">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+			<path d="M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z"/>
+		</svg>
+	</button>
+</aside>
+<script>
+	(() => {
+		if (window.self !== window.top || navigator.userAgent.includes('puppeteer')) {
+			const badge = document.querySelector('#lovable-badge');
+			if (badge) {
+				badge.style.display = 'none';
+			}
+			return;
+		}
+
+		const closeButton = document.querySelector('#lovable-badge-close');
+		if (closeButton) {
+			closeButton.addEventListener('click', function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				const badge = document.querySelector('#lovable-badge');
+				if (badge) {
+					badge.classList.add('closing');
+					setTimeout(function() {
+						if (badge) {
+							badge.style.display = 'none';
+						}
+					}, 240);
+				}
+			});
+		}
+	})();
+</script>
+</body></html>

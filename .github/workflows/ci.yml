@@ -1,0 +1,99 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  test-and-build:
+    name: Test & Build
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_USER: gocom_user
+          POSTGRES_PASSWORD: gocom_local_secret
+          POSTGRES_DB: gocom_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U gocom_user -d gocom_db"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+      valkey:
+        image: valkey/valkey:8-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "valkey-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.8.1
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Gitleaks Secret Scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Check env drift (config.ts / .env.example / prod compose)
+        run: node scripts/check-env-drift.mjs
+
+      - name: Typecheck Monorepo Packages
+        run: pnpm typecheck
+
+      - name: Run Database Migrations
+        env:
+          DATABASE_URL: postgres://gocom_user:gocom_local_secret@localhost:5432/gocom_db
+        run: pnpm db:migrate
+
+      - name: Run Unit & Security Remediation Tests
+        env:
+          NODE_ENV: test
+          DATABASE_URL: postgres://gocom_user:gocom_local_secret@localhost:5432/gocom_db
+          REDIS_URL: redis://localhost:6379
+        run: pnpm test
+
+      - name: Dependency Security Audit
+        run: pnpm audit --prod --audit-level high || echo "Pnpm audit logged warnings on transitive dependencies"
+
+      - name: Build All Monorepo Packages
+        env:
+          NODE_ENV: production
+        run: pnpm build

@@ -1,0 +1,31 @@
+---
+import { formatBdt } from "@gocom/contracts/utils";
+
+interface Props {
+  product: any;
+  settings?: {
+    buttonText?: string;
+  };
+}
+
+const { product, settings = {} } = Astro.props;
+const primaryVariant = product.variants?.[0] || { price: 0 };
+const buttonText = settings.buttonText || "অর্ডার করতে ক্লিক করুন";
+---
+
+<aside class="fixed bottom-0 inset-x-0 z-50 bg-[var(--gocom-surface)]/95 backdrop-blur-md border-t border-[var(--gocom-border)] p-3 sm:hidden shadow-2xl">
+  <div class="flex items-center justify-between gap-3">
+    <div>
+      <p class="text-[11px] text-[var(--gocom-muted)] font-semibold">ক্যাশ অন ডেলিভারি</p>
+      <p class="text-base font-black text-[var(--gocom-primary)]">
+        {formatBdt(primaryVariant.price)}
+      </p>
+    </div>
+    <a
+      href="#checkout-section"
+      class="flex-1 py-3 bg-[var(--gocom-accent)] hover:opacity-95 text-white rounded-[calc(var(--gocom-radius)-0.25rem)] text-center text-sm font-extrabold shadow-md shadow-emerald-600/30 transition-all"
+    >
+      {buttonText}
+    </a>
+  </div>
+</aside>

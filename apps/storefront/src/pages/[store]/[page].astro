@@ -1,0 +1,24 @@
+---
+/**
+ * Sub-pages of a multi-page gallery template: `/<store>/about`, `/<store>/shop`, …
+ * Only exists for stores whose design is an HTML template that ships that page.
+ */
+import { loadStoreTheme, resolveThemeRequestContext } from "../../lib/load-store-theme.ts";
+import { renderStoreTemplatePage } from "../../lib/html-template.ts";
+import { findPathStore, storeNotFoundResponse } from "../../lib/path-store.ts";
+
+const { store: storeSlug, page } = Astro.params;
+const url = new URL(Astro.request.url);
+
+const store = await findPathStore(storeSlug);
+if (!store) return storeNotFoundResponse(storeSlug ?? "");
+
+const themeRow = await loadStoreTheme(store.id);
+const themeCtx = resolveThemeRequestContext(url, store.id);
+
+const templatePage = renderStoreTemplatePage({ store, themeRow, isEditor: themeCtx.isEditor, page, url });
+if (templatePage) return templatePage;
+
+// Not a page of this store's design: send the visitor to the store's home.
+return Astro.redirect(`/${store.subdomain}`, 302);
+---

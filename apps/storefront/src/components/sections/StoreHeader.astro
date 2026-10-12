@@ -1,0 +1,53 @@
+---
+import { PhoneCall } from "../icons.tsx";
+
+interface Props {
+  store: any;
+  settings?: {
+    showLogo?: boolean;
+    showPhoneCall?: boolean;
+  };
+}
+
+const { store, settings = {} } = Astro.props;
+const showLogo = settings.showLogo !== false;
+const showPhoneCall = settings.showPhoneCall !== false;
+const storeSettings = store.settings || {};
+---
+
+<div class="flex items-center justify-between border-b border-[var(--gocom-border)] pb-4">
+  <div class="flex items-center gap-3">
+    {showLogo && (
+      store.logoUrl ? (
+        <img
+          src={store.logoUrl}
+          alt={store.name}
+          class="w-10 h-10 object-contain rounded-lg shadow-sm"
+          width="40"
+          height="40"
+        />
+      ) : (
+        <div class="w-10 h-10 rounded-xl bg-[var(--gocom-primary)] text-white flex items-center justify-center font-black text-lg shadow-md shadow-[var(--gocom-primary)]/20">
+          {store.name.charAt(0)}
+        </div>
+      )
+    )}
+    <div>
+      <h1 class="text-base sm:text-lg font-black text-[var(--gocom-text)]">{store.name}</h1>
+      <p class="text-xs text-[var(--gocom-muted)]">
+        {storeSettings.tagline || "সারা দেশে বিশ্বস্ততার সাথে অনলাইন শপিং"}
+      </p>
+    </div>
+  </div>
+
+  {showPhoneCall && storeSettings.supportPhone && (
+    <a
+      href={`tel:${storeSettings.supportPhone}`}
+      class="flex items-center gap-1.5 px-3 py-1.5 bg-white text-[var(--gocom-primary)] hover:opacity-90 rounded-full text-xs font-bold border border-[var(--gocom-border)] shadow-sm transition-all"
+    >
+      <PhoneCall className="w-3.5 h-3.5 text-[var(--gocom-primary)]" />
+      <span class="hidden sm:inline">কল করুন:</span>
+      <span>{storeSettings.supportPhone}</span>
+    </a>
+  )}
+</div>

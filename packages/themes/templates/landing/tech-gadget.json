@@ -1,0 +1,139 @@
+{
+  "id": "tech-gadget",
+  "version": 1,
+  "tier": "landing",
+  "archetype": "tech-gadget",
+  "status": "published",
+  "name": "Tech & Gadget",
+  "banglaName": "টেক ও গ্যাজেট",
+  "description": "ইলেকট্রনিক্স ও স্মার্ট ডিভাইসের জন্য স্পেসিফিকেশন ও ওয়ারেন্টি সমৃদ্ধ পেজ",
+  "banglaDescription": "ইলেকট্রনিক্স ও স্মার্ট ডিভাইসের জন্য স্পেসিফিকেশন ও ওয়ারেন্টি সমৃদ্ধ পেজ",
+  "tags": ["tech", "gadgets", "electronics", "specs"],
+  "bestFor": ["স্মার্টওয়াচ", "হেডফোন", "ইলেকট্রনিক গ্যাজেট"],
+  "gallery": {
+    "thumb": "/t/tech-gadget/v1/thumb-400.webp",
+    "thumb2x": "/t/tech-gadget/v1/thumb-800.webp",
+    "accent": "#2563EB",
+    "aspect": "9/16"
+  },
+  "shell": "single-column",
+  "defaultPreset": "midnight-tech",
+  "allowedPresets": ["midnight-tech", "ocean-clean", "emerald-organic"],
+  "requiresFeature": ["landing"],
+  "pages": {
+    "main": {
+      "kind": "landing",
+      "title": "Tech & Gadget Landing",
+      "variants": {
+        "default": {
+          "label": "Full Overview",
+          "sectionIds": [
+            "sec-announcement",
+            "sec-header",
+            "sec-hero",
+            "sec-specs",
+            "sec-features",
+            "sec-trust",
+            "sec-checkout",
+            "sec-sticky-bottom"
+          ]
+        }
+      },
+      "sections": [
+        {
+          "id": "sec-announcement",
+          "type": "announcement_bar",
+          "enabled": true,
+          "settings": {
+            "text": "১০০% অরিজিনাল ব্র্যান্ড প্রোডাক্ট ও অফিসিয়াল ওয়ারেন্টি!",
+            "badge": "অফিসিয়াল",
+            "highlightEmoji": "⚡"
+          }
+        },
+        {
+          "id": "sec-header",
+          "type": "header",
+          "enabled": true,
+          "locks": {
+            "removable": false,
+            "movable": false
+          },
+          "settings": {
+            "showLogo": true,
+            "showPhoneCall": true
+          }
+        },
+        {
+          "id": "sec-hero",
+          "type": "hero_product",
+          "enabled": true,
+          "locks": {
+            "removable": false
+          },
+          "settings": {
+            "showRatingBadge": true,
+            "ratingScore": "৪.৮/৫",
+            "showStockBadge": true,
+            "stockText": "ইন-স্টক",
+            "showDiscountBadge": true,
+            "discountText": "ধামাকা অফার",
+            "primaryCtaText": "এখনই কিনুন — ক্যাশ অন ডেলিভারি 🚀"
+          }
+        },
+        {
+          "id": "sec-specs",
+          "type": "specs_table",
+          "enabled": true,
+          "settings": {
+            "title": "টেকনিক্যাল স্পেসিফিকেশন"
+          }
+        },
+        {
+          "id": "sec-features",
+          "type": "features_list",
+          "enabled": true,
+          "settings": {
+            "title": "ডিভাইসের সেরা সুবিধাসমূহ"
+          }
+        },
+        {
+          "id": "sec-trust",
+          "type": "trust_badges",
+          "enabled": true,
+          "settings": {
+            "badges": [
+              { "icon": "shield", "title": "১ বছর অফিসিয়াল ওয়ারেন্টি", "desc": "ব্র্যান্ড গ্যারান্টি" },
+              { "icon": "truck", "title": "ফাস্ট ডেলিভারি", "desc": "৪৮ ঘণ্টার মধ্যে" },
+              { "icon": "refresh", "title": "ইনস্ট্যান্ট রিপ্লেসমেন্ট", "desc": "৭ দিনের মধ্যে" }
+            ]
+          }
+        },
+        {
+          "id": "sec-checkout",
+          "type": "inline_checkout",
+          "enabled": true,
+          "locks": {
+            "removable": false,
+            "movable": false,
+            "variantLocked": true
+          },
+          "settings": {
+            "title": "অর্ডার ফর্ম — ঘরে বসে পণ্য বুঝে নিন"
+          }
+        },
+        {
+          "id": "sec-sticky-bottom",
+          "type": "sticky_bottom_bar",
+          "enabled": true,
+          "locks": {
+            "removable": false,
+            "movable": false
+          },
+          "settings": {
+            "buttonText": "অর্ডার কনফার্ম করুন"
+          }
+        }
+      ]
+    }
+  }
+}

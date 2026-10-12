@@ -1,0 +1,1196 @@
+---
+interface Props {
+  mode: "login" | "signup";
+}
+
+const { mode } = Astro.props;
+const isLogin = mode === "login";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script is:inline>
+    (function(){try{var l=localStorage.getItem('gocom_lang')||localStorage.getItem('gocom_dashboard_lang')||'en';document.documentElement.lang=l;document.documentElement.setAttribute('data-lang',l);}catch(e){}})();
+  </script>
+  <title>{isLogin ? "Log In — GoCommerce BD" : "Create Store — GoCommerce BD"}</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="/assets/css/marketing.css" rel="stylesheet" />
+
+  <style>
+    /* Page Layout & Theme Matching the Marketing Home Page */
+    :root {
+      --primary-color: #155dfc;
+      --primary-hover: #0b48c9;
+      --bg-page: #eff6ff;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-page);
+      color: #0a0a0a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .auth-main-section {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      padding: 40px 16px 60px;
+      background:
+        radial-gradient(900px 420px at 50% -8%, #dbeafe 0%, rgba(219, 234, 254, 0) 65%),
+        linear-gradient(180deg, #eff6ff 0%, #eff6ff 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Ambient Soft Radial Circles */
+    .auth-glow-top {
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(21, 93, 252, 0.12) 0%, rgba(21, 93, 252, 0) 70%);
+      pointer-events: none;
+    }
+
+    /* Centered Auth Card */
+    .auth-card-container {
+      width: 100%;
+      max-width: 500px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 18px 45px rgba(21, 93, 252, 0.08), 0 4px 16px rgba(16, 24, 40, 0.04);
+      border: 1px solid rgba(21, 93, 252, 0.15);
+      position: relative;
+      z-index: 10;
+      overflow: hidden;
+      animation: gocomCardIn 0.28s ease-out;
+    }
+
+    @keyframes gocomCardIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Card Top Header */
+    .auth-card-head {
+      padding: 32px 28px 20px;
+      text-align: center;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      border-bottom: 1px solid #eef2f7;
+    }
+
+    .auth-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #155dfc;
+      background: #dbeafe;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .auth-card-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0a0a0a;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .auth-card-title .accent {
+      color: #155dfc;
+    }
+
+    .auth-card-desc {
+      font-size: 13.5px;
+      color: #64728c;
+      line-height: 1.5;
+    }
+
+    /* Segmented Tab Switch (Home Page Theme) */
+    .auth-seg-switch {
+      display: flex;
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      padding: 4px;
+      border-radius: 999px;
+      margin-top: 20px;
+      gap: 4px;
+    }
+
+    .auth-seg-btn {
+      flex: 1;
+      padding: 9px 14px;
+      font-size: 13.5px;
+      font-weight: 600;
+      font-family: inherit;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .auth-seg-btn:hover {
+      color: #155dfc;
+    }
+
+    .auth-seg-btn.active {
+      background: #155dfc;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(21, 93, 252, 0.3);
+    }
+
+    /* Form Body */
+    .auth-card-body {
+      padding: 28px;
+    }
+
+    /* Alerts */
+    .auth-alert {
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 18px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .auth-alert-error {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #b91c1c;
+    }
+
+    .auth-alert-success {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #15803d;
+    }
+
+    /* Form Fields */
+    .auth-group {
+      margin-bottom: 16px;
+    }
+
+    .auth-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e2939;
+      margin-bottom: 6px;
+    }
+
+    .auth-group label .req {
+      color: #e11d48;
+      margin-left: 2px;
+    }
+
+    .auth-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .auth-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .auth-input-wrap i.prefix-icon {
+      position: absolute;
+      left: 14px;
+      color: #94a3b8;
+      font-size: 17px;
+      pointer-events: none;
+    }
+
+    .auth-input-wrap input {
+      width: 100%;
+      padding: 12px 14px 12px 42px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #ffffff;
+      outline: none;
+      color: #0a0a0a;
+      transition: all 0.2s ease;
+    }
+
+    .auth-input-wrap input:focus {
+      border-color: #155dfc;
+      box-shadow: 0 0 0 4px rgba(21, 93, 252, 0.12);
+    }
+
+    .auth-input-phone input {
+      padding-left: 68px;
+    }
+
+    .phone-prefix-addon {
+      position: absolute;
+      left: 14px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #155dfc;
+      pointer-events: none;
+    }
+
+    /* Website Domain Prefix */
+    .url-input-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #ffffff;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .url-input-box:focus-within {
+      border-color: #155dfc;
+      box-shadow: 0 0 0 4px rgba(21, 93, 252, 0.12);
+    }
+
+    .url-prefix-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 14px;
+      background: #eff6ff;
+      border-right: 1px solid #e2e8f0;
+      font-size: 13px;
+      font-weight: 700;
+      color: #155dfc;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .url-prefix-label i {
+      color: #3b82f6;
+      font-size: 15px;
+    }
+
+    .url-input-box input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      background: transparent;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      color: #0a0a0a;
+      width: 100%;
+    }
+
+    .subdomain-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+    .subdomain-badge.available { color: #00a63e; }
+    .subdomain-badge.taken { color: #e11d48; }
+    .subdomain-badge.checking { color: #64748b; }
+
+    /* Password Toggler & Meter */
+    .pwd-toggle-btn {
+      position: absolute;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 6px;
+      font-size: 16px;
+    }
+    .pwd-toggle-btn:hover {
+      color: #0a0a0a;
+    }
+
+    .pwd-meter {
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+    .pwd-bar {
+      height: 100%;
+      width: 0%;
+      transition: all 0.3s;
+    }
+    .pwd-bar.weak { width: 33%; background: #e11d48; }
+    .pwd-bar.medium { width: 66%; background: #f0b100; }
+    .pwd-bar.strong { width: 100%; background: #00a63e; }
+
+    /* Checkbox & Links */
+    .auth-checkbox-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .auth-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+    }
+
+    .auth-checkbox input {
+      accent-color: #155dfc;
+      width: 16px;
+      height: 16px;
+    }
+
+    .forgot-link {
+      font-size: 12.5px;
+      color: #155dfc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Submit Button (Pill shaped, matching home page .btn-primary) */
+    .auth-submit-btn {
+      width: 100%;
+      padding: 13px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      color: #ffffff;
+      background: #155dfc;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(21, 93, 252, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .auth-submit-btn:hover {
+      background: #0b48c9;
+      box-shadow: 0 12px 26px rgba(21, 93, 252, 0.32);
+      transform: translateY(-1px);
+    }
+
+    .auth-submit-btn:disabled {
+      opacity: 0.75;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Divider */
+    .auth-divider {
+      position: relative;
+      text-align: center;
+      margin: 18px 0 16px;
+    }
+    .auth-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+    .auth-divider span {
+      position: relative;
+      background: #ffffff;
+      padding: 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      z-index: 2;
+    }
+
+    /* Google Button */
+    .auth-google-btn {
+      width: 100%;
+      padding: 11px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      color: #374151;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+    .auth-google-btn:hover {
+      background: #f9fafb;
+      border-color: #9ca3af;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+    .auth-google-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    /* Dev Fallback Prompt */
+    .auth-dev-prompt {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 11.5px;
+      color: #1e40af;
+    }
+    .auth-dev-prompt button {
+      margin-top: 6px;
+      padding: 6px 14px;
+      background: #155dfc;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .auth-dev-prompt button:hover {
+      background: #0b48c9;
+    }
+
+    /* Highlighted 15-Day Free Trial Switch Box */
+    .auth-switch-box {
+      margin-top: 24px;
+      padding: 13px 16px;
+      background: linear-gradient(135deg, rgba(21, 93, 252, 0.04) 0%, rgba(99, 102, 241, 0.08) 100%);
+      border: 1.5px solid rgba(21, 93, 252, 0.22);
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+
+    .auth-switch-box:hover {
+      border-color: rgba(21, 93, 252, 0.42);
+      background: linear-gradient(135deg, rgba(21, 93, 252, 0.07) 0%, rgba(99, 102, 241, 0.12) 100%);
+      box-shadow: 0 4px 16px -2px rgba(21, 93, 252, 0.12);
+    }
+
+    .auth-switch-box .auth-switch-text {
+      margin: 0;
+      padding: 0;
+      border: none;
+      font-size: 13px;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px 8px;
+    }
+
+    .auth-trial-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2.5px 9px;
+      background: linear-gradient(135deg, #155dfc 0%, #2563eb 100%);
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      border-radius: 9999px;
+      box-shadow: 0 2px 6px rgba(21, 93, 252, 0.28);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .auth-trial-tag i {
+      font-size: 11px;
+      color: #fde047;
+    }
+
+    .auth-switch-action {
+      color: #155dfc;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 2px;
+      transition: all 0.2s ease;
+    }
+
+    .auth-switch-action:hover {
+      color: #0b45c2;
+      text-decoration: underline;
+    }
+
+    /* Switcher Link (Standalone / Signup view) */
+    .auth-switch-text {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid #eef2f7;
+      text-align: center;
+      font-size: 13.5px;
+      color: #64748b;
+    }
+
+    .auth-switch-text a {
+      color: #155dfc;
+      font-weight: 700;
+      text-decoration: none;
+      margin-left: 4px;
+    }
+
+    .auth-switch-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Card Bottom Foot */
+    .auth-card-foot {
+      background: #f8fafc;
+      padding: 12px 20px;
+      border-top: 1px solid #eef2f7;
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .auth-card-foot i {
+      color: #00a63e;
+      font-size: 14px;
+    }
+
+    /* Top Left: Back to Home Page */
+    .auth-top-nav {
+      position: absolute;
+      top: 24px;
+      left: 28px;
+      z-index: 20;
+    }
+
+    .auth-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 15px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(21, 93, 252, 0.18);
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      transition: all 0.2s ease;
+    }
+
+    .auth-back-link:hover {
+      color: #155dfc;
+      background: #ffffff;
+      border-color: #155dfc;
+      transform: translateX(-3px);
+      box-shadow: 0 4px 14px rgba(21, 93, 252, 0.14);
+    }
+
+    @media (max-width: 900px) {
+      .auth-top-nav {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 500px;
+        margin-bottom: 14px;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Unified Top Site Header (Exact Same Header as Home Page) -->
+  <header class="site-header">
+    <div class="layout header-inner">
+      <a href="/" class="brand">
+        <img src="/logo.png" alt="GoCommerce BD" style="height:48px;max-width:260px;width:auto;display:block;object-fit:contain;" />
+      </a>
+
+      <nav class="main-nav">
+        <a href="/" data-i18n="navHome">Home</a>
+        <a href="/#features" data-i18n="navFeatures">Features</a>
+        <a href="/#pricing" data-i18n="navPricing">Pricing</a>
+        <a href="/#downloads" data-i18n="navDownloads">Downloads</a>
+        <a href="/#about" data-i18n="navAbout">About</a>
+        <a href="/#contact" data-i18n="navContact">Contact Us</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switch" role="group" aria-label="Language selection">
+          <button type="button" class="lang-btn active" data-lang-btn="en" aria-label="English">EN</button>
+          <span class="lang-divider">/</span>
+          <button type="button" class="lang-btn" data-lang-btn="bn" aria-label="বাংলা">বাং</button>
+        </div>
+        <a href="/login" class={`btn ${isLogin ? "btn-primary" : "btn-white"}`} data-i18n="navLogIn">Log In</a>
+        <a href="/create-store" class={`btn ${!isLogin ? "btn-primary" : "btn-white"}`} data-i18n="navCreateStore">Create Your Store</a>
+      </div>
+
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation"><i class="ri-menu-line"></i></button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="layout mobile-nav" data-mobile-nav>
+      <div class="mobile-nav-links">
+        <a href="/" data-i18n="navHome">Home</a>
+        <a href="/#features" data-i18n="navFeatures">Features</a>
+        <a href="/#pricing" data-i18n="navPricing">Pricing</a>
+        <a href="/#downloads" data-i18n="navDownloads">Downloads</a>
+        <a href="/#about" data-i18n="navAbout">About</a>
+        <a href="/#contact" data-i18n="navContact">Contact Us</a>
+      </div>
+      <div class="mobile-actions">
+        <div class="mobile-actions-top">
+          <span class="mobile-lang-label"><i class="ri-global-line"></i> <span data-i18n="langLabel">Language</span></span>
+          <div class="lang-switch" role="group" aria-label="Language selection">
+            <button type="button" class="lang-btn active" data-lang-btn="en" aria-label="English">EN</button>
+            <span class="lang-divider">/</span>
+            <button type="button" class="lang-btn" data-lang-btn="bn" aria-label="বাংলা">বাং</button>
+          </div>
+        </div>
+        <div class="mobile-btn-stack">
+          <a href="/create-store" class={`btn ${!isLogin ? "btn-primary" : "btn-white"}`} data-i18n="navCreateStore">Create Your Store</a>
+          <a href="/login" class={`btn ${isLogin ? "btn-primary" : "btn-white"}`} data-i18n="navLogIn">Log In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Auth Main Section with Matching Hero Radial Background -->
+  <main class="auth-main-section">
+    <div class="auth-glow-top"></div>
+
+    <!-- Top Left: Back to Home Page link -->
+    <div class="auth-top-nav">
+      <a href="/" class="auth-back-link" data-i18n-html="authBackHome">
+        <i class="ri-arrow-left-line"></i> <span>Back to Home Page</span>
+      </a>
+    </div>
+
+    <div class="auth-card-container">
+      <!-- Card Head -->
+      <div class="auth-card-head">
+        <span class="auth-eyebrow" data-i18n-html="authEyebrow"><i class="ri-shining-2-fill"></i> GoCommerce BD Platform</span>
+        <h1 class="auth-card-title">
+          {isLogin ? (
+            <span data-i18n-html="authCardTitleLogin">Merchant <span class="accent">Log In</span></span>
+          ) : (
+            <span data-i18n-html="authCardTitleSignup">Create <span class="accent">Online Store</span></span>
+          )}
+        </h1>
+        <p class="auth-card-desc" data-i18n={isLogin ? "authCardDescLogin" : "authCardDescSignup"}>
+          {isLogin
+            ? "Sign in to your store dashboard to manage sales and orders"
+            : "Launch your own eCommerce store in 2 minutes without coding"}
+        </p>
+      </div>
+
+      <!-- Card Body -->
+      <div class="auth-card-body">
+        <div id="authAlertError" class="auth-alert auth-alert-error">
+          <i class="ri-error-warning-fill"></i>
+          <span id="authErrorMsg"></span>
+        </div>
+
+        <div id="authAlertSuccess" class="auth-alert auth-alert-success">
+          <i class="ri-checkbox-circle-fill"></i>
+          <span id="authSuccessMsg"></span>
+        </div>
+
+        {isLogin ? (
+          <!-- LOGIN FORM -->
+          <form id="standaloneLoginForm" autocomplete="on">
+            <div class="auth-group">
+              <label for="loginEmail"><span data-i18n="authLabelEmail">Email or Username</span> <span class="req">*</span></label>
+              <div class="auth-input-wrap">
+                <i class="ri-mail-line prefix-icon"></i>
+                <input type="text" id="loginEmail" placeholder="your@email.com or username" data-i18n-placeholder="authPlaceholderEmail" required autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" />
+              </div>
+            </div>
+
+            <div class="auth-group">
+              <div class="auth-label-row">
+                <label for="loginPassword" style="margin-bottom:0"><span data-i18n="authLabelPassword">Password</span> <span class="req">*</span></label>
+                <a href="#" onclick="alert('Please contact support@gocommercebd.online for password assistance'); return false;" class="forgot-link" data-i18n="authForgotPassword">Forgot password?</a>
+              </div>
+              <div class="auth-input-wrap">
+                <i class="ri-lock-password-line prefix-icon"></i>
+                <input type="password" id="loginPassword" placeholder="Enter your password" data-i18n-placeholder="authPlaceholderPassword" required autocomplete="current-password" />
+                <button type="button" class="pwd-toggle-btn" data-toggle="loginPassword" aria-label="Toggle password visibility">
+                  <i class="ri-eye-line"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-checkbox-row">
+              <label class="auth-checkbox">
+                <input type="checkbox" checked /> <span data-i18n="authRememberMeLong">Remember me (Stay signed in 30 days)</span>
+              </label>
+            </div>
+
+            <button type="submit" id="loginSubmitBtn" class="auth-submit-btn">
+              <span data-i18n="authBtnLogin">Log In to Dashboard</span> <i class="ri-arrow-right-line"></i>
+            </button>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+              <span data-i18n="authDivider">or continue with</span>
+            </div>
+
+            <!-- Google Sign-In Button -->
+            <button type="button" id="storefrontGoogleBtn" class="auth-google-btn">
+              <svg style="width:18px;height:18px;flex-shrink:0;" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" />
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z" />
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z" />
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" />
+              </svg>
+              <span id="googleBtnText" data-i18n="authGoogleBtn">Continue with Google</span>
+            </button>
+
+            <!-- Dev fallback prompt if keys are pending -->
+            <div id="storefrontGoogleDevPrompt" class="auth-dev-prompt" style="display:none;">
+              <p data-i18n="authGoogleDevText">Want to test Google authentication in local demo mode?</p>
+              <button type="button" id="storefrontGoogleDemoBtn" data-i18n="authGoogleDemoBtn">Sign in with Demo Google Account</button>
+            </div>
+
+            <div class="auth-switch-box">
+              <div class="auth-trial-tag">
+                <i class="ri-sparkling-fill"></i> <span data-i18n="authTrialTag">15 Days Free Trial</span>
+              </div>
+              <div class="auth-switch-text" data-i18n-html="authSwitchToSignup">
+                <span>Don't have a store yet?</span> <a href="/create-store" class="auth-switch-action">Create Free Store <i class="ri-arrow-right-line"></i></a>
+              </div>
+            </div>
+          </form>
+        ) : (
+          <!-- CREATE STORE (SIGNUP) FORM -->
+          <form id="standaloneSignupForm" autocomplete="on">
+            <div class="auth-group">
+              <label for="signupStoreName"><span data-i18n="authLabelStoreName">Store Name</span> <span class="req">*</span></label>
+              <div class="auth-input-wrap">
+                <i class="ri-store-2-line prefix-icon"></i>
+                <input type="text" id="signupStoreName" placeholder="e.g. My Super Shop" data-i18n-placeholder="authPlaceholderStoreName" required maxlength="100" />
+              </div>
+            </div>
+
+            <div class="auth-group">
+              <div class="auth-label-row">
+                <label for="signupSubdomain" style="margin-bottom:0"><span data-i18n="authLabelSubdomain">Website Subdomain / Address</span> <span class="req">*</span></label>
+                <span id="subdomainBadge" class="subdomain-badge"></span>
+              </div>
+              <div class="url-input-box">
+                <span class="url-prefix-label">
+                  <i class="ri-global-line"></i> gocommercebd.online/
+                </span>
+                <input type="text" id="signupSubdomain" placeholder="axiswear" required minlength="3" maxlength="40" pattern="^[a-z0-9-]+$" />
+              </div>
+              <p style="font-size:11.5px;color:#64748b;margin-top:5px;" data-i18n-html="authSubdomainNote">
+                Store link will be: <b style="color:#155dfc;">gocommercebd.online/<span id="slugPreview">axiswear</span></b>
+              </p>
+            </div>
+
+            <div class="auth-group">
+              <label for="signupName"><span data-i18n="authLabelFullName">Full Name (Owner)</span> <span class="req">*</span></label>
+              <div class="auth-input-wrap">
+                <i class="ri-user-line prefix-icon"></i>
+                <input type="text" id="signupName" placeholder="e.g. John Doe" data-i18n-placeholder="authPlaceholderFullName" required maxlength="100" />
+              </div>
+            </div>
+
+            <div class="auth-group">
+              <label for="signupPhone"><span data-i18n="authLabelPhone">Mobile Number (11 digits)</span> <span class="req">*</span></label>
+              <div class="auth-input-wrap auth-input-phone">
+                <span class="phone-prefix-addon"><i class="ri-phone-line"></i> +88</span>
+                <input type="tel" id="signupPhone" placeholder="017XXXXXXXX" required maxlength="15" />
+              </div>
+            </div>
+
+            <div class="auth-group">
+              <label for="signupEmail"><span data-i18n="authLabelSignupEmail">Email Address</span> <span class="req">*</span></label>
+              <div class="auth-input-wrap">
+                <i class="ri-mail-line prefix-icon"></i>
+                <input type="email" id="signupEmail" placeholder="your@email.com" required autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="auth-group">
+              <label for="signupPassword"><span data-i18n="authLabelSignupPassword">Password (Min 8 characters)</span> <span class="req">*</span></label>
+              <div class="auth-input-wrap">
+                <i class="ri-lock-password-line prefix-icon"></i>
+                <input type="password" id="signupPassword" placeholder="Strong password with at least 8 characters" data-i18n-placeholder="authPlaceholderSignupPassword" required minlength="8" autocomplete="new-password" />
+                <button type="button" class="pwd-toggle-btn" data-toggle="signupPassword" aria-label="Toggle password visibility">
+                  <i class="ri-eye-line"></i>
+                </button>
+              </div>
+              <div class="pwd-meter"><div id="pwdStrengthBar" class="pwd-bar"></div></div>
+            </div>
+
+            <div class="auth-checkbox-row">
+              <label class="auth-checkbox" style="align-items:flex-start;">
+                <input type="checkbox" required checked style="margin-top:2px;" />
+                <span style="font-size:12px;line-height:1.4;" data-i18n="authTermsAgree">I agree to GoCommerce BD Terms of Service and Privacy Policy.</span>
+              </label>
+            </div>
+
+            <button type="submit" id="signupSubmitBtn" class="auth-submit-btn">
+              <span data-i18n="authBtnCreateStoreLong">Launch Store — 100% Free</span> <i class="ri-rocket-line"></i>
+            </button>
+
+            <div class="auth-switch-text" data-i18n-html="authSwitchToLogin">
+              Already have an account? <a href="/login">Log In</a>
+            </div>
+          </form>
+        )}
+      </div>
+
+      <!-- Card Footer Copyright -->
+      <div class="auth-card-foot">
+        <span data-i18n="authSecurityFoot">© 2026 GoCommerce BD. All rights reserved.</span>
+      </div>
+    </div>
+  </main>
+
+  <script is:inline src="/assets/js/marketing.js"></script>
+  <script>
+    (function () {
+      function getDashboardUrl(token) {
+        const cleanHost = location.hostname.replace(/^www\./, '');
+        const base = (cleanHost === 'localhost' || cleanHost === '127.0.0.1')
+          ? 'http://localhost:5173'
+          : 'https://app.' + cleanHost;
+        return token ? `${base}/?auth_token=${encodeURIComponent(token)}` : `${base}/`;
+      }
+      const DASHBOARD_URL = getDashboardUrl();
+
+      const errorBox = document.getElementById('authAlertError');
+      const errorMsg = document.getElementById('authErrorMsg');
+      const successBox = document.getElementById('authAlertSuccess');
+      const successMsg = document.getElementById('authSuccessMsg');
+
+      function showError(msg) {
+        if (successBox) successBox.style.display = 'none';
+        if (errorBox && errorMsg) {
+          errorMsg.textContent = msg || 'একটি ত্রুটি ঘটেছে। আবার চেষ্টা করুন।';
+          errorBox.style.display = 'flex';
+        }
+      }
+
+      function showSuccess(msg) {
+        if (errorBox) errorBox.style.display = 'none';
+        if (successBox && successMsg) {
+          successMsg.textContent = msg;
+          successBox.style.display = 'flex';
+        }
+      }
+
+      // Password toggle
+      document.querySelectorAll('[data-toggle]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-toggle');
+          const input = document.getElementById(targetId);
+          if (!input) return;
+          const isPass = input.type === 'password';
+          input.type = isPass ? 'text' : 'password';
+          const icon = btn.querySelector('i');
+          if (icon) icon.className = isPass ? 'ri-eye-off-line' : 'ri-eye-line';
+        });
+      });
+
+      // Phone digit normalization (Bengali to ASCII)
+      const phoneInput = document.getElementById('signupPhone');
+      if (phoneInput) {
+        phoneInput.addEventListener('input', () => {
+          const bangla = {'০':'0','১':'1','২':'2','৩':'3','৪':'4','৫':'5','৬':'6','৭':'7','৮':'8','৯':'9'};
+          phoneInput.value = phoneInput.value.replace(/[০-৯]/g, w => bangla[w] || w);
+        });
+      }
+
+      // Subdomain auto-slugify and availability check
+      const storeNameInput = document.getElementById('signupStoreName');
+      const subdomainInput = document.getElementById('signupSubdomain');
+      const subdomainBadge = document.getElementById('subdomainBadge');
+      const slugPreview = document.getElementById('slugPreview');
+      let checkTimer = null;
+
+      function checkSub(val) {
+        if (!subdomainBadge) return;
+        if (val.length < 3) {
+          subdomainBadge.textContent = '';
+          subdomainBadge.className = 'subdomain-badge';
+          return;
+        }
+        subdomainBadge.textContent = 'যাচাই হচ্ছে...';
+        subdomainBadge.className = 'subdomain-badge checking';
+        fetch('/api/auth/check-subdomain?subdomain=' + encodeURIComponent(val))
+          .then(r => r.json())
+          .then(d => {
+            if (d.available) {
+              subdomainBadge.textContent = '✓ খালি আছে';
+              subdomainBadge.className = 'subdomain-badge available';
+            } else {
+              subdomainBadge.textContent = '✕ ইতিমধ্যে ব্যবহৃত';
+              subdomainBadge.className = 'subdomain-badge taken';
+            }
+          })
+          .catch(() => {
+            subdomainBadge.textContent = '';
+          });
+      }
+
+      function updateSlug(val) {
+        if (slugPreview) slugPreview.textContent = val || 'axiswear';
+      }
+
+      if (storeNameInput && subdomainInput) {
+        storeNameInput.addEventListener('input', () => {
+          if (!subdomainInput.dataset.manual) {
+            const val = storeNameInput.value.toLowerCase().trim()
+              .replace(/[^\w\s-]/g, '')
+              .replace(/[\s_-]+/g, '-')
+              .replace(/^-+|-+$/g, '');
+            subdomainInput.value = val;
+            updateSlug(val);
+            clearTimeout(checkTimer);
+            checkTimer = setTimeout(() => checkSub(val), 300);
+          }
+        });
+
+        subdomainInput.addEventListener('input', () => {
+          subdomainInput.dataset.manual = 'true';
+          const val = subdomainInput.value.toLowerCase().replace(/[^a-z0-9-]/g, '');
+          subdomainInput.value = val;
+          updateSlug(val);
+          clearTimeout(checkTimer);
+          checkTimer = setTimeout(() => checkSub(val), 300);
+        });
+      }
+
+      // Password strength bar
+      const pwdInput = document.getElementById('signupPassword');
+      const pwdBar = document.getElementById('pwdStrengthBar');
+      if (pwdInput && pwdBar) {
+        pwdInput.addEventListener('input', () => {
+          const len = pwdInput.value.length;
+          pwdBar.className = 'pwd-bar';
+          if (len === 0) pwdBar.style.width = '0%';
+          else if (len < 8) pwdBar.classList.add('weak');
+          else if (len < 12) pwdBar.classList.add('medium');
+          else pwdBar.classList.add('strong');
+        });
+      }
+
+      // LOGIN SUBMISSION
+      const loginForm = document.getElementById('standaloneLoginForm');
+      if (loginForm) {
+        loginForm.addEventListener('submit', e => {
+          e.preventDefault();
+          const email = document.getElementById('loginEmail').value.trim();
+          const password = document.getElementById('loginPassword').value;
+          const submitBtn = document.getElementById('loginSubmitBtn');
+          const originalContent = submitBtn.innerHTML;
+
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="ri-loader-4-line ri-spin"></i> লগইন হচ্ছে...';
+
+          fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ email, password })
+          })
+          .then(r => r.json().then(d => ({ status: r.status, ok: r.ok, data: d })))
+          .then(res => {
+            if (!res.ok) throw new Error(res.data.detail || res.data.error || 'লগইন ব্যর্থ হয়েছে।');
+            showSuccess('সফলভাবে লগইন হয়েছে! ড্যাশবোর্ডে নিয়ে যাওয়া হচ্ছে...');
+            const token = res.data?.token || res.data?.session?.token;
+            setTimeout(() => {
+              window.location.href = getDashboardUrl(token);
+            }, 600);
+          })
+          .catch(err => {
+            showError(err.message);
+          })
+          .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalContent;
+          });
+        });
+      }
+
+      // GOOGLE SIGN IN
+      const googleBtn = document.getElementById('storefrontGoogleBtn');
+      const googleBtnText = document.getElementById('googleBtnText');
+      const googleDevPrompt = document.getElementById('storefrontGoogleDevPrompt');
+      const googleDemoBtn = document.getElementById('storefrontGoogleDemoBtn');
+
+      if (googleBtn) {
+        googleBtn.addEventListener('click', async () => {
+          if (errorBox) errorBox.style.display = 'none';
+          if (successBox) successBox.style.display = 'none';
+          googleBtn.disabled = true;
+          if (googleBtnText) googleBtnText.textContent = 'কানেক্ট করা হচ্ছে...';
+
+          try {
+            const res = await fetch('/api/auth/google', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              credentials: 'include',
+              body: JSON.stringify({ callbackURL: DASHBOARD_URL })
+            });
+
+            const data = await res.json().catch(() => null);
+
+            if (res.ok && data && data.url) {
+              window.location.href = data.url;
+              return;
+            }
+
+            if (res.status === 503 || (data && !data.configured)) {
+              if (googleDevPrompt) googleDevPrompt.style.display = 'block';
+              showError(data?.detail || 'গুগল লগইন সক্রিয় করার জন্য সার্ভারে GOOGLE_CLIENT_ID ও GOOGLE_CLIENT_SECRET কনফিগার করতে হবে।');
+            } else {
+              throw new Error(data?.detail || data?.error || 'গুগল অথেনটিকেশন শুরু করা যায়নি।');
+            }
+          } catch (err) {
+            showError(err.message || 'গুগল লগইনে সমস্যা হয়েছে।');
+          } finally {
+            googleBtn.disabled = false;
+            if (googleBtnText) googleBtnText.textContent = 'Google দিয়ে লগইন করুন';
+          }
+        });
+      }
+
+      if (googleDemoBtn) {
+        googleDemoBtn.addEventListener('click', async () => {
+          googleDemoBtn.disabled = true;
+          googleDemoBtn.textContent = 'প্রবেশ হচ্ছে...';
+
+          try {
+            const res = await fetch('/api/auth/google/demo', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              credentials: 'include'
+            });
+
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.detail || data.error || 'ডেমো গুগল লগইন সম্পন্ন করা যায়নি।');
+
+            showSuccess('গুগল অ্যাকাউন্ট দিয়ে সফলভাবে লগইন হয়েছে! ড্যাশবোর্ডে নিয়ে যাওয়া হচ্ছে...');
+            setTimeout(() => {
+              window.location.href = DASHBOARD_URL;
+            }, 600);
+          } catch (err) {
+            showError(err.message || 'ডেমো লগইন ব্যর্থ হয়েছে।');
+          } finally {
+            googleDemoBtn.disabled = false;
+            googleDemoBtn.textContent = 'ডেমো গুগল অ্যাকাউন্ট দিয়ে প্রবেশ';
+          }
+        });
+      }
+
+      // SIGNUP SUBMISSION
+      const signupForm = document.getElementById('standaloneSignupForm');
+      if (signupForm) {
+        signupForm.addEventListener('submit', e => {
+          e.preventDefault();
+          const storeName = document.getElementById('signupStoreName').value.trim();
+          const subdomain = document.getElementById('signupSubdomain').value.trim().toLowerCase();
+          const name = document.getElementById('signupName').value.trim();
+          const phone = document.getElementById('signupPhone').value.trim();
+          const email = document.getElementById('signupEmail').value.trim();
+          const password = document.getElementById('signupPassword').value;
+          const submitBtn = document.getElementById('signupSubmitBtn');
+          const originalContent = submitBtn.innerHTML;
+
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="ri-loader-4-line ri-spin"></i> দোকান তৈরি হচ্ছে...';
+
+          fetch('/api/auth/register-store', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ storeName, subdomain, name, phone, email, password })
+          })
+          .then(r => r.json().then(d => ({ status: r.status, ok: r.ok, data: d })))
+          .then(res => {
+            if (!res.ok) throw new Error(res.data.detail || res.data.error || 'দোকান তৈরি করা সম্ভব হয়নি।');
+            showSuccess('আপনার দোকান ও অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে! ড্যাশবোর্ডে প্রবেশ করানো হচ্ছে...');
+            setTimeout(() => {
+              window.location.href = DASHBOARD_URL;
+            }, 800);
+          })
+          .catch(err => {
+            showError(err.message);
+          })
+          .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalContent;
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

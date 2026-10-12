@@ -1,0 +1,95 @@
+---
+import { resolveTheme, generateThemeCssVariables, getSectionMeta } from "@gocom/themes";
+import type { SectionInstance } from "@gocom/themes";
+import SectionDispatcher from "./SectionDispatcher.astro";
+import type { StoreThemeRow } from "../lib/load-store-theme.ts";
+
+interface Props {
+  store: any;
+  product: any;
+  /** Saved theme from `store_themes`; null falls back to template defaults. */
+  themeRow?: StoreThemeRow | null;
+  /** Manifest page to render — "main" for the storefront home, "product" for PDPs. */
+  page?: string;
+  /** Entitlement features, so feature-gated sections resolve correctly. */
+  features?: string[];
+  /** Render the unpublished draft (dashboard preview only). */
+  isEditor?: boolean;
+  /** Prefix for storefront API calls: `/<subdomain>` on path-based stores, empty on a store's own host. */
+  apiBase?: string;
+  previewPreset?: string;
+}
+
+const {
+  store,
+  product,
+  themeRow = null,
+  page = "main",
+  features,
+  isEditor = false,
+  apiBase = "",
+  previewPreset,
+} = Astro.props;
+
+// The merchant's saved row layers over the store record: templateId, presetId,
+// tokenOverrides, published snapshot and draft all live in `store_themes`.
+const themeInput = { ...store, ...(themeRow ?? {}), features };
+
+// A template may not define the requested page (landing templates have only
+// "main"), so fall back rather than render an empty document.
+const savedPages = (isEditor ? themeInput.draft?.pages : themeInput.published?.pages) as
+  | Record<string, unknown>
+  | undefined;
+const requestedPage = page !== "main" && savedPages && !savedPages[page] ? "main" : page;
+
+const resolved = resolveTheme(themeInput, {
+  page: requestedPage,
+  previewPreset,
+  isEditor,
+});
+const cssVars = generateThemeCssVariables(resolved.preset);
+
+// Full-bleed sections break out of the max-width shell. Which ones those are
+// comes from each section's own meta, so a new edge-to-edge section needs no
+// change here (report §4.4). Consecutive in-shell sections are grouped into one
+// container so document order is preserved either way.
+type Band =
+  | { kind: "full"; section: SectionInstance }
+  | { kind: "shell"; sections: SectionInstance[] };
+
+const bands: Band[] = [];
+for (const section of resolved.sections) {
+  if (section.enabled === false) continue;
+  if (getSectionMeta(section.type)?.fullWidth === true) {
+    bands.push({ kind: "full", section });
+    continue;
+  }
+  const last = bands[bands.length - 1];
+  if (last?.kind === "shell") last.sections.push(section);
+  else bands.push({ kind: "shell", sections: [section] });
+}
+
+const maxWidth = resolved.shell?.maxWidth ?? "48rem";
+const gutter = resolved.shell?.gutter ?? "1rem";
+const rhythm = resolved.shell?.rhythm ?? "1.5rem";
+const shellStyle = `max-width: var(--gc-max, ${maxWidth}); padding-left: var(--gc-gutter, ${gutter}); padding-right: var(--gc-gutter, ${gutter});`;
+const stackStyle = `display: flex; flex-direction: column; gap: var(--gc-rhythm, ${rhythm}); padding-top: var(--gc-rhythm, ${rhythm}); padding-bottom: var(--gc-rhythm, ${rhythm});`;
+---
+
+<style is:inline set:html={cssVars}></style>
+
+<main class="min-h-screen bg-[var(--gocom-bg)] text-[var(--gocom-text)] pb-24 font-sans transition-colors duration-150">
+  {bands.map((band) =>
+    band.kind === "full" ? (
+      <SectionDispatcher section={band.section} store={store} product={product} apiBase={apiBase} />
+    ) : (
+      <div class="gc-shell mx-auto w-full transition-all duration-150" style={shellStyle}>
+        <div style={stackStyle}>
+          {band.sections.map((section) => (
+            <SectionDispatcher section={section} store={store} product={product} apiBase={apiBase} />
+          ))}
+        </div>
+      </div>
+    )
+  )}
+</main>

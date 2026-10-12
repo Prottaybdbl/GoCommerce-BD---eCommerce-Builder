@@ -1,0 +1,26 @@
+---
+interface Props {
+  settings?: {
+    text?: string;
+    badge?: string;
+    highlightEmoji?: string;
+  };
+}
+
+const { settings = {} } = Astro.props;
+const text = settings.text || "সারা দেশে ফ্রি হোম ডেলিভারি এবং ক্যাশ অন ডেলিভারি সুবিধা!";
+const badge = settings.badge || "সীমিত সময়ের অফার";
+const emoji = settings.highlightEmoji || "🔥";
+---
+
+<header class="sticky top-0 z-40 bg-[var(--gocom-primary)] text-white py-2.5 px-4 text-center text-xs sm:text-sm font-bold shadow-md transition-colors">
+  <div class="max-w-4xl mx-auto flex items-center justify-center gap-2">
+    <span class="animate-pulse">{emoji}</span>
+    <span>{text}</span>
+    {badge && (
+      <span class="hidden sm:inline bg-white/20 px-2 py-0.5 rounded text-xs font-semibold backdrop-blur-sm">
+        {badge}
+      </span>
+    )}
+  </div>
+</header>

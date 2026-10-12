@@ -1,0 +1,26 @@
+{
+  "name": "gocom-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Go Commerce BD — Multi-Tenant eCommerce & F-Commerce SaaS for Bangladesh",
+  "packageManager": "pnpm@12.8.1",
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "db:generate": "pnpm --filter @gocom/db generate",
+    "db:migrate": "pnpm --filter @gocom/db migrate",
+    "db:push": "pnpm --filter @gocom/db push",
+    "db:seed": "pnpm --filter @gocom/db seed",
+    "db:create-admin": "pnpm --filter @gocom/db create-admin"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4",
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

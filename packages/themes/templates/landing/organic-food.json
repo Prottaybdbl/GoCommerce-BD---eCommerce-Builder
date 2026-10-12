@@ -1,0 +1,140 @@
+{
+  "id": "organic-food",
+  "version": 1,
+  "tier": "landing",
+  "archetype": "organic-food",
+  "status": "published",
+  "name": "Pure & Organic Food",
+  "banglaName": "খাঁটি ও অর্গানিক ফুড",
+  "description": "খাঁটি মধু, ঘি, তেল ও গ্রোসারি আইটেমের জন্য ন্যাচারাল থিম",
+  "banglaDescription": "খাঁটি মধু, ঘি, তেল ও গ্রোসারি আইটেমের জন্য ন্যাচারাল থিম",
+  "tags": ["organic", "food", "grocery", "natural", "farm-fresh"],
+  "bestFor": ["মধু", "ঘি", "সরিষার তেল", "অর্গানিক ফুড"],
+  "gallery": {
+    "thumb": "/t/organic-food/v1/thumb-400.webp",
+    "thumb2x": "/t/organic-food/v1/thumb-800.webp",
+    "accent": "#059669",
+    "aspect": "9/16"
+  },
+  "shell": "single-column",
+  "defaultPreset": "emerald-organic",
+  "allowedPresets": ["emerald-organic", "amber-warm", "ocean-clean"],
+  "requiresFeature": ["landing"],
+  "pages": {
+    "main": {
+      "kind": "landing",
+      "title": "Organic Food Landing",
+      "variants": {
+        "default": {
+          "label": "Full Overview",
+          "sectionIds": [
+            "sec-announcement",
+            "sec-header",
+            "sec-origin",
+            "sec-hero",
+            "sec-features",
+            "sec-trust",
+            "sec-checkout",
+            "sec-sticky-bottom"
+          ]
+        }
+      },
+      "sections": [
+        {
+          "id": "sec-announcement",
+          "type": "announcement_bar",
+          "enabled": true,
+          "settings": {
+            "text": "শতভাগ খাঁটি ও প্রাকৃতিক খাদ্যের নিশ্চয়তা!",
+            "badge": "ন্যাচারাল",
+            "highlightEmoji": "🌿"
+          }
+        },
+        {
+          "id": "sec-header",
+          "type": "header",
+          "enabled": true,
+          "locks": {
+            "removable": false,
+            "movable": false
+          },
+          "settings": {
+            "showLogo": true,
+            "showPhoneCall": true
+          }
+        },
+        {
+          "id": "sec-origin",
+          "type": "origin_badge",
+          "enabled": true,
+          "settings": {
+            "location": "সুন্দরবন ও গ্রাম্য নিজস্ব খামার",
+            "purityClaim": "শতভাগ খাঁটি, রাসায়নিক ও ভেজালমুক্ত"
+          }
+        },
+        {
+          "id": "sec-hero",
+          "type": "hero_product",
+          "enabled": true,
+          "locks": {
+            "removable": false
+          },
+          "settings": {
+            "showRatingBadge": true,
+            "ratingScore": "৫.০/৫",
+            "showStockBadge": true,
+            "stockText": "তাজা স্টক",
+            "showDiscountBadge": true,
+            "discountText": "ফার্ম ফ্রেশ",
+            "primaryCtaText": "খাঁটি পণ্যটি অর্ডার করুন 🍯"
+          }
+        },
+        {
+          "id": "sec-features",
+          "type": "features_list",
+          "enabled": true,
+          "settings": {
+            "title": "কেন আমাদের পণ্য শতভাগ খাঁটি?"
+          }
+        },
+        {
+          "id": "sec-trust",
+          "type": "trust_badges",
+          "enabled": true,
+          "settings": {
+            "badges": [
+              { "icon": "shield", "title": "ল্যাব টেস্টেড", "desc": "শতভাগ বিশুদ্ধ" },
+              { "icon": "truck", "title": "নিরাপদ ডেলিভারি", "desc": "ফুড-গ্রেড প্যাকেজিং" },
+              { "icon": "refresh", "title": "মান পছন্দ না হলে রিটার্ন", "desc": "১০০% মানিব্যাক" }
+            ]
+          }
+        },
+        {
+          "id": "sec-checkout",
+          "type": "inline_checkout",
+          "enabled": true,
+          "locks": {
+            "removable": false,
+            "movable": false,
+            "variantLocked": true
+          },
+          "settings": {
+            "title": "ক্যাশ অন ডেলিভারিতে অর্ডার করুন"
+          }
+        },
+        {
+          "id": "sec-sticky-bottom",
+          "type": "sticky_bottom_bar",
+          "enabled": true,
+          "locks": {
+            "removable": false,
+            "movable": false
+          },
+          "settings": {
+            "buttonText": "অর্ডার করুন"
+          }
+        }
+      ]
+    }
+  }
+}
